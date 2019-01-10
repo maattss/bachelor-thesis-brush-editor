@@ -320,7 +320,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 %	ABBREVIATIONS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\abbrevname}{List of Abbreviations}
+\newcommand{\abbrevname}{Forkortelser}
 \providecaptionname{english,british,american}{\abbrevname}{List of Abbreviations}
 \providecaptionname{ngerman,german,austrian,naustrian}{\abbrevname}{Abk\"urzungsverzeichnis}
 \NewDocumentEnvironment{abbreviations}{ m }{%
@@ -482,7 +482,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 %	PHYSICAL CONSTANTS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\constantsname}{Physical Constants}
+\newcommand{\constantsname}{Konstanter}
 \providecaptionname{english,british,american}{\constantsname}{Physical Constants}
 \providecaptionname{ngerman,german,austrian,naustrian}{\constantsname}{Physikalische Konstanten}
 
@@ -500,7 +500,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 %	SYMBOLS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\symbolsname}{List of Symbols}
+\newcommand{\symbolsname}{Symbolliste}
 \providecaptionname{english,british,american}{\symbolsname}{List of Symbols}
 \providecaptionname{ngerman,german,austrian,naustrian}{\symbolsname}{Symbolverzeichnis}
 
@@ -524,7 +524,7 @@ bookmarksopenlevel=0,
 hypertexnames=false,
 colorlinks=true,% Set to false to disable coloring links
 citecolor=magenta,% The color of citations
-linkcolor=red,% The color of references to document elements (sections, figures, etc)
+linkcolor=black,% The color of references to document elements (sections, figures, etc)
 urlcolor=mdtRed,% The color of hyperlinks (URLs)
 pdfstartview={FitV},
 unicode,
