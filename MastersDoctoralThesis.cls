@@ -340,9 +340,10 @@ KOMA-script documentation for details.}]{fancyhdr}
 \DeclareDocumentCommand{\abstractauthorfont}{}{}
 \DeclareDocumentCommand{\abstracttitlefont}{}{}
 \newcommand{\byname}{by}
-\newcommand{\abstractname}{Abstract}
-\providecaptionname{german,ngerman,austrian,naustrian, norsk}{\byname}{av}
-\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{av}
+\newcommand{\abstractname}{Sammendrag}
+\providecaptionname{norsk}{\byname}{av}
+\providecaptionname{german,ngerman,austrian,naustrian}{\byname}{de}
+\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{by}
 \ifbool{consistentlayout}{
 	\DeclareDocumentEnvironment{abstract}{ O{} }{%
 		\addchap*{\abstractname}%
@@ -413,6 +414,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \newcommand{\acknowledgementname}{Acknowledgements}
 \providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Acknowledgements} % Acknowledgement text for English countries
 \providecaptionname{german,ngerman,austrian,naustrian}{\acknowledgementname}{Danksagung} % Acknowledgement text for Germanic countries
+\providecaptionname{norsk}{\acknowledgementname}{Takk til} % Acknowledgement text for Norwegian
 
 \ifbool{consistentlayout}{
 	\DeclareDocumentEnvironment{acknowledgements}{}{%
