@@ -9,27 +9,71 @@
 \subsection{Node.js}
 
 \section{Chart.js}
-\section{Ng2-charts}
+Chart.js er et «open source»-bibliotek som gjør det enkelt å visualisere data i grafer ved hjelp av JavaScript. Etter man har definert hvilken type graf og hvilke data man skal ha i grafen vil biblioteket sørge for at grafen ser bra ut og alltid er lesbar. For eksempel, hvis man endrer oppsettet og gir mer rom til grafen på siden, vil den automatisk bli større. I tillegg er det også mulig å tilpasse det meste av innstillinger i forhold til tegning av grafen (farge, akse-beskrivelse etc.).
 
+\begin{minted}{html}
+<canvas id="myChart"></canvas>
+\end{minted}
+
+\begin{minted}{javascript}
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    },
+    options: {}
+});
+\end{minted}
+\section{Ng2-charts}
+Ng2-charts er en utvidelse som gjør det enkelt å bruke Chart.js biblioteket i en Angular applikasjon. Etter man har importert ng2-charts inn i modulen i applikasjonene som den skal brukes i, kan man enkelt tegne en graf på liknende måte som man ville gjort i vanlig HTML/JavaScript.
+\begin{minted}{java}
+<canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      (chartClick)="onChartClick($event)">
+</canvas>
+\end{minted}
+
+\begin{minted}{typescript}
+chartData = [
+    { data: [330, 600, 260, 700], label: 'Account A' },
+    { data: [120, 455, 100, 340], label: 'Account B' },
+    { data: [450, 670, 800, 500], label: 'Account C' }
+  ];
+
+  chartLabels = ['January', 'February', 'Mars', 'April'];
+\end{minted}
 
 \section{Git og Github}
+Blabla
 
 \section{Bootstrap}
 Bootstrap er det nest mest fulgte prosjektet på GitHub. Det er et åpen kilde verktøy for å utvikle HTML, CSS og JavaScript. Hovedformålet med å bruke bootstrap er å spare tid på utseendet til applikasjonen ved å bruke klasser og funksjoner som allerede eksisterer i bootstrap. Man får tilgang til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter\cite{BootstrapAbout}.
 
-\subsection{Tables}
-I denne oppgaven ble bootstrap brukt til å utforme tabellen for brushfilene. Det ble laget en enkel tabell i HTML og ".table" klassen fra bootstrap ble lagt til. 
-\begin{lstlisting}
+\subsection{Tabeller}
+I denne oppgaven ble bootstrap brukt til å utforme tabellen for brushfilene. Det ble laget en enkel tabell i HTML og \say{table} klassen fra bootstrap ble lagt til\cite{BootstrapTable}.
+\begin{minted}{html}
 <table class="table">
-    <thead>
-      <tr>
-        <th>Fornavn</th>
+    <thead> <!-- table head -->
+      <tr> <!--table row-->
+        <th>Fornavn</th> <!-- table header -->
         <th>Etternavn</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody> <!-- table body -->
       <tr>
-        <td>Ola</td>
+        <td>Ola</td> <!-- table data -->
         <td>Nordmann</td>
       </tr>
       <tr>
@@ -38,20 +82,18 @@ I denne oppgaven ble bootstrap brukt til å utforme tabellen for brushfilene. De
       </tr>
     </tbody>
 </table>
-\end{lstlisting}
-\begin{figure}
+\end{minted}
+\begin{figure}[ht]
     \centering
-    \includegraphics{}
+    \includegraphics[width=\textwidth]{Figurer/HTML-tabell.PNG}
     \caption{Enkel HTML-tabell med bootstrap}
     \label{fig:bootstrap_table}
 \end{figure}
-\cite{BootstrapTable}
 
-\subsection{Grid system}
-\cite{BootstrapGrid}
-
-
-
-
-
-
+\subsection{Rutenettsystem}
+Bootstrap har et rutenett system som gjør det enkelt å plassere elementer på rett plass i applikasjonen. Man deler siden inn i klassene container(beholder), row(rad) og col(kolonne) for å justere plasseringen. Disse radene og kolonnene er ikke synlige som i en tabell, men blir brukt som en pekepinn på hvor elementer vil dukke opp \cite{BootstrapGrid}.
+\begin{itemize}
+    \item Containers-klassen holder innholdet sentrert. Pikselbredden på skjermen blir justert slik at den blir tilpasset brukeren sin skjermstørrelse.
+    \item Rows-klassen definerer en rad som kan inneholde flere kolonner. 
+    \item Col-klassen er laget for kolonnene som skal inni radene. En nettside vil ha totalt 12 kolonner i x-retningen. Hvis man har to kolonner i en rad, vil den dele seg opp og ta 6 kolonner hver. Det er også mulig å manuelt velge hvor mange kolonner en vil at de elementene skal bruke. 
+\end{itemize}
