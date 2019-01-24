@@ -41,11 +41,12 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 
+\usepackage{listings} % Used for listing of code
+
 \usepackage{mathpazo} % Use the Palatino font by default
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+\usepackage[backend=bibtex,natbib=true,sorting=none]{biblatex} % Change style with specifing style=authoryear,
 
-%\usepackage[sorting=none, backend=biber]{biblatex}
 \addbibresource{kilder.bib} % The filename of the bibliography
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
@@ -269,9 +270,10 @@ Liten tekst om person som bør takkes. Ikke glem å inkludere veileder\ldots
 
 
 \include{Kapittel/1Introduksjon}
-\include{Kapittel/2Konstruksjon} 
-\include{Kapittel/3Resultat}
+\include{Kapittel/2Teori}
+\include{Kapittel/3Konstruksjon}
 \include{Kapittel/4Diskusjon} 
+\include{Kapittel/5Konklusjon} 
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
