@@ -9,30 +9,15 @@
 \subsection{Node.js}
 
 \section{Chart.js}
-Chart.js er et «open source»-bibliotek som gjør det enkelt å visualisere data i grafer ved hjelp av JavaScript. Etter man har definert hvilken type graf og hvilke data man skal ha i grafen vil biblioteket sørge for at grafen ser bra ut og alltid er lesbar. For eksempel, hvis man endrer oppsettet og gir mer rom til grafen på siden, vil den automatisk bli større. I tillegg er det også mulig å tilpasse det meste av innstillinger i forhold til tegning av grafen (farge, akse-beskrivelse etc.).
+Chart.js er et «open source»-bibliotek som gjør det enkelt å visualisere data i grafer ved hjelp av JavaScript. Etter man har definert hvilken type graf og hvilke data man skal ha i grafen vil biblioteket sørge for at grafen ser bra ut og alltid er lesbar. For eksempel, hvis man endrer oppsettet og gir mer rom til grafen på siden, vil den automatisk bli større. I tillegg er det også mulig å tilpasse det meste av innstillinger i forhold til tegning av grafen (e.g. farge, akse-beskrivelse).
 
-\begin{minted}{html}
-<canvas id="myChart"></canvas>
-\end{minted}
+Chart.js biblioteket bruker et <canvas> HTML5 node for å gjengi grafen, samt et script som spesifisere hvordan grafen skal tegnes. Data, akse-beskrivelser og andre innstillinger defineres enkelt i scriptet.
 
-\begin{minted}{javascript}
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
-    options: {}
-});
-\end{minted}
 \section{Ng2-charts}
-Ng2-charts er en utvidelse som gjør det enkelt å bruke Chart.js biblioteket i en Angular applikasjon. Etter man har importert ng2-charts inn i modulen i applikasjonene som den skal brukes i, kan man enkelt tegne en graf på liknende måte som man ville gjort i vanlig HTML/JavaScript.
+Ng2-charts er en utvidelse som gjør det enkelt å bruke Chart.js biblioteket i en Angular applikasjon. Etter man har importert ng2-charts inn i modulen i applikasjonene som den skal brukes i, kan man enkelt tegne en graf på liknende måte som man ville gjort i vanlig HTML/JS. I /ref{figur} viser et minimalt eksempel hvor man kun har satt inn data og etiketter.  Vanligvis definerer man også diverse innstillinger (i.e. hvordan grafen skal se ut) i TypeScript-filen.
+
+%Importing code from file
+\begin{listing}[ht]
 \begin{minted}{java}
 <canvas
       baseChart
@@ -40,20 +25,21 @@ Ng2-charts er en utvidelse som gjør det enkelt å bruke Chart.js biblioteket i 
       [datasets]="chartData"
       [labels]="chartLabels"
       [options]="chartOptions"
-      [legend]="true"
-      (chartClick)="onChartClick($event)">
+      [legend]="true">
 </canvas>
 \end{minted}
 
-\begin{minted}{typescript}
+\begin{minted}{ts}
 chartData = [
     { data: [330, 600, 260, 700], label: 'Account A' },
     { data: [120, 455, 100, 340], label: 'Account B' },
     { data: [450, 670, 800, 500], label: 'Account C' }
-  ];
-
-  chartLabels = ['January', 'February', 'Mars', 'April'];
+];
+chartLabels = ['January', 'February', 'Mars', 'April'];
 \end{minted}
+\caption{Minimalt Ng2-charts oppsett}
+\label{ng2chart}
+\end{listing}
 
 \section{Git og Github}
 Blabla
@@ -97,3 +83,22 @@ Bootstrap har et rutenett system som gjør det enkelt å plassere elementer på 
     \item Rows-klassen definerer en rad som kan inneholde flere kolonner. 
     \item Col-klassen er laget for kolonnene som skal inni radene. En nettside vil ha totalt 12 kolonner i x-retningen. Hvis man har to kolonner i en rad, vil den dele seg opp og ta 6 kolonner hver. Det er også mulig å manuelt velge hvor mange kolonner en vil at de elementene skal bruke. 
 \end{itemize}
+
+\subsection{Knapper}
+Bootstrap har sin egen button klasse der man kan definere hvilken type knappen er. Man har følgende typer: hoved-, sekundær-, suksess-, fare-, advarsel-, informasjon-, lys-, mørk- og linkknapp. Ut i fra hvilken type man velger vil bootstrap sette et passende utseende på knappen. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figurer/.PNG}
+    \caption{Enkel HTML-tabell med bootstrap}
+    \label{fig:bootstrap_table}
+\end{figure}
+\begin{minted}{html}
+<a class="btn btn-primary" href="#" role="button">Link</a>
+<button class="btn btn-primary" type="submit">Button</button>
+<input class="btn btn-primary" type="button" value="Input">
+<input class="btn btn-primary" type="submit" value="Submit">
+<input class="btn btn-primary" type="reset" value="Reset">
+\end{minted}
+
+
+
