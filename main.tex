@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Masters/Doctoral Thesis 
-% LaTeX Template
+% LaTeX Templae
 % Version 2.5 (27/8/17)
 %
 % This template was downloaded from:
@@ -41,10 +41,11 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 
-% \usepackage{listings} Can be used for listing of code
-
-
 \usepackage{minted}  % Used for listing of code
+\usemintedstyle{borland} % Minted style
+%\usepackage{listings} % Used for listing of code
+%\renewcommand{\lstlistingname}{Algorithm}% Listing -> Algorithm
+%\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
 
 \usepackage{dirtytalk} % Used for quotation
 
@@ -219,6 +220,8 @@ Liten tekst om person som bør takkes. Ikke glem å inkludere veileder\ldots
 
 \listoftables % Prints the list of tables
 
+\listoflistings % Prints the list of code listings
+
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
@@ -226,7 +229,9 @@ Liten tekst om person som bør takkes. Ikke glem å inkludere veileder\ldots
 \begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
 
 \textbf{HTML} & \textbf{H}yper \textbf{T}ext \textbf{M}arkup \textbf{L}anguage\\
+\textbf{CSS} & \textbf{C}ascading \textbf{S}tyle \textbf{S}heet\\
 \textbf{JS} & \textbf{J}ava \textbf{S}cript\\
+\textbf{TS} & \textbf{T}ype \textbf{S}cript\\
 
 \end{abbreviations}
 
