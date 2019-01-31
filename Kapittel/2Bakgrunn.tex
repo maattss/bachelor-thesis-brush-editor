@@ -1,0 +1,44 @@
+% Kapittel 2 - Bakgrunn
+\chapter{Bakgrunn}
+\label{bakgrunn} % Bruk \ref{teori}, for å referere til kapittelet andre steder i oppgaven. 
+%----------------------------------------------------------------------------------------
+Dette kapittelet vil ta for seg nødvendig kunnskap om de viktigste hjelpemidler og verktøy brukt i arbeidet med denne oppgaven. Valg vil bli presentert kort, men drøftingen av hvorfor de ulike valgene ble gjort vil i hovedsak bli tatt opp i kapittel \ref{diskusjon}.
+
+\section{Applikasjonsutvikling for web}
+\todo[inline]{Mats skriv dette}
+- Skrive generelt om applikasjonutvikling og nevne ulike måter/verktøy som kan brukes
+- Kort om valget av Angular som platform (drøftes mer i diskusjonsdelen)
+
+\subsection{Angular}
+\todo[inline]{Tobias skriv dette}
+Angular er en plattform og rammeverk som gjør det å lage applikasjoner mye lettere. Det er skrevet i TypeScript og har ulike maler, verktøy og integrerte metoder for å løse utviklingsutfordringer. Det har gode forutsetninger for å bli laget til datamaskin, mobil og nettbrett. Måten det fungerer på er å importere TypeScript bibliotek inn i appene dine slik at du kan bruke de derfra.  
+
+\subsection{Hvordan utvikle apper med Angular}
+Det er et par ting man må gjøre for å sette opp et arbeidsmiljø og utvikle apper i Angular.
+
+\begin{enumerate}
+    \item \mint{bash}|npm install -g @angular/cli|
+    Dette installerer Angular sin egen CLI ved bruk av npm. Dette grensesnittet kan brukes til å lage prosjekt, danne kode for applikasjonen og bibliotek. Det har også muligheter til å gjennomføre oppgaver som testing og distribuering
+    \item \mint{bash}|ng new minapp| 
+    Det blir satt opp et arbeidsmiljø som kan inneholde et eller flere prosjekter. Dette arbeidsmiljøet vil inneholde alle nødvendige filer. 
+    \item \mint{bash}|ng serve –open| 
+    Angular inkluderer en server slik at du kan bygge og kjøre din egen applikasjon lokalt. Denne kommandoen åpner serveren og bygger applikasjonen på ny for hver gang det blir gjort en endring. Nettleseren vil åpnes automatisk på http://localhost:4200/ \cite{AngularGetStarted}. 
+\end{enumerate}.
+
+Når disse stegene er gjennomført, vil det være mulig å begynne å tilpasse prosjektet til sine egne ønsker.
+
+
+\section{Viktige tillegg brukt}
+\todo[inline]{Tobias skriv en kort intro her}
+
+\subsection{Bootstrap}
+\todo[inline]{Tobias se over/skriv om dette}
+Bootstrap er det nest mest fulgte prosjektet på GitHub \cite{BootstrapAbout}. Det er et åpen kilde verktøy for å utvikle HTML, CSS og JavaScript. Hovedformålet med å bruke bootstrap er å spare tid på utseendet til applikasjonen ved å bruke klasser og funksjoner som allerede eksisterer i bootstrap. Man får tilgang til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter.
+
+\subsection{Chart.js}
+Grafene i denne applikasjonen er tegnet ved hjelp av Chart.js. Dette er et «open source» JavaScript bibliotek som gjør tegning av grafer enklere. Verktøyet lager en dynamisk graf og vil automatisk sørge for at grafen ser bra ut og at navn er lesbare. Hvis man endrer oppsettet og gir mer rom til grafen i applikasjonen, vil den automatisk utvide størrelsen. Chart.js gjør også tilpassing av utseende på grafen enkelt (e.g. farge, akse-beskrivelse). For å kunne bruke Chart.js biblioteket i Angular på en effektiv måte, ble utvidelsen Ng2-charts brukt.
+
+\section{Bruk av Github og versjonskontroll}
+En viktig del av ethvert større utviklingsprosjekt for å gjøre samarbeid enklere, er bruken av versjonskontroll. I dette prosjektet ble Github brukt som plattform. Prosjektet bestod av to hovedgrener: «Master» og «Dev». Master-grenen inneholdt siste stabile versjonen av applikasjonen og ble oppdatert når viktig funksjonalitet var implementert (som regel en gang i uken). Dev-grenen ble brukt til å implementere ny funksjonalitet og alt fungert derfor ikke alltid som ønsket her.
+
+En annen viktig del av Github som ble brukt mye, var «Issues» \cite{githubIssues}. Her kan man holde oversikt over oppgaver, forbedringer og feil i prosjektet/koden. Issues ble brukt som det stedet hvor oversikten over hva som måtte gjøres var. Nye punkter ble lagt til etterhvert som prosjektet utviklet seg og markert ferdig når de var implementert.
