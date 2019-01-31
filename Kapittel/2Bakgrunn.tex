@@ -5,15 +5,21 @@
 Dette kapittelet vil ta for seg nødvendig kunnskap om de viktigste hjelpemidler og verktøy brukt i arbeidet med denne oppgaven. Valg vil bli presentert kort, men drøftingen av hvorfor de ulike valgene ble gjort vil i hovedsak bli tatt opp i kapittel \ref{diskusjon}.
 
 \section{Applikasjonsutvikling for web}
+Applikasjonsutvikling for web har hatt en kraftig økning de siste årene. Hovedårsaken til dette er ønsket om kunne utvikle en kryssplattform-applikasjon som kan brukes på alle enheter. Dermed trenger man ikke å utvikle dedikerte iOS- og Android-applikasjoner. 
+
+JavaScript har etterhvert etablert seg som det ledende språket for å utvikle interaktive web applikasjoner. Det finnes i dag utallige frontend-rammeverk for web-utvikling og det dukker stadig opp nye. Per dags dato er det i hovedsak tre forskjellige som er de mest populære; React, Angular og Vue.js.
+
 \todo[inline]{Mats skriv dette}
+- Hvorfor har web-applikasjoner blitt så populære (cross plattform)
 - Skrive generelt om applikasjonutvikling og nevne ulike måter/verktøy som kan brukes
 - Kort om valget av Angular som platform (drøftes mer i diskusjonsdelen)
+
 
 \subsection{Angular}
 \todo[inline]{Tobias skriv dette}
 Angular er en plattform og rammeverk som gjør det å lage applikasjoner mye lettere. Det er skrevet i TypeScript og har ulike maler, verktøy og integrerte metoder for å løse utviklingsutfordringer. Det har gode forutsetninger for å bli laget til datamaskin, mobil og nettbrett. Måten det fungerer på er å importere TypeScript bibliotek inn i appene dine slik at du kan bruke de derfra.  
 
-\subsection{Hvordan utvikle apper med Angular}
+\subsubsection{Hvordan utvikle apper med Angular}
 Det er et par ting man må gjøre for å sette opp et arbeidsmiljø og utvikle apper i Angular.
 
 \begin{enumerate}
@@ -30,10 +36,21 @@ Når disse stegene er gjennomført, vil det være mulig å begynne å tilpasse p
 
 \section{Viktige tillegg brukt}
 \todo[inline]{Tobias skriv en kort intro her}
+I dette prosjektet er det brukt noen tilleggsverktøy som gjør utviklingen av prosjektet enklere og mer oversiktlig i tillegg til at det er lettere å ta i bruk for andre. Disse verktøyene har ulike ansvarsområder, men det er hovedsakelig utseende som er det største fokuset. 
 
 \subsection{Bootstrap}
 \todo[inline]{Tobias se over/skriv om dette}
-Bootstrap er det nest mest fulgte prosjektet på GitHub \cite{BootstrapAbout}. Det er et åpen kilde verktøy for å utvikle HTML, CSS og JavaScript. Hovedformålet med å bruke bootstrap er å spare tid på utseendet til applikasjonen ved å bruke klasser og funksjoner som allerede eksisterer i bootstrap. Man får tilgang til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter.
+Bootstrap er det nest mest fulgte prosjektet på GitHub \cite{BootstrapAbout}. Det er et åpen kilde verktøy for å utvikle HTML, CSS og JavaScript. Hovedformålet med å bruke bootstrap er å spare tid på utseendet til applikasjonen ved å bruke klasser og funksjoner som allerede eksisterer i bootstrap. Man får tilgang til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter.De aller fleste komponentene er laget for å kunne justere seg automatisk. Det vil si at de skal tilpasse seg størrelsen på enheten din når du tar i bruk nettsiden.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Bootstrap_layout}
+    \caption{Bootstrap oppsett. Innhold justeres etter skjermstørrelse}
+    \label{fig:bootstrap_layout}
+\end{figure}
+
+Dette gjør at det kan bli spart mye tid på å legge til et par Bootstrap-klasser, istedenfor å skrive all CSS-kode selv. 
+
 
 \subsection{Chart.js}
 Grafene i denne applikasjonen er tegnet ved hjelp av Chart.js. Dette er et «open source» JavaScript bibliotek som gjør tegning av grafer enklere. Verktøyet lager en dynamisk graf og vil automatisk sørge for at grafen ser bra ut og at navn er lesbare. Hvis man endrer oppsettet og gir mer rom til grafen i applikasjonen, vil den automatisk utvide størrelsen. Chart.js gjør også tilpassing av utseende på grafen enkelt (e.g. farge, akse-beskrivelse). For å kunne bruke Chart.js biblioteket i Angular på en effektiv måte, ble utvidelsen Ng2-charts brukt.
