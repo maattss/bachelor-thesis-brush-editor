@@ -2,13 +2,102 @@
 \chapter{Konstruksjon}
 \label{konstruksjon} % Bruk \ref{konstruksjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
-\section{Forslag til innhold}
+
+\todo[inline]{Skrive introduksjon}
+%----------------------------------------------------------------------------------------
+\begin{comment}
+\section{Designmønster brukt i applikasjonen}
+\subsection{Arkitekturmodellen Model View Controller}
+Model View Controller er en arkitektur som vanligvis blir brukt for å utvikle brukergrensesnitt som deler opp applikasjonen i tre ulike deler. MVC-arkitekturen deler opp store komponenter, slik at en kan bruke samme kode på flere steder \cite{MVC_uses}. Denne arkitekturen har i senere tid blitt svært populær for designing av nett- og mobilapplikasjoner. Populære programmeringsspråk som Java, C\#, Python, Ruby og PHP har MVC-rammeverk som er brukt i webutvikling. 
+
+\subsubsection{Komponentene i Model View Controller}
+Slik som med andre designmønster så er MVC kun kjernen av arkitekturen. Det finnes nok mange MVC arkitekturer som kan skille seg fra den generelle forklaringen under, men den gir et godt bilde på grunnprinsippet \cite{MVC_coreArc}.
 \begin{itemize}
-    \item Alt studentene har gjort selv
-    \item En redegjørelse for konstruksjon/programmering/løsningsmetode nøyaktig som den foreligger
-    \item Skjema, kretskort
-    \item Blokkdiagram
-    \item Flytdiagram
-    \item Forklaring av program på overordnet nivå
-    \item Beskrivelse av eksperimentelle oppsett (uten resultater)
+    \item Modellen (model) er den sentrale komponenten av mønsteret. Det er applikasjonens dynamiske datastruktur, uavhengig av brukergrensesnittet. Det håndterer data, logikk og regler i applikasjonen.
+    \item En visning (view) kan være en fremvisning av informasjon. Det er mulig å ha flere visninger for samme informasjon. For eksempel kan visningen være både en tabell og en graf som viser til samme data. 
+    \item Kontrolleren (controller) tar brukerinput og konverterer det til kommandoer for enten modellen eller visningen \cite{MVC_components}. 
 \end{itemize}
+
+\subsubsection{Relasjonene mellom komponentene i Model View Controller}
+I tillegg til å dele applikasjonen inn i tre komponenter, så bestemmer også MVC-designet relasjonene mellom dem. 
+\begin{itemize}
+    \item Modellen har ansvaret for å håndtere all data i applikasjonen. Den mottar brukerinput fra kontrolleren.
+    \item Visningen presenterer modellen i et spesifikt format.
+    \item Kontrolleren responderer på brukerinputen og utfører operasjoner på objektene fra datamodellen. Kontrolleren mottar inputen før den eventuelt validerer den og så sender den videre til modellen \cite{MVC_relations}.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figurer/MVC_prosess.png}
+    \caption{Relasjoner mellom komponentene i en Model View Controller arkitektur}
+    \label{fig:mvc_relations}
+\end{figure}
+
+\subsubsection{Fordeler og ulemper med Model View Controller}
+Fordeler:
+\begin{itemize}
+    \item Samarbeid under utvikling: Flere utviklere kan arbeide samtidig på modellen, kontrolleren og visningene. 
+    \item Enklere å modifisere: Siden de ulike komponentene har egne ansvarsområder, så er det lettere å gjøre endringer på applikasjonen senere.
+    \item Modellen kan ha flere visninger
+\end{itemize}
+Ulempe:
+\begin{itemize}
+    \item Omfattende: Rammeverket kan være vanskelig å forstå fordi det introduserer mange nye begrep, sammenhenger og relasjoner som må læres.
+\end{itemize}
+
+\subsection{Avhengighetsinjeksjon}% Dependency Injection
+\begin{wrapfigure}[16]{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.3\textwidth]{Figurer/Dependency_injection.png}
+    \caption{Tjeneste brukt i en komponent \cite{angularDI}}
+    \label{fig:di}
+\end{wrapfigure}
+
+Avhengighetsinjeksjon er et designmønster hvor klasser får avhengigheter fra eksterne kilder, istedenfor å opprette dem selv. Dette gjør at flere klasser kan dele samme ressurs og på den måten øker man modulariteten i applikasjonen \cite{whatIsDI}.
+
+Et typisk eksempel hvor avhengighetsinjeksjon blir brukt i Angular, er tjenester. En tjeneste defineres med en spesifikk funksjon som alle komponentene kan abonnere på hvis de trenger denne (som vist i figur \ref{fig:di}).
+\end{comment}
+%----------------------------------------------------------------------------------
+\section{Designmønster i applikasjonen}
+\section{Komponentene i applikasjonen}
+Man pleier ofte å omtale relasjoner mellom komponenter som om vi snakker om en familie. I applikasjonen er det én rotkomponent. Denne er forelderen til de fire andre komponentene som finnes i applikasjonen. De fire barnekomponentene (navigasjonslinjen, tabellen, innstillingene og grafen i applikasjonen) arver fra forelderen sin (rotkomponenten). Barnekomponentene blir sett på som søsken. Det vil si at de også kan kommunisere med søskena sine, for eksempel ved bruk av tjenester (kapittel \ref{tjenesterRef}) \cite{angularComponents}. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figurer/Komponenter_skisse.jpg}
+    \caption{Her vises rotkomponenten med alle barnekomponentene}
+    \label{fig:komponenter_skisse}
+\end{figure}
+
+\subsection{Navigasjonslinjen i applikasjonen}
+\todo[inline]{Tobias/Mats skriv her}
+
+\subsection{Innstillingene i applikasjonen}
+\todo[inline]{Tobias/Mats skriv her}
+
+\subsection{Tabellen i applikasjonen}
+Tabellen inneholder informasjon om børsten som er lastet inn. Den kan inneholde mellom tre og fem kolonner avhengig av hvor mange ulike faktorer man har i filen. Etter innholdet er lastet inn vil det være mulig å endre på innholdet ved hjelp av dynamiske inputfelt. Grafen blir oppdatert deretter. Hvert felt har en egen maksimumsverdi. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figurer/Applikasjon_tabell.PNG}
+    \caption{Tabellen i applikasjonen}
+    \label{fig:applikasjon_tabell}
+\end{figure}
+
+\subsection{Grafen i applikasjonen}
+Grafen viser frem data fra en markert rad i tabellen. Den vil fremvise dataen for hvert markerte felt som et prosenttall av maksimum kapasitet. 
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=\textwidth]{Figurer/Applikasjon_graf}
+%    \caption{Grafen i applikasjonen}
+%    \label{fig:applikasjon_graf}
+%\end{figure}
+
+\section{Tjenester brukt i applikasjonen}
+\label{tjenesterRef}
+I Brush Editor-applikasjonen er to tjenester definert; «Brush service» og «Pager service».
+\subsection{Brush-tjenesten i applikasjonen}
+«Brush-service» blir brukt til å lagre dataene som blir lest inn fra en brush-fil eller hentet fra roboten. Flere av komponentene trenger disse dataene (blant annet tabellen og grafen). Tjenesten gjør det enkelt å dele dataene mellom komponenter som trenger dem. I tillegg blir tjenesten mer robust; det er enkelt å legge til eller fjerne komponenter som bruker brush-dataene uten å gjøre store endringer i applikasjonen.
+
+\subsection{Sideskifter-tjenesten i applikasjonen}
+«Pager-service» er en mer funksjonell tjeneste. Denne består av logikken til tabellen sin sideskifter. Ved å inkludere en sideskifter i tabellen, får man en mer oversiktlig tabell hvis man har mange rader med data (noe brush-filene ofte har). Selv om denne tjenesten kun blir brukt i tabell-komponenten var det likevel fordelaktig å splitte denne til en egen tjeneste. Man får da fjernet en del linjer med kode fra tabell-komponenten, samt muligheten til å bruke denne tjenesten andre steder i applikasjonene hvis man trenger det.
+
+\section{Oppsummering av kapittelet}

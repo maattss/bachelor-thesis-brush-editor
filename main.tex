@@ -22,21 +22,21 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[
-11pt, % The default document font size, options: 10pt, 11pt, 12pt
-%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
-norsk, % ngerman for German
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
-%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
-%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
-%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
-%toctotoc, % Uncomment to add the main table of contents to the table of contents
-%parskip, % Uncomment to add space between paragraphs
-%nohyperref, % Uncomment to not load the hyperref package
-headsepline, % Uncomment to get a line under the header
-%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
-%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
-]{MastersDoctoralThesis} % The class file specifying the document structure
+\documentclass[11pt, norsk, singlespacing, headsepline]{MastersDoctoralThesis}
+% 11pt; The default document font size, options: 10pt, 11pt, 12pt
+% oneside % Two side (alternating margins) for binding by default, uncomment to switch to one side
+% norsk; ngerman for German
+% singlespacing; Single line spacing, alternatives: onehalfspacing or doublespacing
+% draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+% nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set    spacing in lists to single
+% liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+% toctotoc, % Uncomment to add the main table of contents to the table of contents
+% parskip, % Uncomment to add space between paragraphs
+% nohyperref, % Uncomment to not load the hyperref package
+% headsepline; Uncomment to get a line under the header
+% chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+% consistentlayout, % Uncomment to change the layout of the declaration, abstract and           acknowledgements pages to match the default layout
+% MastersDoctoralThesis; The class file specifying the document structure
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
@@ -44,11 +44,13 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{minted}  % Used for listing of code
 \usemintedstyle{borland} % Minted style
 
-\usepackage{dirtytalk} % Used for quotation
-
 \usepackage{mathpazo} % Use the Palatino font by default
 
 \usepackage{todonotes} % TODO notes package
+
+\usepackage{wrapfig} % Wrap figures around text
+
+\usepackage{comment}
 
 \usepackage[backend=bibtex,natbib=true,sorting=none]{biblatex} % Change style with specifing style=authoryear,
 
@@ -232,7 +234,9 @@ Liten tekst om person som bør takkes. Ikke glem å inkludere veileder\ldots
 \textbf{JS} & \textbf{J}ava \textbf{S}cript\\
 \textbf{TS} & \textbf{T}ype \textbf{S}cript\\
 \textbf{NPM} & \textbf{N}ode \textbf{P}ackage \textbf{M}anager\\
-\textbf{VS} & \textbf{V}isual \textbf{S}tudio\\
+\textbf{CLI} & \textbf{C}ommand \textbf{L}ine \textbf{I}nterface\\
+\textbf{DOM} & \textbf{D}ocument \textbf{O}bject \textbf{M}odel\\
+\textbf{MVC} & \textbf{M}odel \textbf{V}iew \textbf{C}ontroller
 
 \end{abbreviations}
 
