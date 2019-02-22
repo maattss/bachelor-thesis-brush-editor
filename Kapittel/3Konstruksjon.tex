@@ -3,7 +3,7 @@
 \label{konstruksjon} % Bruk \ref{konstruksjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
 
-\todo[inline]{Skrive introduksjon}
+\todo[inline]{Mats/Tobias: Skrive introduksjon}
 %----------------------------------------------------------------------------------------
 \begin{comment}
 \section{Designmønster brukt i applikasjonen}
@@ -58,32 +58,47 @@ Et typisk eksempel hvor avhengighetsinjeksjon blir brukt i Angular, er tjenester
 \end{comment}
 %----------------------------------------------------------------------------------
 \section{Designmønster i applikasjonen}
+MVC? Mobile first?
 \section{Komponentene i applikasjonen}
 Man pleier ofte å omtale relasjoner mellom komponenter som om vi snakker om en familie. I applikasjonen er det én rotkomponent. Denne er forelderen til de fire andre komponentene som finnes i applikasjonen. De fire barnekomponentene (navigasjonslinjen, tabellen, innstillingene og grafen i applikasjonen) arver fra forelderen sin (rotkomponenten). Barnekomponentene blir sett på som søsken. Det vil si at de også kan kommunisere med søskena sine, for eksempel ved bruk av tjenester (kapittel \ref{tjenesterRef}) \cite{angularComponents}. 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Figurer/Komponenter_skisse.jpg}
-    \caption{Her vises rotkomponenten med alle barnekomponentene}
-    \label{fig:komponenter_skisse}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.6\textwidth]{Figurer/Komponenter_skisse.jpg}
+%    \caption{Her vises rotkomponenten med alle barnekomponentene}
+%    \label{fig:komponenter_skisse}
+%\end{figure}
 
 \subsection{Navigasjonslinjen i applikasjonen}
-\todo[inline]{Tobias/Mats skriv her}
+Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne alle de viktigste valgene og mulighet for å vise/skjule andre komponenter. Navigasjonslinjen er basert på Bootstrap sin navigasjonsbar og gir et ryddig og oversiktlig utseende. Navigasjonslinjen komprimeres også hvis applikasjonen brukes på enheter med liten skjerm slik at den ikke opptar for mye plass. 
 
-\subsection{Innstillingene i applikasjonen}
-\todo[inline]{Tobias/Mats skriv her}
+Når man åpner applikasjonen først gang, får man to valg i navigasjonslinjen; Åpne lokal fil eller åpne fil lokalisert på roboten. Når en fil er åpnet, dukker det opp flere valg i menyen. Man kan da velge å eksportere filen (både lokalt og til robot), slik at man kan ta vare på eventuelle endringer man har gjort. I tillegg synliggjøres to knapper som gjør det mulig å vise/skjule innstillinger og filinformasjon.
+
+\subsection{Innstillinger i applikasjonen}
+Applikasjonen inkludere en komponent for å sette ulike innstillinger. Denne komponenten inneholder alle innstillinger som ikke er knyttet til filinformasjon eller åpning/eksportering av fil. Komponenten vises ved hjelp av valget i navigasjonslinjen og skjules igjen ved hjelp av valget i navigasjonslinjen eller «X»-knappen.
+
+Innstillingene inkludere en knapp for å tilbakestille kanalnavnene til sine standardnavn («Channel 1», «Channel 2» etc.).
+
+\subsection{Filinformasjonskomponenten i applikasjonen}
+Denne komponenten viser informasjon knyttet til filen som er lastet inn. Filnavn og eventuelt fil-kommentar vil vises her. Akkurat som innstillingskomponenten vises også denne ved hjelp av valg i navigasjonslinjen og skjules igjen enten ved hjelp av valget i navigasjonslinjen eller «X»-knappen.
+
+\subsection{Informasjonskomponenten i applikasjonen}
+For å kunne vise frem informasjon- og feilmeldinger til brukeren, inneholder applikasjonen en informasjonskomponent. Man kan her vise frem tilbakemeldinger til brukeren etter at han/hun har utført en handling. Ett eksempel kan være at man endrer innstillingene. Da kan det vær greit å få en tilbakemelding på om endringene har vært vellykket eller ikke. Dette vil vises i denne komponenten, enten som en vellykket melding eller en feilmelding hvis det har skjedd noe galt. Ved en feilmelding vil man også vise hva som har er galt, slik at man forhåpentligvis kan rette dette opp.
 
 \subsection{Tabellen i applikasjonen}
-Tabellen inneholder informasjon om børsten som er lastet inn. Den kan inneholde mellom tre og fem kolonner avhengig av hvor mange ulike faktorer man har i filen. Etter innholdet er lastet inn vil det være mulig å endre på innholdet ved hjelp av dynamiske inputfelt. Grafen blir oppdatert deretter. Hvert felt har en egen maksimumsverdi. 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{Figurer/Applikasjon_tabell.PNG}
-    \caption{Tabellen i applikasjonen}
-    \label{fig:applikasjon_tabell}
-\end{figure}
+\todo[inline]{Tobias skriv her}
+Tabellen inneholder informasjon om børsten som er lastet inn. Den kan inneholde mellom tre og fem kolonner avhengig av hvor mange ulike kanaler man har i filen. Etter innholdet er lastet inn vil det være mulig å endre på innholdet ved hjelp av dynamiske inputfelt. Grafen blir oppdatert deretter. Hvert felt har en egen maksimumsverdi. 
+
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=\textwidth]{Figurer/Applikasjon_tabell.PNG}
+%    \caption{Tabellen i applikasjonen}
+%    \label{fig:applikasjon_tabell}
+%\end{figure}
 
 \subsection{Grafen i applikasjonen}
+\todo[inline]{Tobias skriv her}
 Grafen viser frem data fra en markert rad i tabellen. Den vil fremvise dataen for hvert markerte felt som et prosenttall av maksimum kapasitet. 
+
 %\begin{figure}[ht]
 %    \centering
 %    \includegraphics[width=\textwidth]{Figurer/Applikasjon_graf}
