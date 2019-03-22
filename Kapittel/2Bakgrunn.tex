@@ -2,60 +2,73 @@
 \chapter{Bakgrunn}
 \label{bakgrunn} % Bruk \ref{bakgrunn}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
-Dette kapittelet vil ta for seg nødvendig kunnskap om de viktigste hjelpemidler og verktøy brukt i arbeidet med denne oppgaven. Valgene vil bli presentert kort, men drøftingen av hvorfor de ulike valgene ble tatt, vil i hovedsak bli tatt opp i diskusjonskapittelet (kapittel \ref{diskusjon}).
+Dette kapittelet vil ta for seg nødvendig kunnskap om de viktigste hjelpemidlene og verktøyene brukt i arbeidet med denne oppgaven. Valgene vil bli presentert kort, men drøftingen av hvorfor de ulike valgene ble tatt blir tatt opp i diskusjonskapittelet (kapittel \ref{diskusjon}).
+
+\section{Om lakkeringsroboter}
+For å forstå hvordan applikasjonen fungerer kan det være nyttig å få en innføring i hvordan lakkeringsrobotene til ABB fungerer:
+
+Hver robot har en tilhørende robotkontroller som styrer ulike aspekter med roboten. Alle robotkontrollerne har en API-tjeneste (Robot Web Services). Denne tjenesten gjør det mulig å utvikle egne applikasjoner som kan kommunisere med ABB sine roboter. Kontrollerne har hver sin filtjeneste hvor ulike filer kan hentes eller lagres. Noen av disse filene blir brukt til å beskrive et program i en lakkeringsjobb. En slik fil kalles for en brush-fil. Filen kan bli lest inn i en brush-tabell for å få et mer helhetlig bilde av dataene og en bredere forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner hvilket omtales som kanaler. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Hver kanal kan ha et egendefinert navn for å gjøre det enklere å huske hva de beskriver.
+
+Robot Studio-programmet fra ABB er et nyttig hjelpemiddel dersom man vil teste de ulike funksjonene ved robotene uten direkte oppkobling mot en fysisk maskin. I programmet kan man opprette en virtuell robot med tilhørende kontroller som gjør det lettere å teste ut funksjoner i applikasjonen. 
 
 \section{Generelt om applikasjonsutvikling for web}
-Applikasjonsutvikling for web har hatt en kraftig økning de siste årene \cite{jsFrameworks}. En av årsakene er et ønske om å utvikle applikasjoner som skal kunne kjøres på alle enheter. Det er tidkrevende å utvikle applikasjoner for forskjellige operativsystemer, noe som fører til at flere og flere velger å satse på webapplikasjoner. Selv om man ikke får en applikasjon som er like tilpasset operativsystemet den kjører på, vil tida man sparer på utvikling og vedlikehold i mange tilfeller veie opp for dette.
-
+Applikasjonsutvikling for web har hatt en kraftig økning de siste årene \cite{jsFrameworks}. En av årsakene til dette er et ønske om å utvikle applikasjoner som skal kunne kjøres på alle enheter. Det er tidkrevende å utvikle applikasjoner for forskjellige operativsystemer, noe som fører til at flere velger å satse på webapplikasjoner. Selv om man kanskje ikke får en applikasjon som er helt optimal for et spesifikt operativsystem, kan man spare mye tid på utvikling og vedlikehold ved å lage en webapplikasjon.
+ 
 \subsection{Rammeverk-muligheter i JavaScript}
-JavaScript har etablert seg som det ledende språket for å utvikle web-applikasjoner og ble  stemt frem som et av de mest populære programmeringsspråkene i 2018 \cite{developerSurvey}. Det finnes i dag utallige frontend-rammeverk for web-utvikling i JavaScript; React, Angular, Vue.js, Ember, for å nevne noen. De to mest populære i 2018 var React og Angular \cite{jsFrameworks} og valget om hva som skulle brukes i denne applikasjonen stod hovedsakelig mellom disse to.
+JavaScript har etablert seg som det ledende språket for å utvikle web-applikasjoner, og ble i 2018 stemt frem som et av de mest populære programmeringsspråkene \cite{developerSurvey}. Det finnes i dag utallige frontend-rammeverk for web-utvikling i JavaScript; React, Angular, Vue.js, Ember, for å nevne noen. De to mest populære i 2018 var React og Angular \cite{jsFrameworks} og valget om hva som skulle brukes i denne applikasjonen stod først og fremst mellom disse to.
 
 \subsection{Valg av JavaScript-rammeverk}
-Selv om React og Angular er to rammeverk som ofte sammenlignes, er de bygget opp ganske forskjellig. Mens Angular er et fullverdig rammeverk, beskrives React best som et JavaScript-bibliotek. Angular blir derfor ofte sett på som vanskeligere å lære seg, på grunn av et stort antall muligheter og innebygde funksjoner. Størrelsen på Angular kan også øke innlastingstiden til en side noe, i forhold til sider skrevet i React \cite{angularvsreact}.
+Selv om React og Angular er to rammeverk som ofte sammenlignes, er de satt sammen på ganske forskjellige måter. Mens Angular er et fullverdig rammeverk, kan React best beskrives som et JavaScript-bibliotek. Angular blir ofte betraktet som vanskeligere å lære seg på grunn av den omfattende størrelsen på verktøyet. Kompleksiteten tatt i betraktning, så kan det likevel lønne seg å bruke Angular da det inneholder et mye større antall innebygde funksjoner og tjenester enn React. Med denne størrelsen kommer det likevel noen ulemper, som for eksempel at innlastingstiden til en side kan være vesentlig høyere enn ved bruk av React \cite{angularvsreact}.
 
-Å velge mellom disse to rammeverkene er ikke enkelt, men i dette prosjektet falt valget til slutt på Angular. Mer diskusjon rundt hvorfor og alternativene (i tillegg til React) som ble vurdert, vil bli diskutert senere i oppgaven (kapittel \ref{diskusjon}).
+Valget falt til slutt på Angular i dette prosjektet, selv om begge sannsynligvis hadde fungert. Mer diskusjon rundt hvorfor og alternativene (i tillegg til React) som ble vurdert, vil bli diskutert senere i oppgaven (kapittel \ref{diskusjon}).
 
-\section{Hva er Angular og hvordan fungerer det?}
-Angular er en plattform og rammeverk som gjør det lettere å lage web-applikasjoner. Det er skrevet i TypeScript og har ulike maler, verktøy og integrerte metoder for å løse utviklingsutfordringer. Det har gode forutsetninger for å lage applikasjoner til datamaskin, mobil og nettbrett.
+\section{Hva Angular er og hvordan det fungerer}
+Angular er en plattform og rammeverk, skrevet i TypeScript, som gjør det lettere å lage web-applikasjoner. Det inneholder ulike maler, verktøy og integrerte metoder for å løse utviklingsutfordringer og har derfor gode forutsetninger for å lage applikasjoner til datamaskin, mobil og nettbrett.
 
 \subsection{Utvikle applikasjoner med Angular}
-Det er et par ting man gjør for å sette opp et arbeidsmiljø og utvikle applikasjoner i Angular. Man kan installere Angular sitt eget kommandolinjeprogram ved bruk av Node Package Manager (NPM). Dette grensesnittet kan brukes til ulike ting, men er hovedsakelig brukt til å opprette prosjekter eller ferdige komponenter. Det har også mulighet til å gjennomføre oppgaver som testing og distribuering. For å teste applikasjonen kan man åpne den i nettleseren. Når en endring i filene blir oppdaget, vil serveren automatisk bygge applikasjonen på nytt og oppdatere siden \cite{AngularInBrowser}.
+Det er enkelt å begynne å utvikle Angular applikasjoner. Ved hjelp av Node Package Mangager (NPM) kan man installere Angular sitt eget kommandolinjeprogram (CLI). Dette grensesnittet kan brukes til ulike ting, men er mest brukt til å opprette prosjekter eller ferdige komponenter. Det har også mulighet til å gjennomføre oppgaver som testing og distribuering. For å teste applikasjonen kan man åpne den i nettleseren. Når en endring i filene blir oppdaget, vil serveren automatisk bygge applikasjonen på nytt og oppdatere siden \cite{AngularInBrowser}.
 
 \subsection{Moduler i Angular}
-Angular har sitt eget modulsystem kalt NgModules. NgModules er beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. De kan inneholde komponenter, tjenester, etc. Alle Angular-applikasjoner har en rotmodul som gjør at man har mulighet til å kjøre applikasjonen med en standard mal. I de fleste tilfeller legger man til flere typer moduler etter hvert. I Angular sorterer man inn i disse modultypene: funksjonsmoduler, rotmoduler, kjernemoduler, delte moduler og routing moduler. Det fins flere fordeler ved å splitte opp applikasjonen i ulike moduler: Det bidrar til en bedre kodestruktur, man kan bruke samme kode flere steder, og det fører også til en bedre ytelse \cite{angularModules}.
+Angular har sitt eget modulsystem kalt NgModules. Modulsystemet består av beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. Beholderene kan inneholde komponenter, tjenester m.m. Alle Angular-applikasjoner har minst en rotmodul som inneholder en NgModule-klasse \cite{angularModules}. Denne har fått navnet AppModule i Angular og hovedoppgaven til denne modulen er å legge til og gruppere alle elementene (som regel komponenter og tjenester) i applikasjonen \cite{angularModulesUnderstanding}. Dette fører til at applikasjonen blir mer oversiktlig fordi man kan samle de fleste importeringene på en plass. I noen prosjekt vil AppModule være den eneste modulen i prosjektet, mens i andre prosjekt vil det være mange moduler. %Dette er en individuell sak og det er ingenting som er rett eller galt.
+
+%Angular har sitt eget modulsystem kalt NgModules. NgModules er beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. De kan inneholde komponenter, tjenester m.m. Alle Angular-applikasjoner har en rotmodul som gjør at man har mulighet til å kjøre applikasjonen med en enkel HTML-mal. Det er også flere modultyper (funksjonsmoduler, kjernemoduler, delte moduler og routing moduler) som gjerne blir laget underveis i apputviklingen. Ved å splitte applikasjonen opp i ulike moduler får man en bedre kodestruktur som gjør det lettere å bruke samme kode ulike steder. Dette fører til mindre unødvendig kode som igjen fører til at applikasjonen vil ha en bedre ytelse \cite{angularModules}. 
 
 \subsection{Komponenter i Angular}
-Komponentene i Angular bestemmer hvordan visningen av nettsiden skal fungere. Hver komponent definerer en klasse som inneholder både applikasjonsdata og logikk. Den henger sammen med en HTML-mal som viser innholdet. Et eksempel kan være: En nettside inneholder fire komponenter (en rot-, en navigasjonslinje-, en innholds- og en bunntekstkomponent). Om man trenger å gjøre endringer på innholdet til nettsiden, trenger man kun gjøre endringer inne i innholdskomponenten. Dette gjør at applikasjonen blir ryddigere og enkelere å endre på \cite{angularComponents}.
+Komponentene i Angular bestemmer hvordan visningen av nettsiden skal fungere. Hver komponent definerer en klasse som inneholder både applikasjonsdata og logikk. Den henger sammen med en HTML-mal som viser innholdet. Eksempler på komponenter kan være: Navigasjonslinjen, bunnteksten eller en seksjon med tekst. Om man trenger å gjøre endringer i navigasjonslinjen vil ikke dette påvirke noen av de andre komponentene. Dette gjør at applikasjonen blir ryddigere og enklere å endre på \cite{angularComponents}.
 
 \subsection{Tjenester i Angular}
-En viktig del av oppbygningen til en Angular-applikasjoner er tjenester. Tjenester i Angular er en bred kategori, men kan beskrives som definisjoner av verdier eller funksjoner applikasjonen trenger. En tjeneste er typisk en klasse med veldefinert formål som brukes i flere komponenter. Tjenester øker modulariteten og sjansen for gjenbruk i applikasjonen. En tjeneste kan brukes til å dele data mellom komponenter, men kan også bestå av funksjoner. Man kan for eksempel lage en tjeneste som validerer brukerinput. Ved å definere dette som en tjeneste, kan valideringen enkelt brukes i flere komponenter \cite{angularServices}.
-\todo[inline]{Skrive noe om deling av data mellom komponenter}
+En viktig del av oppbygningen til Angular-applikasjoner er tjenester. Tjenester i Angular er en bred kategori, men kan beskrives som definisjoner av verdier eller funksjoner applikasjonen trenger. En tjeneste er typisk en klasse med et veldefinert formål som kan brukes i flere komponenter. Tjenester øker modulariteten og sjansen for gjenbruk i applikasjonen. En tjeneste kan brukes til å dele data mellom komponenter, men kan også bestå av funksjoner. Man kan for eksempel lage en tjeneste som validerer brukerinput. Ved å definere dette som en tjeneste, kan valideringen enkelt brukes i flere komponenter \cite{angularServices}.
 
 \section{Designmønster i applikasjonsutvikling for web}
-\subsection{Arkitekturmodellen Model View Controller}
-Model View Controller (MVC) er en arkitektur som vanligvis blir brukt for å utvikle brukergrensesnitt og deler applikasjonen opp i tre ulike deler. MVC-arkitekturen deler opp store komponenter, og målet er å kunne gjenbruke kode flere ulike steder \cite{MVC_uses}. Denne arkitekturen har i senere tid blitt svært populær for designing av nett- og mobilapplikasjoner. Populære programmeringsspråk som Java, C\#, Python, Ruby og PHP har alle MVC-rammeverk som er brukt i webutvikling. 
+Designmønster er en viktig del av enhver applikasjonsutvikling. Noen av de vanligste mønstrene og teknikkene i dag, og som alle brukes i Angular, er Model View Controller, avhengighetsinjeksjon og komponenter.
+
+\subsection{Arkitekturmodellen Model View Controller} 
+Model View Controller (MVC) er en arkitektur som vanligvis blir brukt for å utvikle brukergrensesnitt, hvor målet er å kunne gjenbruke kode. MVC-arkitekturen deler opp applikasjonen i tre ulike deler; Model, View og Controller \cite{MVC_uses}.
+
+Denne arkitekturen har i senere tid blitt svært populær for designing av nett- og mobilapplikasjoner. Populære programmeringsspråk som Java, C\#, Python, Ruby og PHP har alle MVC-rammeverk som er brukt i webutvikling. 
 
 \subsubsection{Komponentene i Model View Controller}
-Slik som med andre designmønster så er MVC kun kjernen av arkitekturen. Det finnes nok mange MVC arkitekturer som kan skille seg fra den generelle forklaringen under, men den gir et godt bilde på grunnprinsippet \cite{MVC_coreArc}.
+Det finnes mange designmønster som er basert på MVC, men som enten har lagt til eller fjernet noen av prinsippene. Grunnprinsippet for MVC inneholder følgende punkter \cite{MVC_coreArc}:
 \begin{itemize}
     \item Modellen (model) er den sentrale komponenten i mønsteret. Det er applikasjonens dynamiske datastruktur, uavhengig av brukergrensesnittet. Modellen håndterer data, logikk og regler i applikasjonen.
     \item En visning (view) kan være en fremvisning av informasjon. Det er mulig å ha flere visninger for samme informasjon. For eksempel kan visningen være både en tabell og en graf som viser til samme data. 
     \item Kontrolleren (controller) tar brukerinput og konverterer det til kommandoer for enten modellen eller visningen \cite{MVC_components}. 
 \end{itemize}
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figurer/2Bakgrunn/MVC_prosess.png}
+    \caption{Relasjoner mellom komponentene i en Model View Controller arkitektur}
+    \label{fig:mvc_relations}
+\end{figure}
+
 \subsubsection{Relasjonene mellom komponentene i Model View Controller}
-I tillegg til å dele applikasjonen inn i tre komponenter, så bestemmer også MVC-designet relasjonene mellom dem. 
+I tillegg til å dele applikasjonen inn i tre komponenter,  bestemmer også MVC-designet relasjonene mellom dem. 
 \begin{itemize}
     \item Modellen har ansvaret for å håndtere all data i applikasjonen. Den mottar brukerinput fra kontrolleren.
     \item Visningen presenterer modellen i et spesifikt format.
     \item Kontrolleren responderer på brukerinputen og utfører operasjoner på objektene fra datamodellen. Kontrolleren mottar inputen før den eventuelt validerer den og så sender den videre til modellen \cite{MVC_relations}.
 \end{itemize}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Figurer/MVC_prosess.png}
-    \caption{Relasjoner mellom komponentene i en Model View Controller arkitektur}
-    \label{fig:mvc_relations}
-\end{figure}
 
 \subsubsection{Fordeler og ulemper med Model View Controller}
 Fordeler:
@@ -68,28 +81,32 @@ Ulempe:
 \begin{itemize}
     \item Omfattende: Rammeverket kan være vanskelig å forstå fordi det introduserer mange nye begrep, sammenhenger og relasjoner som må læres.
 \end{itemize}
-\subsection{Avhengighetsinjeksjons-mønster} % Depenedecy injection som mønster
 
+\subsection{Komponentbasert designmønster}
+Komponentbasert-utvikling er en gren i applikasjonsutviklingen hvor det legges vekt på å dele inn applikasjonen i komponenter med ansvar for ulik funksjonalitet. Eksempler kan være et chat-vindu, et kommentarfelt eller en venneliste på et sosialt nettverk. Den største fordelen med å bruke et komponentbasert designmønster i en applikasjon, er muligheten for gjenbruk. En nettside på et sosialt nettverket kan for eksempel inneholde flere chat-vinduer og disse kan da være basert på samme komponent. Hver komponent opererer uavhengig av hverandre og kan derfor oppdateres individuelt. Hvis det dukker opp nye data som skal vises frem i en komponent, trenger man ikke oppdatere hele nettsiden \cite{understandingCBA}.
+
+Komponentbaserte applikasjoner har blitt veldig populært i de siste årene, hovedsakelig på grunn av at React-rammeverket i stor grad baserer seg på dette designmønsteret \cite{reactComponents}. Angular er også komponentbasert, men benytter seg i tillegg av MVC-designet. Et komponentbasert MVC-rammeverk er derfor en mer passende beskrivelse. En typisk Angular applikasjon er bygd opp av flere ulike MVC-baserte komponenter \cite{angularMVCComponents}.
+
+\subsection{Dependencyinjection-mønsteret} % Dependency injection
 \begin{wrapfigure}[9]{r}{0.35\textwidth} % [antall linjer]{float}{bredde}
     \centering
-    \includegraphics[width=0.3\textwidth]{Figurer/Dependency_injection.png}
+    \includegraphics[width=0.3\textwidth]{Figurer/2Bakgrunn/Dependency_injection.png}
     \caption{Tjeneste brukt i en komponent \cite{angularDI}}
     \label{fig:di}
 \end{wrapfigure}
+Dependecy injection er et designmønster hvor klasser får avhengigheter fra eksterne kilder istedenfor å opprette dem selv. Dette gjør at flere klasser kan dele samme ressurs og på den måten øker man modulariteten i applikasjonen \cite{whatIsDI}.
 
-Avhengighetsinjeksjon (en: dependecy injection) er et designmønster hvor klasser får avhengigheter fra eksterne kilder istedenfor å opprette dem selv. Dette gjør at flere klasser kan dele samme ressurs og på den måten øker man modulariteten i applikasjonen \cite{whatIsDI}.
-
-Et typisk eksempel hvor avhengighetsinjeksjon blir brukt i Angular, er tjenester. En tjeneste defineres med en spesifikk funksjon som alle komponentene kan abonnere på hvis de trenger denne (som vist i figur \ref{fig:di}).
+Et typisk eksempel hvor dependecy injection blir brukt i Angular, er tjenester. En tjeneste defineres med en spesifikk funksjon som alle komponentene kan abonnere på hvis de trenger denne (figur \ref{fig:di}).
 
 \section{Viktige tillegg brukt i applikasjonen}
-%I dette prosjektet er det brukt noen tilleggsverktøy for å gjøre utviklingen enklere og mer oversiktlig. De viktigste av disse vil bli beskrevet i dette delkapittelet.
+I dette prosjektet er det brukt noen tilleggsverktøy for å gjøre utviklingen enklere og mer oversiktlig. De viktigste av disse vil bli beskrevet i dette delkapittelet.
 
 \subsection{Stilsetting med Bootstrap}
-Bootstrap er et verktøy som brukes for å enklere stilsette nettsider. Hovedformålet er å spare tid, samt at man lettere får en gjennomført stil på siden. Bootstrap gir deg tilgang til ferdiglagde til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter. Komponentene er laget for å kunne justere seg automatisk og nettsiden vil derfor få ett responsivt design som tilpasser seg størrelsen på enheten din. Figur \ref{fig:bootstrap_layout} viser et eksempel på hvordan innholdet på siden kan justere seg avhengig av størrelsen.
+Bootstrap er et verktøy som brukes for å enklere stilsette nettsider. Hovedformålet er å spare tid, samt at man lettere får en gjennomført stil på siden. Rammeverket er mobile first. Dette vil si at stilsettingen først og fremst fokuserer på å se bra ut enheter med små skjermer. Bootstrap gir deg tilgang til ferdiglagde til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter. Komponentene er laget for å kunne justere seg automatisk og nettsiden vil derfor få ett responsivt design som tilpasser seg størrelsen på enheten din. Figur \ref{fig:bootstrap_layout} viser et eksempel på hvordan innholdet på siden kan justere seg avhengig av størrelsen.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figurer/Bootstrap_layout.jpg}
+    \includegraphics[width=\textwidth]{Figurer/2Bakgrunn/Bootstrap_layout.jpg}
     \caption{Bootstrap oppsett. Innhold justeres etter skjermstørrelse \cite{bootstrap_figur}}
     \label{fig:bootstrap_layout}
 \end{figure}
@@ -102,6 +119,46 @@ For å ha kontroll på koden og muligheten til å rulle tilbake endringer hvis d
 
 For å holde oversikt over oppgaver, forbedringer og feil i prosjektet/koden ble «Github Issues» brukt \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etterhvert som prosjektet utviklet seg og markert ferdige når de var implementert. 
 
+\section{Metoder for brukerautentisering}
+Brukerautentisering er en prosess som verifiserer identiteten til noen som vil koble seg til en ressurs (for eksempel en server). Det finnes ulike metoder for å gjennomføre denne prosessen og noen av de mest brukte vil bli drøftet her.
+
+\subsection{Brukerautentisering ved hjelp av Basic authentication}
+Basic authentication er en enkel autentiseringsmetode bygd inn i http-protokollen. Autentiseringen fungerer på følgende måte \cite{BasicAuth_steps}:
+
+\begin{enumerate}
+\item Klienten sender en request til serveren.
+\item Serveren svarer med en «401-unauthorized»-statusmelding
+\item Klienten sender tilbake en respons som inneholder brukernavn og passord i klartekst (omformet vha. Base64).
+\item Serveren sjekker brukeren opp mot databasen sin og gir adgang hvis brukernavn og passord stemmer.
+\end{enumerate}
+
+Den største ulempen med denne metoden er mangelen på kryptering. Basic autentisering kan derfor være en sikkerhetsrisiko med mindre hele korrespondansen er sikret (ved bruk av https-protokollen).
+
+\subsection{Brukerautentisering ved hjelp av Digest authentication}
+Digest authentication er en autentiseringsmetode hvor en hashfunksjon (MD5) blir brukt på brukernavn og passord før det sendes over nettverket. Serveren gir brukere en engangsverdi(nonce) som den kombinerer med brukernavn, område, passord og Uniform Resource Identifier (URI). Korrespondansen vil se slik ut \cite{DigestAuth_steps}:
+\begin{enumerate}
+    \item Klienten sender en request til serveren.
+    \item Serveren svarer med en «nonce» (i.e. \textbf{n}umber only \textbf{once}) og en «401-unauthorized»-statusmelding.
+    \item Klienten sender tilbake en hashet responsmelding som inneholder brukernavn, område, passord, nonce, metode og URI.
+    \item Serveren sjekker brukeren opp mot databasen sin og gir adgang hvis brukernavn og passord stemmer.
+\end{enumerate}
+
+\subsection{Brukerautentisering ved hjelp av OAuth}
+OAuth er en sikkerhetsprotokoll som tar seg av autentisering av brukere ved hjelp av tredjepartsapplikasjoner som Facebook, Twitter osv. Metoden involverer tre ulike parter:
+\begin{itemize}
+    \item OAuth-klient (applikasjonen som vil ha tilgang til brukerdata). 
+    \item OAuth-leverandør (applikasjonen som oppbevarer brukerdata).
+    \item Eier (personen med kontoen fra for eksempel Facebook).
+\end{itemize}
+
+Disse tre partene går gjennom følgende steg for å opprette en forbindelse \cite{OAuth_steps}:
+\begin{enumerate}
+    \item I starten vet ikke leverandøren hvem klienten er. Derfor må klienten registrere nettsiden sin på leverandørens utviklerside. Etter at klienten har fått tildelt en identitet fra leverandøren, kan OAuth tas i bruk.
+    \item Hvis eieren nå vil ta i bruk en konto fra leverandøren, så vil han bli sendt til innlogging på den utvalgte nettsiden. Ingen brukernavn eller passord vil bli vist til klienten.
+    \item Hvis eieren godtar å dele informasjonen fra leverandøren med klienten, vil leverandøren legge ved en autentiseringskode før eieren blir sendt tilbake.
+    \item Deretter vil klienten ta kontakt med leverandøren igjen, men denne gangen inkluderes autentiseringskoden som er mottatt.
+    \item Leverandøren vil da se at alt er i orden og sende tilbake en tilgangspollett til klienten. Denne polletten blir brukt for å hente brukerdata uten å bruke passord. 
+\end{enumerate}
+
 \section{Oppsummering av kapittelet}
-Angular, sammen med tillegg som Bootstrap og Chart.js, har blitt brukt til å utvikle denne applikasjonen. Hvordan disse verktøyene fungerer, samt hvordan versjonskontroll har hjulpet i utviklingsprosessen, har i dette kapittelet blitt beskrevet. Målet har vært å gi litt bakgrunnskunnskap for å enklere kunne beskrive konstruksjonen av applikasjonen (kapittel \ref{konstruksjon}). 
-\todo[inline]{Legg til litt om designmønster i oppsummeringen}
+I dette kapittelet har de mest sentrale verktøyene og metodene i forbindelse med dette prosjektet blitt beskrevet (rammeverk, designmønstre, autentiseringsmetoder m.m.) Noen av disse er direkte brukt i applikasjonen, mens andre kun har vært oppe til vurdering. Målet har vært å gi den nødvendige bakgrunnskunnskapen for å kunne forstå konstruksjonen av applikasjonen.

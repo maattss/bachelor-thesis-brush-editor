@@ -3,64 +3,50 @@
 \label{konstruksjon} % Bruk \ref{konstruksjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
 
-\todo[inline]{Mats/Tobias: Skrive introduksjon}
-%----------------------------------------------------------------------------------------
-\begin{comment}
-\section{Designmønster brukt i applikasjonen}
-\subsection{Arkitekturmodellen Model View Controller}
-Model View Controller er en arkitektur som vanligvis blir brukt for å utvikle brukergrensesnitt som deler opp applikasjonen i tre ulike deler. MVC-arkitekturen deler opp store komponenter, slik at en kan bruke samme kode på flere steder \cite{MVC_uses}. Denne arkitekturen har i senere tid blitt svært populær for designing av nett- og mobilapplikasjoner. Populære programmeringsspråk som Java, C\#, Python, Ruby og PHP har MVC-rammeverk som er brukt i webutvikling. 
+Dette kapittelet skal gi et helhetsbilde av hvordan applikasjonen fungerer og er bygget opp. Interaksjonene mellom de ulike komponentene og tjenestene, samt hvordan disse er satt sammen, vil bli forklart. I tillegg vil en gjennomgang av ulike designmønstre og hvordan disse er brukt gi ett innblikk i de grunnleggende prinsippene brukt i utviklingen av denne applikasjonen. 
 
-\subsubsection{Komponentene i Model View Controller}
-Slik som med andre designmønster så er MVC kun kjernen av arkitekturen. Det finnes nok mange MVC arkitekturer som kan skille seg fra den generelle forklaringen under, men den gir et godt bilde på grunnprinsippet \cite{MVC_coreArc}.
-\begin{itemize}
-    \item Modellen (model) er den sentrale komponenten av mønsteret. Det er applikasjonens dynamiske datastruktur, uavhengig av brukergrensesnittet. Det håndterer data, logikk og regler i applikasjonen.
-    \item En visning (view) kan være en fremvisning av informasjon. Det er mulig å ha flere visninger for samme informasjon. For eksempel kan visningen være både en tabell og en graf som viser til samme data. 
-    \item Kontrolleren (controller) tar brukerinput og konverterer det til kommandoer for enten modellen eller visningen \cite{MVC_components}. 
-\end{itemize}
+\section{Kodestruktur i applikasjonen}
+Kodestrukturen i prosjektet baserer seg LeBlanc’s lov «Later equals Never» \cite{LeBlancsLov}. Dette innebærer å ha en ryddig kodestruktur fra starten av, og ikke utsette ryddingen til senere. Hvis strukturen er rotete fra starten av, vil den alltid være det.
 
-\subsubsection{Relasjonene mellom komponentene i Model View Controller}
-I tillegg til å dele applikasjonen inn i tre komponenter, så bestemmer også MVC-designet relasjonene mellom dem. 
-\begin{itemize}
-    \item Modellen har ansvaret for å håndtere all data i applikasjonen. Den mottar brukerinput fra kontrolleren.
-    \item Visningen presenterer modellen i et spesifikt format.
-    \item Kontrolleren responderer på brukerinputen og utfører operasjoner på objektene fra datamodellen. Kontrolleren mottar inputen før den eventuelt validerer den og så sender den videre til modellen \cite{MVC_relations}.
-\end{itemize}
-\begin{figure}[ht]
+\subsection{Oppsett av filer}
+\begin{wrapfigure}[22]{r}{0.35\textwidth} % [antall linjer]{float}{bredde}
     \centering
-    \includegraphics[width=0.7\textwidth]{Figurer/MVC_prosess.png}
-    \caption{Relasjoner mellom komponentene i en Model View Controller arkitektur}
-    \label{fig:mvc_relations}
-\end{figure}
-
-\subsubsection{Fordeler og ulemper med Model View Controller}
-Fordeler:
-\begin{itemize}
-    \item Samarbeid under utvikling: Flere utviklere kan arbeide samtidig på modellen, kontrolleren og visningene. 
-    \item Enklere å modifisere: Siden de ulike komponentene har egne ansvarsområder, så er det lettere å gjøre endringer på applikasjonen senere.
-    \item Modellen kan ha flere visninger
-\end{itemize}
-Ulempe:
-\begin{itemize}
-    \item Omfattende: Rammeverket kan være vanskelig å forstå fordi det introduserer mange nye begrep, sammenhenger og relasjoner som må læres.
-\end{itemize}
-
-\subsection{Avhengighetsinjeksjon}% Dependency Injection
-\begin{wrapfigure}[16]{r}{0.35\textwidth}
-    \centering
-    \includegraphics[width=0.3\textwidth]{Figurer/Dependency_injection.png}
-    \caption{Tjeneste brukt i en komponent \cite{angularDI}}
-    \label{fig:di}
+    \includegraphics[width=0.3\textwidth]{Figurer/3Konstruksjon/Filstruktur.png}
+    \caption{Applikasjonens filstruktur}
+    \label{fig:filestruktur}
 \end{wrapfigure}
+Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-konvensjon \cite{angularStyleGuide}. For å ha bedre oversikt over filene i applikasjonen har fokuset vært å ha en flat filstruktur, færrest mulig nivå av mapper. Filene programmet er bygget opp av ligger i mappen «app». Her har hver komponent sin egen mappe som inneholder fire lignende navngitte filer (se figur \ref{fig:filestruktur}). Tjenestene i applikasjonen er også samlet i en egen felles mappe, «\_services».
 
-Avhengighetsinjeksjon er et designmønster hvor klasser får avhengigheter fra eksterne kilder, istedenfor å opprette dem selv. Dette gjør at flere klasser kan dele samme ressurs og på den måten øker man modulariteten i applikasjonen \cite{whatIsDI}.
+\subsection{Navngiving av variabler}
+Lowercamelcase er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel så er variabelnavnet for den maksimale kanalverdien navngitt som «maxChannelValue». Dette gjør det oversiktlig å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
 
-Et typisk eksempel hvor avhengighetsinjeksjon blir brukt i Angular, er tjenester. En tjeneste defineres med en spesifikk funksjon som alle komponentene kan abonnere på hvis de trenger denne (som vist i figur \ref{fig:di}).
-\end{comment}
-%----------------------------------------------------------------------------------
+\subsection{Hvordan Single responsibility prinsippet er fulgt}
+Single responsibility er et prinsipp som går ut på at hver modul, klasse eller funksjon kun skal ha ansvar for én handling. For eksempel hvis funksjonen «tilSmåBokstaver(tekst)» skal ta inn en tekst og gjøre om hele teksten til små bokstaver så kan den ikke gjøre noe mer enn det. Hvis funksjonen i tillegg hadde lagt en liste over alle ordene i teksten så ville ikke funksjonen lengre oppfylt prinsippet.
+
+I denne applikasjonen er dette prinsippet tatt hensyn til hver gang det har blitt opprettet en ny funksjon, klasse eller modul. Dette fører til at koden blir mye lettere å endre på og forstå, spesielt hvis leseren ikke har skrevet den aktuelle koden selv \cite{SingleReponsibility}.  
+
+\subsection{Inndeling av komponenter og tjenester}
+Hver komponent representerer en spesifikk del av applikasjonen med et ansvarsområde. For eksempel har innstillingskomponenten ansvaret for å vise og endre innstillingene, mens grafkomponenten har ansvaret for å vise grafen. 
+
+Tjenestene er sentrale funksjoner i applikasjonen som ofte trengs av flere komponenter. Hver tjeneste har i likhet med komponentene ett ansvarsområde. For eksempel, brush-tjenesten lagrer og oppdaterer brush-dataen. Alle komponentene har da mulighet til å lese og endre disse.
+
 \section{Designmønster i applikasjonen}
-MVC? Mobile first?
+Hvilke designmønstre som er brukt og hvordan de definerer strukturen til applikasjonen er en viktig del av enhver utviklingsprosess. I dette prosjektet har de tre mest sentrale designmønstrene vært «mobile first», dependency injection og komponentbasert MVC.
+
+\subsection{Utgangspunkt i mobile first}
+Hovedfokuset under utviklingen av denne applikasjonen har vært å lage en applikasjon som først og fremst fungerer bra på mobiltelefoner og nettbrett. Applikasjonen skal være enkel i bruk og ikke inneholde for mange elementer som gjør den uoversiktlig. Menyen er et godt eksempel på dette. På mindre skjermer skjules valgene slik at de ikke opptar unødvendig plass på skjermen når menyen ikke er i bruk.
+
+Selv om hovedfokuset ikke har vært hvordan applikasjonen ser ut på større skjermer, har applikasjonen likevel et responsivt design. Menylinjen er også i dette tilfellet et godt eksempel på dette. Hvis applikasjonen kjører på en enhet med stor skjerm, vil menyen utvide seg til å vise alle valgene istedenfor at den skjules (slik som på små skjermer). 
+
+\subsection{Hvordan dependency injection er brukt}
+I denne applikasjonen er dependency injection brukt for å sende data fra de ulike tjenestene til komponentene. Eksempelvis holder brush-tjenesten kontroll på brush-dataen lest inn i applikasjonen. For å gi komponentene som trenger det tilgang på denne dataen, brukes dependency injection. Både grafen og tabellen (selv om de er to ulike komponenter) vil da ha tilgang til samme data, og en oppdatering vil reflekteres i begge komponentene.
+
+\subsection{Prinsipper fra Model View Controller som er brukt}
+Mønsteret i applikasjonen er til en viss grad basert på standarder fra Model View Controller. Likevel ses Angular på som et mer komponentbasert rammeverk og blir av den grunn ofte omtalt som et komponentbasert MVC-rammeverk. Hvis man ser på Angular fra et MVC perspektiv vil kontrolleren \textbf{(Controller)} være hele komponenten, modellen \textbf{(Model)} vil være klassene som inneholder og oppdaterer data og visningen \textbf{(View)} vil være HTML-malen som viser frem alle dataene \cite{angular_vs_react}.
+
 \section{Komponentene i applikasjonen}
-Man pleier ofte å omtale relasjoner mellom komponenter som om vi snakker om en familie. I applikasjonen er det én rotkomponent. Denne er forelderen til de fire andre komponentene som finnes i applikasjonen. De fire barnekomponentene (navigasjonslinjen, tabellen, innstillingene og grafen i applikasjonen) arver fra forelderen sin (rotkomponenten). Barnekomponentene blir sett på som søsken. Det vil si at de også kan kommunisere med søskena sine, for eksempel ved bruk av tjenester (kapittel \ref{tjenesterRef}) \cite{angularComponents}. 
+Komponentene i en an Angular-applikasjon er organisert hierarkisk og relasjonene omtales ofte som et familietre. Alle Angular-applikasjonene inkluderer en rotkomponent som de andre komponentene arver fra. Rotkomponenten har i denne applikasjonen sju barn (navigasjonslinje, innstillinger, filinformasjon, informasjonsmeldinger, robot filutforsker, tabell og graf). Disse blir omtalt som søsken seg i mellom, mens rotkomponenten blir forelderen. Relasjonen danner grunnlag for hvordan komponentene kan kommunisere med hverandre \cite{angularComponents}.
+
 %\begin{figure}[ht]
 %    \centering
 %    \includegraphics[width=0.6\textwidth]{Figurer/Komponenter_skisse.jpg}
@@ -68,25 +54,28 @@ Man pleier ofte å omtale relasjoner mellom komponenter som om vi snakker om en 
 %    \label{fig:komponenter_skisse}
 %\end{figure}
 
-\subsection{Navigasjonslinjen i applikasjonen}
-Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne alle de viktigste valgene og mulighet for å vise/skjule andre komponenter. Navigasjonslinjen er basert på Bootstrap sin navigasjonsbar og gir et ryddig og oversiktlig utseende. Navigasjonslinjen komprimeres også hvis applikasjonen brukes på enheter med liten skjerm slik at den ikke opptar for mye plass. 
+\subsection{Navigasjonslinjekomponenten i applikasjonen}
+Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne alle de viktigste valgene og mulighet for å vise/skjule andre komponenter. Navigasjonslinjen er basert på Bootstrap sin navigasjonsbar, noe som gir et ryddig og oversiktlig utseende. Navigasjonslinjen komprimeres hvis applikasjonen brukes på enheter med liten skjerm slik at den ikke opptar for mye plass. 
 
-Når man åpner applikasjonen først gang, får man to valg i navigasjonslinjen; Åpne lokal fil eller åpne fil lokalisert på roboten. Når en fil er åpnet, dukker det opp flere valg i menyen. Man kan da velge å eksportere filen (både lokalt og til robot), slik at man kan ta vare på eventuelle endringer man har gjort. I tillegg synliggjøres to knapper som gjør det mulig å vise/skjule innstillinger og filinformasjon.
+Når man åpner applikasjonen første gang, får man to valg i navigasjonslinjen; Åpne lokal fil eller åpne robotens filutforsker. Når en fil er åpnet, dukker det opp flere valg i menyen. Man får da muligheten til å vise/skjule innstillinger og filinformasjon, samt eksportere filen.
 
-\subsection{Innstillinger i applikasjonen}
-Applikasjonen inkludere en komponent for å sette ulike innstillinger. Denne komponenten inneholder alle innstillinger som ikke er knyttet til filinformasjon eller åpning/eksportering av fil. Komponenten vises ved hjelp av valget i navigasjonslinjen og skjules igjen ved hjelp av valget i navigasjonslinjen eller «X»-knappen.
-
-Innstillingene inkludere en knapp for å tilbakestille kanalnavnene til sine standardnavn («Channel 1», «Channel 2» etc.).
+\subsection{Innstillingskomponenten i applikasjonen}
+Applikasjonen inneholder en komponent hvor man kan endre innstillinger knyttet til applikasjonen. Disse innstillingene inkluderer: endring av maksimal kanalverdi, endring av IP-adresse for robot og en knapp for å tilbakestille kanalnavn. 
+\begin{itemize}
+    \item Den maksimale kanalverdien blir brukt i inputvalideringen i tabellen, slik at det ikke er mulig å taste inn noe høyere enn denne verdien. I tillegg brukes maksimalverdien til å regne ut prosentverdien som vises i grafkomponenten.
+    \item IP-adressen til roboten kan være nyttig å endre dersom brukeren skal koble seg til en robotkontroller som har enn annen adresse enn standardadressen 127.0.0.1 (localhost). 
+    \item Knappen for å tilbakestille kanalnavnene endrer navnene til standardverdiene «Channel 1», «Channel 2», osv. Dette kan være nyttig … 
+\end{itemize}
+Innstillingskomponenten åpnes/skjules ved hjelp av «settings»-knappen i navigasjonslinjen.
 
 \subsection{Filinformasjonskomponenten i applikasjonen}
-Denne komponenten viser informasjon knyttet til filen som er lastet inn. Filnavn og eventuelt fil-kommentar vil vises her. Akkurat som innstillingskomponenten vises også denne ved hjelp av valg i navigasjonslinjen og skjules igjen enten ved hjelp av valget i navigasjonslinjen eller «X»-knappen.
+Denne komponenten viser informasjon knyttet til filen som er lastet inn. Her kan man se og endre på filnavnet og -kommentaren. Verdiene blir brukt ved en eksport av filen til roboten, eller lokalt til brukerens enhet. I likhet med innstillingskomponenten, vises og skjules denne ved hjelp av «file info»-knappen i navigasjonslinjen.
 
 \subsection{Informasjonskomponenten i applikasjonen}
-For å kunne vise frem informasjon- og feilmeldinger til brukeren, inneholder applikasjonen en informasjonskomponent. Man kan her vise frem tilbakemeldinger til brukeren etter at han/hun har utført en handling. Ett eksempel kan være at man endrer innstillingene. Da kan det vær greit å få en tilbakemelding på om endringene har vært vellykket eller ikke. Dette vil vises i denne komponenten, enten som en vellykket melding eller en feilmelding hvis det har skjedd noe galt. Ved en feilmelding vil man også vise hva som har er galt, slik at man forhåpentligvis kan rette dette opp.
+I applikasjonen er det laget en informasjonskomponent for å vise frem informasjon og feilmeldinger til brukeren. Dette kan være nyttig dersom brukeren trenger en tilbakemelding etter å ha utført en handling. For eksempel får brukeren en tilbakemelding når innstillingene har blitt endret. Hvis endringen er vellykket, vil komponenten vise en vellykket melding og hvis noe går galt, vil en feilmelding dukke opp. Ved en eventuell feilmelding vil brukeren få vite hva som gikk galt, slik at feilen kan bli rettet opp i. 
 
-\subsection{Tabellen i applikasjonen}
-\todo[inline]{Tobias skriv her}
-Tabellen inneholder informasjon om børsten som er lastet inn. Den kan inneholde mellom tre og fem kolonner avhengig av hvor mange ulike kanaler man har i filen. Etter innholdet er lastet inn vil det være mulig å endre på innholdet ved hjelp av dynamiske inputfelt. Grafen blir oppdatert deretter. Hvert felt har en egen maksimumsverdi. 
+\subsection{Tabellkomponenten i applikasjonen}
+Etter at en brushfil er lastet opp, vil tabellen bli fylt med informasjon om brushen. Tabellen inneholder samme antall kolonner som det finnes kanaler i brushfilen. Hver kolonne representerer en kanal som sier noe om hva de tilhørende verdiene definerer. Hvis man endrer på noen av navnene, vil de redigerte kanalnavnene bli lagret i en cookie slik at man får disse navnene opp neste gang man leser inn en fil fra samme enhet (med forbehold om at brukeren ikke sletter cookies i mellomtiden). Om brukeren ikke har vært inne på applikasjonen før, vil det bli lastet inn standard kanalnavn (Channel 1, Channel 2 etc.). Etter at dataene fra filen er lagt inn i tabellen vil det være mulig å endre på verdiene etter behov. Det blir gjennomført validering av alle verdier etterhvert som brukeren fyller de inn og grafen oppdateres for hver endring som blir gjort.
 
 %\begin{figure}[ht]
 %    \centering
@@ -95,9 +84,8 @@ Tabellen inneholder informasjon om børsten som er lastet inn. Den kan inneholde
 %    \label{fig:applikasjon_tabell}
 %\end{figure}
 
-\subsection{Grafen i applikasjonen}
-\todo[inline]{Tobias skriv her}
-Grafen viser frem data fra en markert rad i tabellen. Den vil fremvise dataen for hvert markerte felt som et prosenttall av maksimum kapasitet. 
+\subsection{Grafkomponenten i applikasjonen}
+Grafen er, som nevnt tidligere, tegnet ved hjelp av JavaScript-biblioteket Chart.js. Informasjonen som vises er den valgte brushen (aktive raden) i tabellen og representeres ved hjelp av et søylediagram. Hver søyle viser prosentvis verdi av en kanal i brushen. Prosenten beskriver hvor mye av maksimalverdien til kanalen som er utnyttet. Dette gir brukeren en umiddelbar visuell representasjon av hvor mye ressurser man har til rådighet. Chart.js biblioteket sørger for at grafen oppdateres automatisk hvis verdiene endres. Dette betyr at hver gang brukeren klikker på en ny rad eller endrer en kanal-verdi vil grafen reflektere de nye verdiene med en gang. 
 
 %\begin{figure}[ht]
 %    \centering
@@ -106,13 +94,92 @@ Grafen viser frem data fra en markert rad i tabellen. Den vil fremvise dataen fo
 %    \label{fig:applikasjon_graf}
 %\end{figure}
 
+\subsection{Filvelgerkomponenten til roboten}
+Filvelgerkomponenten gjør det mulig for brukeren å navigere seg frem/tilbake gjennom ulike filer og mapper i filsystemet til roboten. Denne komponenten viser frem hvilke filer og undermapper som finnes i mappen du er i. For å gjøre det enklere å navigere i mapper med mange filer, er undermappene vist øverst i filvelgeren. I tillegg er både filene og undermappene sortert alfabetisk innad. Hvis brukeren klikker på en fil, vil denne filen åpnes i applikasjonen og tabellen og grafen oppdateres. Et klikk på en mappe, vil oppdatere komponenten slik at filene og undermappene i den nye mappen vises. Når komponenten åpnes første gang vil «Home»-folderen til robotkontroller åpnes. Dette er standardmappen som finnes i alle robotkontrollere og vil være nederste nivå i mappehierarkiet. I tillegg til visning av filer og mapper inneholder filvelgerkomponenten en verktøyrad hvor nåværende sti, samt valg for å gå tilbake og eksportere den åpne filen til robotkontrolleren, finnes.
+
+Filvelgerkomponenten tar kun for seg visningen av filer, mapper og valg ved oppkobling mot Robot Web Services. All logikken rundt dette er separert ut som en egen tjeneste (filvelgertjenesten, kapittel \ref{filvelgerTjenesteRef}).
+%Mappene og filene er sortert alfabetisk, men alle mappene vises over filene for å gjøre det enklere å navigere i mapper med mange filer. 
+
+\section{Layout i applikasjonen}
+Fokuset i denne utviklingsprosessen har vært å lage en oversiktlig og brukervennlig applikasjon som fungerer bra på enheter med små skjermer. Layouten er av den grunn enkel med forholdsvis få elementer. Helt øverst finnes en navigasjonsbar som inkluderer ulike valg og innstillinger. Under denne finner vi en fleksibel plass hvor visningen avhenger av hva brukeren har åpnet. Her kan filinformasjon, innstillinger, filutforsker eller statusmeldinger vises, og for å gjøre layouten oversiktlig, vises kun en av disse om gangen. Tabellen og grafen er plassert under dette igjen, men hvis den fleksible plassen ikke brukes vil tabellen og grafen flyttes opp. Hvordan tabell og graf vises avhenger av skjermstørrelse på enheten som brukes. Hvis skjermen er stor, vil tabellen og grafen vises ved siden av hverandre, mens på mindre skjermer vil grafen flyttes under tabellen. Figur \ref{fig:layout_stor} viser hvordan layouten ser ut på en større skjerm med filinformasjon åpnet. I figur \ref{fig:layout_liten} ser man hvordan applikasjonen ser ut på en mindre skjerm. Her er den fleksible plassen ikke brukt og man ser da hvordan grafen og tabellen er flyttet opp, samt hvordan grafen er plassert under tabellen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Figurer/3Konstruksjon/LayoutStorSkjerm}
+    \caption{Oversiktsbilde stor skjerm}
+    \label{fig:layout_stor}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figurer/3Konstruksjon/LayoutLitenSkjerm}
+    \caption{Oversiktsbilde liten skjerm}
+    \label{fig:layout_liten}
+\end{figure}
+
 \section{Tjenester brukt i applikasjonen}
 \label{tjenesterRef}
-I Brush Editor-applikasjonen er to tjenester definert; «Brush service» og «Pager service».
+I denne applikasjonen er følgende fire tjenester definert: en brush-, en sideskifter-, en visning- og en filvelgertjeneste. I dette kapittelet vil det bli gjennomgått hvordan disse fungerer og hva oppgavene deres er.
+
 \subsection{Brush-tjenesten i applikasjonen}
-«Brush-service» blir brukt til å lagre dataene som blir lest inn fra en brush-fil eller hentet fra roboten. Flere av komponentene trenger disse dataene (blant annet tabellen og grafen). Tjenesten gjør det enkelt å dele dataene mellom komponenter som trenger dem. I tillegg blir tjenesten mer robust; det er enkelt å legge til eller fjerne komponenter som bruker brush-dataene uten å gjøre store endringer i applikasjonen.
+Brush-tjenesten (brush service) blir brukt til å lagre dataene som blir lest inn fra en brush-fil eller hentet fra roboten. Flere av komponentene trenger disse dataene (blant annet tabellen og grafen). Tjenesten gjør det enkelt å dele dataene mellom komponenter som trenger dem. I tillegg blir applikasjonen mer robust; det er enkelt å legge til eller fjerne komponenter som bruker brush-dataene uten å gjøre store endringer i applikasjonen.
 
 \subsection{Sideskifter-tjenesten i applikasjonen}
-«Pager-service» er en mer funksjonell tjeneste. Denne består av logikken til tabellen sin sideskifter. Ved å inkludere en sideskifter i tabellen, får man en mer oversiktlig tabell hvis man har mange rader med data (noe brush-filene ofte har). Selv om denne tjenesten kun blir brukt i tabell-komponenten var det likevel fordelaktig å splitte denne til en egen tjeneste. Man får da fjernet en del linjer med kode fra tabell-komponenten, samt muligheten til å bruke denne tjenesten andre steder i applikasjonene hvis man trenger det.
+Sideskifter-tjenesten (pager service) er en mer funksjonell tjeneste. Denne består av logikken til tabellen sin sideskifter. Ved å inkludere en sideskifter i tabellen, får man en mer oversiktlig tabell hvis man har mange rader med data (noe brush-filene ofte har). Selv om denne tjenesten kun blir brukt i tabell-komponenten var det likevel fordelaktig å splitte denne til en egen tjeneste. Man får da fjernet en del linjer med kode fra tabell-komponenten, samt muligheten til å bruke denne tjenesten andre steder i applikasjonene hvis man trenger det på et senere tidpsunkt.
+
+\subsection{Visningstjenesten i applikasjonen}
+Visningstjenesten (view service) bestemmer visningen til innstillinger-, filinformasjon- og informasjons-komponenten. Innstillinger og filinformasjon skal kun vises hvis brukeren har lastet opp en fil og trykket på en av disse knappene. Informasjons-komponenten skal også kun vises i noen tilfeller. Visningstjenesten holder orden på dette og gjør det mulig å vise/skjule disse komponentene fra hvilken som helst annen komponent. For eksempel kan man bruke informasjonskomponenten til å gi tilbakemelding til brukeren om oppdateringen av innstillingene var vellykket eller ikke. Samtidig kan man, ved en annen anledning, bruke komponenten til å gi beskjed til brukeren at det har skjedd en feil i innlesingen av en fil.
+
+\subsection{Filvelgertjenesten i applikasjonen}
+\label{filvelgerTjenesteRef}
+Logikken i forbindelse med navigering i filene til roboten sitt filsystem er separert fra visning og håndteres i denne tjenesten. Kommunikasjonen mellom applikasjonen og Robot Web Service REST API styres herfra. Tjenesten lagrer i hvilken mappe brukeren befinner seg og tar seg av innlesing og eksportering av data. 
+
+Ved å skille ut denne funksjonen som en egen tjeneste får man en ryddigere og enklere filvelgerkomponent, samt at man får muligheten til å kunne endre på diverse parametere fra ulike komponenter. Et eksempel på dette er at man i denne applikasjonen endrer IP-adressen til roboten fra innstillingskomponenten.
+
+\section{Bruken av modeller og moduler applikasjonen}
+I applikasjonen blir det brukt diverse modeller og moduler fra Angular. I dette kapittelet blir det forklart hvilke som er brukt.
+
+\subsection{Bruk av modeller i applikasjonen}
+I dette prosjektet er det brukt en Angular-modell for å binde verdiene fra brush-objektene til HTML-malen. Det betyr at dersom brush-objektet blir endret i kildekoden, oppdateres det automatisk i HTML-visningen og omvendt. Prinsippet omtales som toveis-databinding og gjør at man slipper å bruke tid på å lage funksjoner som må oppdatere objektet hver gang.
+
+Modeller har ikke blitt brukt andre steder i applikasjonen, noe som kan være en svakhet i designet. Det finnes mange fordeler med å bruke modeller, og dette vil bli diskutert senere.
+
+\subsection{Bruk av moduler i applikasjonen}
+I dette prosjektet er det blitt brukt noen moduler. Alle modulene er offisiell Angular-moduler, bortsett fra «ChartsModule» som er importert fra en eksterne kilde. Alle modulene har ulike funksjoner i applikasjonen:
+\begin{itemize}
+    \item \textbf{NgModule} er en kjernemodul fra «Angular core». Den blir omtalt som rotmodulen i applikasjonen og samler resten av modulene, tjenestene og komponentene på en plass \cite{angularModules}.
+    \item \textbf{BrowserModule} er en modul fra «Angular platform-browser». Den eksporterer CommonModule, en modul som har mange innebygde tjenester. For eksempel er tjenesten «ngIf» (brukt flere ganger i applikasjonen) en del av denne modulen \cite{angular_BrowserModule}.
+    \item \textbf{ChartsModule} er en modul som er importert fra «ng2-charts» og blir brukt til å tegne grafen. Biblioteket gjør det enkelt å lage grafer etter egne behov slik som det er gjort i applikasjonen \cite{angular_ChartsModule}.
+    \item \textbf{MatTooltipModule} er en modul fra «Angular Material» som brukes til å legge til tooltips. Tooltips er en grei måte å forklare brukeren hva som skjer dersom det valgte objektet blir aktivert. I applikasjonen blir tooltips brukt aktivt og finnes på de fleste knappene. For eksempel vil tooltipen til knappen som sletter innholdet i en rad vise «Clear content of row» dersom brukeren sin musepeker svever over knappen.
+    \item \textbf{BrowserAnimationsModule} er en modul fra «Angular platform-browser» som er importert for å kunne bruke ulike animasjoner i Angular. For eksempel er denne nødvendig for at tooltipene fra MatTooltipModule skal fungere.
+    \item \textbf{FormsModule} er en modul fra «Angular forms» som er importert for å kunne bruke en toveis databinding. I applikasjonen blir dette brukt i tabellen hvor hver kanal i hvert brush-objekt er en egen modell. Dette er svært nyttig ettersom, som nevnt tidligere, man slipper å lage funksjoner som må oppdatere objektet hver gang \cite{angular_FormsModule}.
+\end{itemize}
+
+\section{Kommunikasjon med robotkontrolleren}
+Kommunikasjonen med robotkontroller er en av de aller viktigste funksjonene til applikasjonen. Denne seksjonen vil ta for seg hvordan dette fungerer og beskrive ulike deler av denne prosessen. Dette inkluderer blant annet autentisering av brukeren og bruken av Robot Web Services REST API.
+
+\subsection{Bruk av Robot Web Service REST API}
+Robot Web Service er en API-tjeneste ABB inkluderer som en del av sine robotkontrollere. API-et gjør det mulig for utviklere å lage egne applikasjoner som kommuniserer med ABB-roboter. I denne applikasjonen er det kun fil-delen av dette API-et som blir benyttet, men API-et inneholder også mange andre ressurser som kan utnyttes \cite{RobotWebService}.
+
+Denne applikasjonen bruker API-et til å spørre etter filer og til å laste opp filer til robotkontrolleren. Dataen sendes og mottas i XML- eller JSON-format. For å få tilgang til dataen må applikasjonen/brukeren først autentisere seg ved hjelp av Digest-metoden.
+For å hente en fil sender applikasjonen en GET-request til den ønskede URL-en og får da en respons som inneholder den forespurte dataen, hvis autentiseringen er godkjent.
+Opplasting av filer fungerer på en lignende måte, men applikasjonen sender da en PUT-request som inneholder fildataene. Svaret applikasjonen får inneholder en HTTP-statuskode som beskriver om opplastingen var vellykket eller ikke \cite{APIDocs}.
+
+I applikasjon brukes dette i følgende tilfeller:
+\begin{itemize}
+    \item Hente filer i filutforskeren: En ny GET-request sende til API-et hver gang brukeren åpner filutforskeren eller trykker på en fil eller en mappe. Avhengig av hva brukeren trykker på, bestemmer hvordan svaret skal tolkes, men forespørsel sendes alltid med samme format.
+    \item Eksportere fil i filutforskeren: Når brukeren skal laste opp en fil til robotkontrolleren sendes det først en PUT-request med dataene til robotkontrolleren. Deretter blir det i tillegg sendt en GET-request for å oppdatere visningen av filene i mappen som brukeren er inne i. Hvis brukeren har lastet opp en fil med et navn som ikke finnes fra før, vil en ny fil dukke opp.  Hvis navnet allerede finnes, vil filen bli erstattet av den nye opplastede filen.
+\end{itemize}
+
+\subsection{Begrenset kommunikasjon som følge av CORS}
+På grunn av CORS-restriksjoner (Cross Origin Resource Sharing) i dagens nettlesere er det ikke mulig å få tilgang til alle headere fra robot-serveren. Dette gjør at de nødvendige headerne for å gjennomføre en Digest-request, ikke er tilgjengelige. Spesielle header-felt som trengs må eksponeres av serveren som sender responsen for at klienten skal få tilgang til disse gjennom nettleseren \cite{CORS_exposeHeaders}. 
+
+En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser hentes fra en robot. Responsen som da blir sendt tilbake vil ikke eksponere alle headerene sine, fordi dette ikke er spesifisert på serversiden. I prosjektet er det blitt brukt en nettleser med CORS deaktivert for testing og utvikling av applikasjonen. Hvis applikasjonen på et senere tidspunkt blir tatt i bruk, må man komme seg forbi denne restriksjonen ved å endre innstillingene på serversiden.
+
+\subsection{Autentisering av brukeren ved hjelp av Digest}
+I dette prosjektet har autentiseringsmetoden Digest blitt brukt for å validere brukere. Autentiseringsprosessen i applikasjonen starter opp hvis brukeren velger å hente en brushfil fra filsystemet til en robot. I applikasjonen er det et forhåndslagret brukernavn og passord som blir sendt til autentisering. 
+
+Digest-autentiseringen blir gjennomført ved hjelp av JavaScript. Scriptet sender først en HTTP-request og får da en «401 Unauthorized» respons som inneholder headere med nødvendige verdier. Disse verdiene blir hashet sammen med brukernavn og passord og lagt til i den neste HTTP-requesten som sende til serveren for godkjenning. Hvis brukernavn og passord stemmer, vil det bli gitt tilgang til ressursene i filsystemet til roboten. 
 
 \section{Oppsummering av kapittelet}
+Målet med dette kapittelet har vært å gi en grundig beskrivelse av konstruksjonen til applikasjonen; hvilke designmønster som har blitt brukt i arbeidet, samt hvilke komponenter, moduler og tjenester den består av. I tillegg har kapittelet gitt et bilde av ulike aspekter knyttet til kommunikasjonen mellom applikasjonen og roboten.
