@@ -15,12 +15,7 @@ Robot Studio-programmet fra ABB er et nyttig hjelpemiddel dersom man vil teste d
 Applikasjonsutvikling for web har hatt en kraftig økning de siste årene \cite{jsFrameworks}. En av årsakene til dette er et ønske om å utvikle applikasjoner som skal kunne kjøres på alle enheter. Det er tidkrevende å utvikle applikasjoner for forskjellige operativsystemer, noe som fører til at flere velger å satse på webapplikasjoner. Selv om man kanskje ikke får en applikasjon som er helt optimal for et spesifikt operativsystem, kan man spare mye tid på utvikling og vedlikehold ved å lage en webapplikasjon.
  
 \subsection{Rammeverk-muligheter i JavaScript}
-JavaScript har etablert seg som det ledende språket for å utvikle web-applikasjoner, og ble i 2018 stemt frem som et av de mest populære programmeringsspråkene \cite{developerSurvey}. Det finnes i dag utallige frontend-rammeverk for web-utvikling i JavaScript; React, Angular, Vue.js, Ember, for å nevne noen. De to mest populære i 2018 var React og Angular \cite{jsFrameworks} og valget om hva som skulle brukes i denne applikasjonen stod først og fremst mellom disse to.
-
-\subsection{Valg av JavaScript-rammeverk}
-Selv om React og Angular er to rammeverk som ofte sammenlignes, er de satt sammen på ganske forskjellige måter. Mens Angular er et fullverdig rammeverk, kan React best beskrives som et JavaScript-bibliotek. Angular blir ofte betraktet som vanskeligere å lære seg på grunn av den omfattende størrelsen på verktøyet. Kompleksiteten tatt i betraktning, så kan det likevel lønne seg å bruke Angular da det inneholder et mye større antall innebygde funksjoner og tjenester enn React. Med denne størrelsen kommer det likevel noen ulemper, som for eksempel at innlastingstiden til en side kan være vesentlig høyere enn ved bruk av React \cite{angularvsreact}.
-
-Valget falt til slutt på Angular i dette prosjektet, selv om begge sannsynligvis hadde fungert. Mer diskusjon rundt hvorfor og alternativene (i tillegg til React) som ble vurdert, vil bli diskutert senere i oppgaven (kapittel \ref{diskusjon}).
+JavaScript har etablert seg som det ledende språket for å utvikle web-applikasjoner, og ble i 2018 stemt frem som et av de mest populære programmeringsspråkene \cite{developerSurvey}. Det finnes i dag utallige frontend-rammeverk for web-utvikling i JavaScript; React, Angular, Vue.js, Emberj og Backbone.js er noen av disse. De to mest populære i 2018 var React og Angular \cite{jsFrameworks} og valget om hva som skulle brukes i denne applikasjonen stod først og fremst mellom disse to. Valget om hva som skulle brukes i dette prosjektet falt, av ulike grunner, på Angular. Hvorfor og hvordan valget ble gjort vil bli diskutert senere i oppgaven (kapittel \ref{diskusjon}).
 
 \section{Hva Angular er og hvordan det fungerer}
 Angular er en plattform og rammeverk, skrevet i TypeScript, som gjør det lettere å lage web-applikasjoner. Det inneholder ulike maler, verktøy og integrerte metoder for å løse utviklingsutfordringer og har derfor gode forutsetninger for å lage applikasjoner til datamaskin, mobil og nettbrett.
@@ -29,11 +24,10 @@ Angular er en plattform og rammeverk, skrevet i TypeScript, som gjør det letter
 Det er enkelt å begynne å utvikle Angular applikasjoner. Ved hjelp av Node Package Mangager (NPM) kan man installere Angular sitt eget kommandolinjeprogram (CLI). Dette grensesnittet kan brukes til ulike ting, men er mest brukt til å opprette prosjekter eller ferdige komponenter. Det har også mulighet til å gjennomføre oppgaver som testing og distribuering. For å teste applikasjonen kan man åpne den i nettleseren. Når en endring i filene blir oppdaget, vil serveren automatisk bygge applikasjonen på nytt og oppdatere siden \cite{AngularInBrowser}.
 
 \subsection{Moduler i Angular}
-Angular har sitt eget modulsystem kalt NgModules. Modulsystemet består av beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. Beholderene kan inneholde komponenter, tjenester m.m. Alle Angular-applikasjoner har minst en rotmodul som inneholder en NgModule-klasse \cite{angularModules}. Denne har fått navnet AppModule i Angular og hovedoppgaven til denne modulen er å legge til og gruppere alle elementene (som regel komponenter og tjenester) i applikasjonen \cite{angularModulesUnderstanding}. Dette fører til at applikasjonen blir mer oversiktlig fordi man kan samle de fleste importeringene på en plass. I noen prosjekt vil AppModule være den eneste modulen i prosjektet, mens i andre prosjekt vil det være mange moduler. %Dette er en individuell sak og det er ingenting som er rett eller galt.
-
-%Angular har sitt eget modulsystem kalt NgModules. NgModules er beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. De kan inneholde komponenter, tjenester m.m. Alle Angular-applikasjoner har en rotmodul som gjør at man har mulighet til å kjøre applikasjonen med en enkel HTML-mal. Det er også flere modultyper (funksjonsmoduler, kjernemoduler, delte moduler og routing moduler) som gjerne blir laget underveis i apputviklingen. Ved å splitte applikasjonen opp i ulike moduler får man en bedre kodestruktur som gjør det lettere å bruke samme kode ulike steder. Dette fører til mindre unødvendig kode som igjen fører til at applikasjonen vil ha en bedre ytelse \cite{angularModules}. 
+Angular har sitt eget modulsystem kalt NgModules. Modulsystemet består av beholdere som beskriver hvordan de ulike delene av nettsiden skal settes sammen. Beholderene kan inneholde komponenter, tjenester m.m. Alle Angular-applikasjoner har minst en rotmodul som inneholder en NgModule-klasse \cite{angularModules}. Denne har fått navnet AppModule i Angular og hovedoppgaven til denne modulen er å legge til og gruppere alle elementene (som regel komponenter og tjenester) i applikasjonen \cite{angularModulesUnderstanding}. Dette fører til at applikasjonen blir mer oversiktlig fordi man kan samle de fleste importeringene på en plass. I noen prosjekt vil AppModule være den eneste modulen i prosjektet, mens i andre prosjekt vil det være mange moduler. 
 
 \subsection{Komponenter i Angular}
+\label{AngularKomponenter}
 Komponentene i Angular bestemmer hvordan visningen av nettsiden skal fungere. Hver komponent definerer en klasse som inneholder både applikasjonsdata og logikk. Den henger sammen med en HTML-mal som viser innholdet. Eksempler på komponenter kan være: Navigasjonslinjen, bunnteksten eller en seksjon med tekst. Om man trenger å gjøre endringer i navigasjonslinjen vil ikke dette påvirke noen av de andre komponentene. Dette gjør at applikasjonen blir ryddigere og enklere å endre på \cite{angularComponents}.
 
 \subsection{Tjenester i Angular}
@@ -101,8 +95,8 @@ Et typisk eksempel hvor dependecy injection blir brukt i Angular, er tjenester. 
 \section{Viktige tillegg brukt i applikasjonen}
 I dette prosjektet er det brukt noen tilleggsverktøy for å gjøre utviklingen enklere og mer oversiktlig. De viktigste av disse vil bli beskrevet i dette delkapittelet.
 
-\subsection{Stilsetting med Bootstrap}
-Bootstrap er et verktøy som brukes for å enklere stilsette nettsider. Hovedformålet er å spare tid, samt at man lettere får en gjennomført stil på siden. Rammeverket er mobile first. Dette vil si at stilsettingen først og fremst fokuserer på å se bra ut enheter med små skjermer. Bootstrap gir deg tilgang til ferdiglagde til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter. Komponentene er laget for å kunne justere seg automatisk og nettsiden vil derfor få ett responsivt design som tilpasser seg størrelsen på enheten din. Figur \ref{fig:bootstrap_layout} viser et eksempel på hvordan innholdet på siden kan justere seg avhengig av størrelsen.
+\subsection{Utforming av applikasjonen med Bootstrap}
+Bootstrap er et verktøy som brukes for å enklere kunne sette ulike stiler på en nettside. Hovedformålet er å spare tid, samt at man lettere får en gjennomført stil på siden. Rammeverket er mobile first. Det vil si at stilsettingen først og fremst fokuserer på å se attraktiv ut på enheter med små skjermer. Bootstrap gir deg tilgang til ferdiglagde til knapper, skjema, navigasjonslinjer og andre grensesnittkomponenter. Komponentene er laget for å kunne justere seg automatisk og nettsiden vil derfor få et responsivt design som tilpasser seg størrelsen på enheten din. Figur \ref{fig:bootstrap_layout} viser et eksempel på hvordan innholdet på siden kan justere seg avhengig av størrelsen.
 
 \begin{figure}[H]
     \centering
@@ -115,14 +109,20 @@ Bootstrap er et verktøy som brukes for å enklere stilsette nettsider. Hovedfor
 Grafene i denne applikasjonen er tegnet ved hjelp av Chart.js. Dette er et «open source» JavaScript-bibliotek som gjør tegning av grafer enklere. Verktøyet lager en dynamisk graf og vil automatisk sørge for at grafen ser bra ut og at navn er lesbare. Hvis man endrer oppsettet og gir mer rom til grafen i applikasjonen, vil den automatisk utvide størrelsen. Chart.js gjør også tilpassing av utseende på grafen enkelt (e.g. farge, akse-beskrivelse). For å kunne bruke Chart.js biblioteket i Angular på en effektiv måte, ble utvidelsen Ng2-charts brukt. Man får da tilgang til Chart.js biblioteket som en komponent i Angular-applikasjonen og kan enkelt tegne grafer på lignende måte som man ville gjort på en vanlig nettside ved hjelp av HTML/JS.
 
 \section{Bruken av versjonskontroll}
-For å ha kontroll på koden og muligheten til å rulle tilbake endringer hvis det skulle oppstå problemer, er bruken av versjonskontroll viktig i et slikt prosjekt. I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grenen inneholdt siste stabile versjonen av applikasjonen og ble oppdatert regelmessig (fra dev-grenen) gjennom hele perioden. Dev-grenen ble brukt til å implementere ny funksjonalitet, og dette førte til at den inneholdt funksjoner som ikke alltid var skikkelig testet. For å effektivisere bruken av versjonskontrollen, ble det ofte opprettet nye grener ut fra dev-grenen. Dette ble gjort slik at man kunne arbeide fritt, uten at det førte til problemer i dev. Etter at en funksjonalitet var ferdig implementert i den nye grenen, ble den slått sammen med dev igjen.
+Versjonskontroll er et system som holder styr på forandringer i filer over tid, slik at du kan finne tilbake til spesifikke versjoner senere \cite{versjonskontroll}. Tidligere ble dette gjort lokalt ved at man kopierte nye versjoner av filer og tok vare på de gamle. Dette var en tungvint metode og derfor utviklet man det som i dag kalles for et Distribuert Versjonskontrollsystem (DVCS). I dette systemet kan flere klienter arbeide opp mot samme server til samme tid. Man kan tenke seg at klienten speiler oppbevaringsmappene som befinner seg på serveren. Om serveren skulle gå ned så kan klienten bare bli kopiert opp mot serveren når den er oppe å gå igjen. Noen av de mest kjente DVCS-ene i dag er Git, Mercurial, Bazaar og Darcs. 
 
-For å holde oversikt over oppgaver, forbedringer og feil i prosjektet/koden ble «Github Issues» brukt \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etterhvert som prosjektet utviklet seg og markert ferdige når de var implementert. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Figurer/2Bakgrunn/Versjonskontroll.png}
+\caption{Eksempel på hvordan et DVCS ser ut \cite{versjonskontroll_bilde}}
+\label{fig:workflow}
+\end{figure}
 
 \section{Metoder for brukerautentisering}
 Brukerautentisering er en prosess som verifiserer identiteten til noen som vil koble seg til en ressurs (for eksempel en server). Det finnes ulike metoder for å gjennomføre denne prosessen og noen av de mest brukte vil bli drøftet her.
 
 \subsection{Brukerautentisering ved hjelp av Basic authentication}
+\label{basicAuthentication}
 Basic authentication er en enkel autentiseringsmetode bygd inn i http-protokollen. Autentiseringen fungerer på følgende måte \cite{BasicAuth_steps}:
 
 \begin{enumerate}
@@ -144,7 +144,8 @@ Digest authentication er en autentiseringsmetode hvor en hashfunksjon (MD5) blir
 \end{enumerate}
 
 \subsection{Brukerautentisering ved hjelp av OAuth}
-OAuth er en sikkerhetsprotokoll som tar seg av autentisering av brukere ved hjelp av tredjepartsapplikasjoner som Facebook, Twitter osv. Metoden involverer tre ulike parter:
+\label{OAuth}
+OAuth er en sikkerhetsprotokoll som tar seg av autentisering av brukere ved hjelp av tredjepartsapplikasjoner som Facebook, Twitter, osv. Metoden involverer tre ulike parter:
 \begin{itemize}
     \item OAuth-klient (applikasjonen som vil ha tilgang til brukerdata). 
     \item OAuth-leverandør (applikasjonen som oppbevarer brukerdata).
@@ -155,7 +156,7 @@ Disse tre partene går gjennom følgende steg for å opprette en forbindelse \ci
 \begin{enumerate}
     \item I starten vet ikke leverandøren hvem klienten er. Derfor må klienten registrere nettsiden sin på leverandørens utviklerside. Etter at klienten har fått tildelt en identitet fra leverandøren, kan OAuth tas i bruk.
     \item Hvis eieren nå vil ta i bruk en konto fra leverandøren, så vil han bli sendt til innlogging på den utvalgte nettsiden. Ingen brukernavn eller passord vil bli vist til klienten.
-    \item Hvis eieren godtar å dele informasjonen fra leverandøren med klienten, vil leverandøren legge ved en autentiseringskode før eieren blir sendt tilbake.
+    \item Hvis eieren godtar å dele informasjonen fra leverandøren med klienten, vil leverandøren legge ved en autentiseringskode (token) før eieren blir sendt tilbake.
     \item Deretter vil klienten ta kontakt med leverandøren igjen, men denne gangen inkluderes autentiseringskoden som er mottatt.
     \item Leverandøren vil da se at alt er i orden og sende tilbake en tilgangspollett til klienten. Denne polletten blir brukt for å hente brukerdata uten å bruke passord. 
 \end{enumerate}
