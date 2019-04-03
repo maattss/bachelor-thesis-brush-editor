@@ -3,6 +3,7 @@
 \label{diskusjon} % Bruk \ref{diskusjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
 Introduksjon
+\todo[inline]{Mats/Tobias: Skriv introduksjon}
 
 \section{Begrunnelse av tekniske valg}
 Det var flere tekniske valg som måtte bli tatt før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon samt at produktet som utvikles skal bli moderne og fremtidsrettet.
@@ -162,9 +163,24 @@ I dag har de aller fleste en smarttelefon tilgjengelig. Dette gjør at man kan t
 
 Legg til figur her (feks. illustrasjon av ansatt med mobil kobles opp mot robot)
 
-\subsection{Designvalg knyttet til Angular}
-\todo[inline]{Mats/Tobias skriv her}
-Hvorfor komponenter, tjenester etc. er delt inn slik som de er
+\subsection{Design og oppsett av komponentene}
+Underveis i utviklingen har det grunnleggende designet endret seg mye. Dette er fordi det har blitt lagt til nye komponenter og funksjoner etter hvert og disse måtte få en passende plassering. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. Målet har vært å holde designet oversiktlig slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Figurer/5Diskusjon/Komponenter.png}
+\caption{Her er en oversikt over hvordan de ulike komponentene er strukturert i applikasjonen.}
+\label{fig:komponenter}
+\end{figure}
+
+I feltet \textbf{«Navigasjonsbar»} befinner det seg en liggende navigasjonsbar som blir vist frem i toppen av vinduet til enhver tid. Denne er satt her for å gjøre det enkelt å åpne viktige verktøy. Hvis applikasjonen nettopp er åpnet vil dette være den eneste komponenten som viser frem noe. 
+
+I feltet \textbf{ «Verktøy/tilbakemelding»} vil det variere hva som blir vist frem og feltet vil fjernes dersom ingenting er valgt. Det som potensielt blir vist er brush-mapping, robot-filutforsker, filinformasjon, innstillinger, feil- og suksessmeldinger. Det kan ikke bli vist frem flere av disse komponentene på samme tid. Grunnen til dette er at det ikke er nødvendig å bruke disse komponentene samtidig, i tillegg til at applikasjonen blir mye ryddigere ved å vise de individuelt. Det er en egen tjeneste (visningstjenesten) med funksjoner som holder styr på hvilke komponenter som skal åpnes/lukkes etter hvert som brukeren tar ulike valg.
+
+I feltene \textbf{ «Tabell»} og \textbf{«Graf»} vil brush-tabellen og den tilhørende grafen vises. Disse komponentene vil alltid bli vist så lenge en brush-fil er lastet inn. Grunnen til dette er at de er relevante for de fleste komponentene som befinner seg i «Verktøy/tilbakemelding»-feltet. Dersom skjermen til brukeren er for liten til å vise de to komponentene side om side, vil grafen automatisk bli flyttet ned. 
+
+\todo[inline]{Tobias legg til oversikt som viser nav, innstillinger, tabell og graf her (etter at nytt utseende til innstillinger er ferdig)}
+
 
 \section{Forslag til forbedringer ved videre utvikling}
 I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, siden det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
@@ -194,8 +210,18 @@ Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot 
 \noindent Ulempen er at det er krevende å sette opp OAuth, men dette ville hevet sikkerheten i applikasjonen betydelig.
 
 \subsection{Forbedre kodestruktur}
-En potensiell forbedring i koden til dette prosjektet er implementering av Angular sin ruting-tjeneste (Angular Router). Denne tjeneste tar hånd om å navigere brukeren mellom forskjellig visninger av de ulike komponentene. Vurderingen i starten da prosjektet ble starte var at det ikke kom til å bli nødvendig å implementere dette. Men etterhvert som prosjektet har utviklet seg, har det blitt klart at en slik tjeneste er nødvendig. Det ble derfor implementert en egen visnings-tjeneste som håndterer dette. Denne kunne med fordel blitt byttet ut med Angular Router, for en mer oversiktlig og ryddig oversikt over applikasjonen.
-\todo[inline]{Mats skriv mer her om modeller og inndeling av tjenester}
+Koden i dette prosjektet har, som i de fleste andre prosjekter, noen forbedringspotensialer. Den kanskje viktigste er bedre utnyttelse av Angular sine ferdiglagde moduler. Disse modulene inneholder noen av de viktigste funksjonene, som man ofte trenger i ulike applikasjoner.
+
+Hovedfordelen med å implementere ferdiglagde moduler, er en ryddigere kodestruktur. I tillegg minkes sjansen for å gjøre noe feil eller å glemme. Problemet med modulene er at det kan være tidkrevende og komplisert å sette seg inn i dem. Det kan derfor lønne seg å kun utnytte Angular sine ferdiglagde moduler ved implementasjon av kompliserte og større funksjoner. Men dette er en vurdering som må tas i hvert enkelt tilfelle.
+
+I denne applikasjonen er det i hovedsak to moduler som man ser kunne blitt brukt/brukt mer i applikasjonen:
+
+\begin{itemize}
+    \item Angular Router er Angular sin ruting-tjeneste. Denne tar hånd om å navigere brukeren mellom forskjellig visninger i applikasjonen \cite{angularRouter}. I starten av prosjektet var det vanskelig å se for seg antallet visninger applikasjonene kom til å bestå av, og vurderingen ble derfor å ikke bruke denne modulen. Etterhvert som prosjektet utviklet seg, så man behovet for en sentral tjeneste som kunne styre om filinformasjon og/eller innstillinger skulle vise. I stedet for å implementer Angular Router, ble det laget en egen visnings-tjeneste som håndterer dette da man på dette tidspunktet så dette som en bedre løsning. Etterhvert som applikasjonen har utviklet seg videre og flere komponenter og visninger har dukket opp, ser man at det hadde vært fordelaktig å bruke Angular Router istedenfor. 
+    \item Forms Module er en modul som inneholder ulike funksjoner knyttet til håndteringen av HTML-skjema. Dette inkluderer både inputvalidering av email, maks/minimum lengde i input med mer. NgModels er eksempel på en funksjon i Forms Module. Denne er brukt til å binde dataobjekter til HTML-malen i visningen, enten som en toveis- eller enveis-binding \cite{formsModule}. NgModels er brukt i applikasjonen for å binde verdiene fra brush-objektene til HTML-malen i tabellvisningen, men kunne gjerne blitt brukt mer i resten av applikasjonen også. Mer aktiv bruk av Forms Module kunne introdusert mer inputvalidering og robust kode.
+\end{itemize}
+
+I tillegg til flittigere bruk av Angular-moduler i applikasjonen, er inndelingen av komponenter og tjenester et mulig forbedringspotensial i kodestrukturen. Det er alltid en vurderingssak hvordan man skal dele inn applikasjonen. I dette prosjektet er det forsøkt å gjøre det så naturlig så mulig, men ettersom kodebasen utvikles kontinuerlig er dette vanskelig å sørge for til enhver tid. Det er viktig at inndeling holdes dynamisk slik at den ikke blir uoversiktlig. Et eksempel finner man i filvelgertjenesten. Denne tjenesten håndterer logikken bak filvelger-komponenten til roboten og brushmapping-komponenten. Tjenesten kunne vært splittet i to tjenester, men samtidig inneholder begge logikken til kommunikasjon med Robot APIet. Resultatet ble derfor bare en vurdering i prosjektet hvor resultatet var at alt skulle ligge i samme fil.
 
 \subsection{Flere funksjoner i filvelgeren}
 Komponenten hvor man har muligheten til åpne og bla filer fra filsystemet til Robot Web Service, kunne med fordel vært utvidet med flere funksjoner. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere i filvelgeren:
