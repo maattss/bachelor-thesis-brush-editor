@@ -100,6 +100,9 @@ Filvelgerkomponenten gjør det mulig for brukeren å navigere seg frem/tilbake g
 Filvelgerkomponenten tar kun for seg visningen av filer, mapper og valg ved oppkobling mot Robot Web Services. All logikken rundt dette er separert ut som en egen tjeneste (filvelgertjenesten, kapittel \ref{filvelgerTjenesteRef}).
 %Mappene og filene er sortert alfabetisk, men alle mappene vises over filene for å gjøre det enklere å navigere i mapper med mange filer. 
 
+\subsection{Brushmapping-komponenten til roboten}
+\todo[inline]{Skrive om den nye "brush mapping"-komponenten når den er ferdig laget}
+
 \section{Layout i applikasjonen}
 Fokuset i denne utviklingsprosessen har vært å lage en oversiktlig og brukervennlig applikasjon som fungerer bra på enheter med små skjermer. Layouten er av den grunn enkel med forholdsvis få elementer. Helt øverst finnes en navigasjonsbar som inkluderer ulike valg og innstillinger. Under denne finner vi en fleksibel plass hvor visningen avhenger av hva brukeren har åpnet. Her kan filinformasjon, innstillinger, filutforsker eller statusmeldinger vises, og for å gjøre layouten oversiktlig, vises kun en av disse om gangen. Tabellen og grafen er plassert under dette igjen, men hvis den fleksible plassen ikke brukes vil tabellen og grafen flyttes opp. Hvordan tabell og graf vises avhenger av skjermstørrelse på enheten som brukes. Hvis skjermen er stor, vil tabellen og grafen vises ved siden av hverandre, mens på mindre skjermer vil grafen flyttes under tabellen. Figur \ref{fig:layout_stor} viser hvordan layouten ser ut på en større skjerm med filinformasjon åpnet. I figur \ref{fig:layout_liten} ser man hvordan applikasjonen ser ut på en mindre skjerm. Her er den fleksible plassen ikke brukt og man ser da hvordan grafen og tabellen er flyttet opp, samt hvordan grafen er plassert under tabellen.
 
@@ -140,7 +143,7 @@ Ved å skille ut denne funksjonen som en egen tjeneste får man en ryddigere og 
 I applikasjonen blir det brukt diverse modeller og moduler fra Angular. I dette kapittelet blir det forklart hvilke som er brukt.
 
 \subsection{Bruk av modeller i applikasjonen}
-I dette prosjektet er det brukt en Angular-modell for å binde verdiene fra brush-objektene til HTML-malen. Det betyr at dersom brush-objektet blir endret i kildekoden, oppdateres det automatisk i HTML-visningen og omvendt. Prinsippet omtales som toveis-databinding og gjør at man slipper å bruke tid på å lage funksjoner som må oppdatere objektet hver gang.
+I dette prosjektet er det brukt en Angular-modell(ngModel) for å binde verdiene fra brush-objektene til HTML-malen. Det betyr at dersom brush-objektet blir endret i kildekoden, oppdateres det automatisk i HTML-visningen og omvendt. Prinsippet omtales som toveis-databinding og gjør at man slipper å bruke tid på å lage funksjoner som må oppdatere objektet hver gang.
 
 Modeller har ikke blitt brukt andre steder i applikasjonen, noe som kan være en svakhet i designet. Det finnes mange fordeler med å bruke modeller, og dette vil bli diskutert senere.
 
@@ -172,9 +175,19 @@ I applikasjon brukes dette i følgende tilfeller:
 \end{itemize}
 
 \subsection{Begrenset kommunikasjon som følge av CORS}
-På grunn av CORS-restriksjoner (Cross Origin Resource Sharing) i dagens nettlesere er det ikke mulig å få tilgang til alle headere fra robot-serveren. Dette gjør at de nødvendige headerne for å gjennomføre en Digest-request, ikke er tilgjengelige. Spesielle header-felt som trengs må eksponeres av serveren som sender responsen for at klienten skal få tilgang til disse gjennom nettleseren \cite{CORS_exposeHeaders}. 
+\label{corsRestrict}
+% På grunn av CORS-restriksjoner (Cross Origin Resource Sharing) i dagens nettlesere er det ikke mulig å få tilgang til alle headere fra robot-serveren. Dette gjør at de nødvendige headerne for å gjennomføre en Digest-request, ikke er tilgjengelige. Spesielle header-felt som trengs, må eksponeres av serveren som sender responsen for at klienten skal få tilgang til disse gjennom nettleseren \cite{CORS_exposeHeaders}.
 
-En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser hentes fra en robot. Responsen som da blir sendt tilbake vil ikke eksponere alle headerene sine, fordi dette ikke er spesifisert på serversiden. I prosjektet er det blitt brukt en nettleser med CORS deaktivert for testing og utvikling av applikasjonen. Hvis applikasjonen på et senere tidspunkt blir tatt i bruk, må man komme seg forbi denne restriksjonen ved å endre innstillingene på serversiden.
+På grunn av CORS-restriksjoner (Cross Origin Resource Sharing) i dagens nettlesere er det ikke mulig å få tilgang til alle headerne fra robot-serveren. Dette gjør at de nødvendige headerne for å gjennomføre en Digest-request, ikke er tilgjengelige. En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser skal hentes fra en robot:
+
+\begin{enumerate}
+    \item Brukeren sender en request til robot-serveren.
+    \item Serveren svarer med en «401-unauthorized» melding, men inkluderer ikke de headerne som trengs (realm, nonce, osv.) for å generere en ny gyldig request.
+\end{enumerate}
+
+I prosjektet er det blitt brukt en nettleser med CORS deaktivert for testing og utvikling av applikasjonen. Dette gjør det mulig å få tilgang til de nødvendige ressursene fra roboten. 
+
+% En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser skal hentes fra en robot. Responsen som da blir sendt tilbake vil ikke eksponere alle headerene sine, fordi dette ikke er spesifisert på serversiden. I prosjektet er det blitt brukt en nettleser med CORS deaktivert for testing og utvikling av applikasjonen. Hvis applikasjonen på et senere tidspunkt blir tatt i bruk, må man komme seg forbi denne restriksjonen ved å endre innstillingene på serversiden.
 
 \subsection{Autentisering av brukeren ved hjelp av Digest}
 I dette prosjektet har autentiseringsmetoden Digest blitt brukt for å validere brukere. Autentiseringsprosessen i applikasjonen starter opp hvis brukeren velger å hente en brushfil fra filsystemet til en robot. I applikasjonen er det et forhåndslagret brukernavn og passord som blir sendt til autentisering. 

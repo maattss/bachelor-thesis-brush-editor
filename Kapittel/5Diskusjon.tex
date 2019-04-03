@@ -5,14 +5,18 @@
 Introduksjon
 
 \section{Begrunnelse av tekniske valg}
-Det var flere tekniske valg som måtte bli tatt før arbeidet med applikasjonen kunne starte. Det første valget som ble tatt var hvilket web-rammeverk som skulle bli brukt og deretter ble de resterende valgene avgjort. I dette kapittelet vil det bli diskutert hvilke krav og forventninger som er satt til valgene og hva som ble den endelige avgjørelsen. 
+Det var flere tekniske valg som måtte bli tatt før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon samt at produktet som utvikles skal bli moderne og fremtidsrettet.
+
+Det første og viktigste valget var hvilket web-rammeverk som skulle bli brukt. De resterende valgene ble deretter gjort med hensyn til hvilket web-rammeverk som var valgt. I dette kapittelet vil det bli diskutert hvilke krav og forventninger som er satt til valgene og hva som ble de endelige avgjørelsen.
 
 \subsection{Hvorfor Angular ble valgt som web-rammeverk}
-Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde det vanskelig å velge hvilket som skulle brukes i dette prosjektet. I hovedsak var det tre rammeverk som ble vurdert: React, Angular og Vue.js. React og Angular er de to store, med Vue.js som en sterk nykommer og kraftig vekst de siste årene. Andre muligheter som Ember.js og Backbone.js ble også studert, men disse ble av forskjellige grunner utelatt fra vurderingen \cite{jsFrameworks}. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon samt at produktet som utvikles skal bli moderne og fremtidsrettet.
+Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde det vanskelig å velge hvilket som skulle brukes i dette prosjektet. I hovedsak var det tre rammeverk som ble vurdert: React, Angular og Vue.js. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene. Andre muligheter som Ember.js og Backbone.js ble også studert, men disse ble av forskjellige grunner utelatt fra vurderingen \cite{jsFrameworks}. 
+\todo[inline]{Skrive om hvorfor Ember og Backbone ikke ble videre vurdert. Backbone=gammelt, Ember=ikke så populært}
 
-Alle tre rammeverkene/bibliotekene, React, Angular og Vue.js, er komponentbaserte (beskrevet i kapittel \ref{AngularKomponenter}) og brukes ofte til lignende oppgaver. Allikevel har de mange ulike egenskaper som gjør dem mer eller mindre egnet til prosjekter av forskjellig type.
+Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er komponentbaserte (beskrevet i kapittel \ref{AngularKomponenter}). Allikevel har de mange ulike egenskaper som gjør dem mer eller mindre egnet til ulike prosjekter.
 \begin{itemize}
-    \item \textbf{React} er et JavaScript-bibliotek for å bygge brukergrensesnitt opprinnelig laget av Facebook \cite{reactHistory}. I dag er React blitt åpen kildekode og vedlikeholdes av et samfunn av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript. I tillegg er React-applikasjoner basert på en virtuell Document Object Model (DOM). Denne modellen skiller seg fra tradisjonell HTML DOM ved at kun elementene som endres i programmet oppdateres i visningen \cite{reactVirtualDOM}. Dette gjør lasting av applikasjonen mer optimalisert og kan gjøre innlastingstida raskere enn i en tradisjonell DOM. Det er også mulig med enveis binding av data i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
+    \item \textbf{React} er et JavaScript-bibliotek for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript. I tillegg er React-applikasjoner basert på en virtuell Document Object Model (DOM). Denne modellen skiller seg fra tradisjonell HTML DOM ved at kun elementene som endres i programmet oppdateres i visningen \cite{reactVirtualDOM}.%Dette kan gjøre innlastingstida betydelig raskere enn i en tradisjonell DOM-innlasting. 
+    Det er også mulig med enveis binding av data i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
     
     \item \textbf{Angular} er et fullverdig JavaScript-rammeverk utviklet av Google. Angular er etterfølgeren til Angular.js, men er en komplett omskriving av Angular.js, og må derfor ikke forveksles med dette rammeverket. I motsetning til de andre verktøyene implementerer Angular TypeScript som utviklingsspråk. TypesScript er en Javascript-utvidelse som introduserer statisk typing og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen. En annen unik egenskap med Angular, er muligheten for toveis databinding. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdata-en. Brukere kan da manipulere dataen som blir lagret \cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert umiddelbart og lagret i programminnet.
     
@@ -36,24 +40,23 @@ Valget falt til slutt på å bruke Angular i dette prosjektet. Selv om React ble
 \subsection{Hvorfor Chart.js ble valgt som graf-rammeverk}
 En viktig del av denne applikasjonen er grafen som viser frem informasjon om valgt brush. En viktig beslutning i prosjektet var derfor å velge et passende graf-bibliotek. 
 
-Biblioteket måtte kunne vise frem grafen med et oversiktlig og moderne utseende. Fokus ble derfor satt til å finne et bibliotek som tilfredsstilte dette, samt at det var enkelt i bruk. Kun et enkelt stolpediagram skulle vises frem, så det var ikke viktig at biblioteket inneholdt mange grafmuligheter. I tillegg var det en stor fordel om biblioteket lett kunne integreres med Angular. Etter å ha undersøkt en del kom det frem to kandidater som skilte seg ut fra resten: Chart.js og Chartist.js. Begge er «open-source»-prosjekter og det finnes utvidelser som gjør dem enkle å integrere i Angular applikasjon. 
+Biblioteket måtte kunne vise frem grafen med et oversiktlig og moderne utseende. Fokus ble derfor satt til å finne et bibliotek som tilfredsstilte dette, samt at det var enkelt i bruk. Kun ett enkelt stolpediagram skulle vises frem, så det var ikke viktig at biblioteket inneholdt mange grafmuligheter. I tillegg var det en stor fordel om biblioteket lett kunne integreres med Angular. Etter å ha undersøkt en del kom det frem to kandidater som skilte seg ut fra resten: Chart.js og Chartist.js. Begge er «open-source»-prosjekter og det finnes utvidelser som gjør dem enkle å integrere i Angular applikasjon. 
 \begin{itemize}
-    \item \textbf{Chart.js} fokuserer på å være enkelt og brukervennlig. Antallet valgmuligheter er derfor mindre enn i mange andre bibliotek. Chart.js inneholder 8 ulike typer grafer, hvor stolpediagram er en av dem. Utseendet til grafene som lages ved hjelp av Chart.js er moderne og størrelse er responsiv  \cite{chartjs}. Utvidelsen \href{https://github.com/valor-software/ng2-charts}{Ng2-charts} gjør det enkelt å bruke biblioteket i Angular. Chart.js kan, etter integreringen, brukes som en hvilken som helst annen intern komponent i applikasjonen.
+    \item \textbf{Chart.js} fokuserer på å være enkelt og brukervennlig. Antall valgmuligheter er derfor mindre enn i mange andre bibliotek. Chart.js inneholder 8 ulike typer grafer, hvor stolpediagram er en av dem. Utseendet til grafene som lages ved hjelp av Chart.js er moderne og størrelsen er responsiv  \cite{chartjs}. Utvidelsen \href{https://github.com/valor-software/ng2-charts}{Ng2-charts} gjør det enkelt å bruke biblioteket i Angular. Chart.js kan, etter integreringen, brukes som en hvilken som helst annen intern komponent i applikasjonen.
     \item \textbf{Chartist.js} prioriterer også å være et enkelt bibliotek. Allikevel inneholder Chartist.js en del flere muligheter og graftyper enn Chart.js. Utseendet er moderne og responsivt, men en del annerledes enn Chart.js \cite{chartistjs}. I likhet med Chart.js finnes det en utvidelse, \href{https://github.com/willsoto/ng-chartist}{Ng-chartist}, som gjør det lett å integrere Chartist.js i Angular-applikasjonen.
 \end{itemize}
 
 Disse bibliotekene har mange likhetstrekk og begge er gode alternativer. Valget denne gangen falt på Chart.js hovedsakelig på grunn av færre valgmuligheter. Applikasjonen hadde ikke behov for avanserte muligheter.
 
 \subsection{Hvorfor Bootstrap ble valgt som stil-rammeverk}
-I oppstarten av dette prosjektet stod designvalget mellom å bruke Bootstrap, Foundation eller Angular Material for å gjøre siden mer attraktiv. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Mye av grunnen til at Angular Material ble tatt opp til vurdering, var fordi det var bestemt at rammeverket rundt prosjektet skulle være Angular. Det ble satt opp noen kriterier (viktige og mindre viktige) for de ulike rammeverkene:
-
+I oppstarten av dette prosjektet stod designvalget mellom å bruke Bootstrap, Foundation eller Angular Material for å gjøre siden mer attraktiv. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Mye av grunnen til at Angular Material ble tatt opp til vurdering, var fordi det var bestemt at rammeverket rundt prosjektet skulle være Angular. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
 
 \begin{table}[ht]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|c|}
 \hline
 \rowcolor[HTML]{96FFFB} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Kriterier}} & \textbf{Bootstrap} & \textbf{Foundation} & \textbf{Angular Material} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Egenskaper}} & \textbf{Bootstrap} & \textbf{Foundation} & \textbf{Angular Material} \\ \hline
 \rowcolor[HTML]{FCFF2F} 
 Tidligere erfaring* & JA & NEI & NEI \\ \hline
 \rowcolor[HTML]{FCFF2F} 
@@ -62,17 +65,17 @@ Responsivt design* & JA & JA & JA \\ \hline
 Støtte for alle plattformer* & JA & NEI & JA \\ \hline
 God dokumentasjon** & JA & JA & JA \\ \hline
 Brukervennlig** & JA & JA & JA \\ \hline
-Mest brukt & JA & NEI & NEI \\ \hline
+Mest brukt \cite{top5frontend} & JA & NEI & NEI \\ \hline
 Basert på rutenettsystem & JA & JA & JA \\ \hline
 Direkte linkede klasser (slipper å legge til manuelt) & NEI & JA & NEI \\ \hline
 \end{tabular}
 }
-*De viktigste kriteriene
+*De viktigste egenskapene
 
 **Egen oppfatning
 \end{table}
 
-\noindent Valget falt til slutt på Bootstrap ettersom det var dette rammeverket som oppfylte de viktigste kriteriene. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et moderne preg. Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. Dette førte til at Angular Material sitt tooltip-verktøy ble brukt som erstatter på de aktuelle elementene. 
+\noindent Valget falt til slutt på Bootstrap ettersom det var dette rammeverket som oppfylte de viktigste egenskapene. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et moderne preg. Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. Dette førte til at Angular Material sitt tooltip-verktøy ble brukt som erstatter på de aktuelle elementene. 
 
 %\noindent Valget falt på Bootstrap ettersom det var dette rammeverket som oppfylte de viktigste kriteriene. Dette har ført til mye spart tid siden det ikke har vært nødvendig å skrive noe særlig kode for å style elementene. Angular Material ble heller ikke helt utelatt fra applikasjonen ettersom alle tooltipene er laget ved hjelp av dette rammeverket. 
 
@@ -81,29 +84,30 @@ Selv om det er mange fordeler med Bootstrap så finnes det spesielt én stor ule
 % Selv om det er mange fordeler med Bootstrap så finnes det spesielt én stor ulempe. Bismaken av at det er det mest brukte rammeverket er at man ikke får noe unikt design på nettsiden. Det er selvfølgelig mulig å legge til et eget preg ved å spesifisere stilklassene, men da er egentlig poenget med at Bootstrap skal være enkelt borte. Dette ble tatt hensyn til før valget ble tatt, men det ble bestemt at det skulle settes størst fokus på funksjonalitet og ikke et komplisert design. 
 
 \subsection{Hvorfor Git ble valgt som versjonskontroll}
-Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, Bazaar, Darcs, osv. Et DVCS holder styr på forandringer i filer slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir lettere å samarbeide og holde kontroll på endringer. Valget av DVCS sto mellom Git og Mercurial siden dette er to av de mest brukte. Noen av kriteriene som var satt til valget var:
+Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, SVN, Bazaar, Darcs, osv. Et DVCS holder styr på forandringer i filer slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir lettere å samarbeide og holde kontroll på endringer. Valget av DVCS sto mellom Git og Mercurial siden begge disse er blandt de mest brukte. Noen av de ønskede egenskapene satt til valget var:
 
 \begin{table}[ht]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|}
 \hline
 \rowcolor[HTML]{96FFFB} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Kriterier}} & \textbf{Git} & \textbf{Mercurial} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Egenskaper}} & \textbf{Git} & \textbf{Mercurial} \\ \hline
 \rowcolor[HTML]{FCFF2F} 
 Tidligere erfaring* & JA & NEI \\ \hline
 \rowcolor[HTML]{FCFF2F} 
 Mulighet å slette og endre navn på grener* & JA & NEI (men kan lukkes) \\ \hline
 God dokumentasjon** & NEI & NEI \\ \hline
 Brukervennlig** & JA & JA \\ \hline
-Mest brukt & JA & NEI \\ \hline
+Mest brukt \cite{topDistributedVersionControlSystems} & JA & NEI \\ \hline
 \end{tabular}
 }
-*De viktigste kriteriene
+*De viktigste egenskapene
 
 **Egen oppfatning
 \end{table}
 
-Ettersom de viktigste kriteriene ble oppfylt av Git, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og har vært en viktig faktor for at en god arbeidsfly har blitt opprettholdt. 
+Ettersom Git oppfylte de viktigste egenskapene, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og 
+har vært en viktig faktor for at en god arbeidsflyt har blitt opprettholdt.
 
 I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grenen inneholdt siste stabile versjon av applikasjonen og ble oppdatert regelmessig (fra dev-grenen) gjennom hele perioden. Dev-grenen ble brukt til å implementere ny funksjonalitet, og dette førte til at den inneholdt funksjoner som ikke alltid var skikkelig testet. For å effektivisere bruken av versjonskontrollen, ble det ofte opprettet nye grener ut fra dev-grenen. Dette ble gjort slik at man kunne arbeide fritt, uten at det førte til problemer i dev-grenen. Etter at en ny funksjonalitet var fullført i den nye grenen, ble den slått sammen med dev igjen. Dersom det ble oppdaget underveis at den nye funksjonaliteten ikke ville fungere, ble denne grenen bare slettet uten problemer. 
 
@@ -115,14 +119,14 @@ I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grene
 \end{figure}
 
 \subsection{Hvorfor GitHub ble valgt som plattform}
-Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom GitLab og GitHub (som følge av at Git ble valgt som versjonskontroll). På begge disse plattformene kan man lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt. GitHub og GitLab er relativt like, så det var vanskelig å finne avgjørende kriterier:
+Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom GitLab og GitHub (som følge av at Git ble valgt som versjonskontroll). På begge disse plattformene kan man lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt. GitHub og GitLab er relativt like, så det var vanskelig å finne avgjørende egenskaper:
 
 \begin{table}[ht]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|}
 \hline
 \rowcolor[HTML]{96FFFB} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Kriterier}} & \textbf{GitHub} & \textbf{GitLab} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{96FFFB}\textbf{Egenskaper}} & \textbf{GitHub} & \textbf{GitLab} \\ \hline
 \rowcolor[HTML]{FCFF2F} 
 Tidligere erfaring* & JA & NEI \\ \hline
 \rowcolor[HTML]{FCFF2F} 
@@ -131,17 +135,17 @@ Tilgang til fullversjon med studielisens* & JA & JA \\ \hline
 Mulighet for oppretting og oppfølging av problemer* & JA & JA \\ \hline
 Lett å finne frem i dokumentasjon** & JA & JA \\ \hline
 Lett å bruke** & JA & JA \\ \hline
-Mest brukt & JA & NEI \\ \hline
+Mest brukt \cite{top10versioncontrolsystems} & JA & NEI \\ \hline
 Private grener & JA & JA \\ \hline
 Importering og eksportering av prosjekt & NEI & JA \\ \hline
 \end{tabular}
 }
-*De viktigste kriteriene
+*De viktigste egenskapene
 
 **Egen oppfatning
 \end{table}
 
-Den tidligere erfaringen ble det avgjørende kriteriet i dette valget og førte til at GitHub ble vår faste arbeidsplattform. GitHub har flere nyttige funksjoner, deriblant «GitHub Issues» hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etterhvert som prosjektet utviklet seg og markert ferdige når de var implementert (se figur \ref{fig:github_issues}).
+Den tidligere erfaringen ble avgjørende i dette valget og førte til at GitHub ble vår faste arbeidsplattform. GitHub har flere nyttige funksjoner, deriblant «GitHub Issues» hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etterhvert som prosjektet utviklet seg og markert ferdige når de var implementert (se figur \ref{fig:github_issues}).
 
 \begin{figure}[H]
 \centering
@@ -163,13 +167,13 @@ Legg til figur her (feks. illustrasjon av ansatt med mobil kobles opp mot robot)
 Hvorfor komponenter, tjenester etc. er delt inn slik som de er
 
 \section{Forslag til forbedringer ved videre utvikling}
-I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, ettersom det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
+I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, siden det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
 
 \subsection{Sikrere autentiseringsmetode enn Digest}
-Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot Web Service (API) i dette prosjektet. I dag vurderes denne formen for autentisering ofte som som ikke sikker nok. Selv om Digest er sikrere enn Basic Authentication (forklart i kapittel \ref{basicAuthentication}) som sender brukernavn og passord i klartekst, har metoden likevel klare mangler:
+Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot Web Service (API) i dette prosjektet. I dag vurderes denne formen for autentisering ofte som som ikke sikker nok. Selv om Digest er sikrere enn Basic Authentication (forklart i kapittel \ref{basicAuthentication}), har metoden likevel klare mangler:
 
 \begin{itemize}
-\item Krypteringen (MD5) er utdatert og reversibel. Det fører til at angripere kan få tak i brukernavn og passord til brukere.
+\item Krypteringen (MD5) er utdatert og reversibel \cite{md5_outdated}. Det fører til at angripere kan få tak i brukernavn og passord til brukere.
 \item Det er til en viss grad sårbart for replay-angrep (se figur \ref{fig:replayAttack}). Selv om det blir brukt en engangsverdi (nonce) for hver tilkobling, så er det opp til serveren å sjekke at engangsverdien ikke blir brukt flere ganger. Hvis dette ikke blir sjekket av serveren, vil det være mulig å utføre et replay-angrep \cite{replayAttack}.
 \end{itemize}
 
@@ -180,19 +184,18 @@ Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot 
 \label{fig:replayAttack}
 \end{figure}
 
-\noindent For å forbedre sikkerheten anbefales det derfor å bytte til en mer moderne autentiseringsmetode, for eksempel OAuth 2.0 (forklart i kap \ref{OAuth}). Det finnes flere fordeler med å bruke OAuth istedenfor Digest. Her er noen av dem:
+\noindent For å forbedre sikkerheten kunne en mulig løsning vært å bytte til en mer moderne autentiseringsmetode, for eksempel OAuth 2.0 (forklart i kap \ref{OAuth}). Det finnes flere fordeler med å bruke OAuth istedenfor Digest. Her er noen av dem:
 \begin{itemize}
-\item Brukernavn og passord blir ikke sendt rundt slik som i Digest. Det vil istedenfor bli brukt en autentiseringskode (token) for å autentisere brukeren. Denne autentiseringskoden inneholder ingen brukernavn eller passord og vil utløpe etter kort tid. 
+\item Brukernavn og passord blir ikke sendt mellom klient og server slik som i Digest. Det vil istedenfor bli brukt en autentiseringskode (token) for å autentisere brukeren. Denne autentiseringskoden inneholder ingen brukernavn eller passord og vil utløpe etter kort tid. 
 \item Ulike adgangsnivåer: read-only eller read-write. Det vil si at man kan velge om brukeren skal kun skal ha mulighet til å hente filer eller om det også skal bli gitt tilgang til å overskrive filer fra roboten.
 \item Man kan velge hvilken informasjon som skal være tilgjengelig/skjult for brukeren.
 \end{itemize}
 
-Ulempen med OAuth er at det er krevende å sette opp en slik autentisering og man må ha tilgang til serveren. Selv om det vil kreve mye tid, ville det ha hevet sikkerheten i applikasjonen betydelig.
+\noindent Ulempen er at det er krevende å sette opp OAuth, men dette ville hevet sikkerheten i applikasjonen betydelig.
 
 \subsection{Forbedre kodestruktur}
-\todo[inline]{Mats/Tobias skriv her}
-Koden vår er garantert ikke optimal. Design og oppsett (flere/færre komponenter osv).
-Mer bruk av modeller for en mer effektiv og oversiktlig applikasjon. Det er henvist til denne diskusjonen i kapittel 3, modeller.
+En potensiell forbedring i koden til dette prosjektet er implementering av Angular sin ruting-tjeneste (Angular Router). Denne tjeneste tar hånd om å navigere brukeren mellom forskjellig visninger av de ulike komponentene. Vurderingen i starten da prosjektet ble starte var at det ikke kom til å bli nødvendig å implementere dette. Men etterhvert som prosjektet har utviklet seg, har det blitt klart at en slik tjeneste er nødvendig. Det ble derfor implementert en egen visnings-tjeneste som håndterer dette. Denne kunne med fordel blitt byttet ut med Angular Router, for en mer oversiktlig og ryddig oversikt over applikasjonen.
+\todo[inline]{Mats skriv mer her om modeller og inndeling av tjenester}
 
 \subsection{Flere funksjoner i filvelgeren}
 Komponenten hvor man har muligheten til åpne og bla filer fra filsystemet til Robot Web Service, kunne med fordel vært utvidet med flere funksjoner. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere i filvelgeren:
@@ -203,24 +206,39 @@ Komponenten hvor man har muligheten til åpne og bla filer fra filsystemet til R
     \item Duplisere mappe/fil
 \end{itemize}
 
-Dette er ikke kritiske funksjoner, men disse hadde gjort filvelgeren mer komplett. Målet med dette prosjektet er på sikt å kunne bytte ut den eksisterende Windows-applikasjonen og det er da en fordel at slike muligheter er på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen tekniske utfordringer knyttet til implementasjonen. Knapt med tid var det som gjorde at disse funksjonene ble prioritert bort i dette prosjektet.
+\noindent Dette er ikke kritiske funksjoner, men de hadde gjort filvelgeren mer komplett. Målet med dette prosjektet er på sikt å kunne bytte ut den eksisterende Windows-applikasjonen og det er da en fordel at slike muligheter er på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen tekniske utfordringer knyttet til implementasjonen. Knapt med tid var det som gjorde at disse funksjonene ble prioritert bort i dette prosjektet.
 
 \subsection{Flere innstillinger}
-\todo[inline]{Tobias skriv her}
-Legge til flere innstillinger som gjør applikasjonen mer brukervennlig og lett å bruke.
+Slik applikasjonen er nå så finnes det tre egenskaper som kan endres i innstillinger:
 
-\subsection{Forbedre pålogging}
-\todo[inline]{Mats/Tobias skriv her}
-Forbedre pålogging. Mulighet for å endre brukernavn og passord for brukeren. Kanskje lage en egen innloggingskomponent og ta i bruk approuting. 
+\begin{itemize}
+\item Endre maksverdi for en kanal.
+\item Endre IP-adresse til robot.
+\item Tilbakestille kanalnavn til standard.
+\end{itemize}
 
-\section{Problemer under utviklingen}
-\todo[inline]{Mats/Tobias skriv her}
-Introduksjon
-\subsection{CORS}
-\todo[inline]{Mats/Tobias skriv her}
-Dagens nettlesere har restriksjoner på dette som gjør at applikasjonen ikke fungerer optimalt. Forklar og diskuter dette problemet
+\noindent Som man kan se er det fullt mulig å legge til flere nyttige innstillinger enn de som allerede er der. Det finnes ikke noen innstillinger som endrer på utseendet i applikasjonen, så dette kunne vært mulig å legge til. Samtidig er det lurt å tenke over uttrykket «more is less». Applikasjonen blir ikke nødvendigvis bedre av å legge til 1000 nye innstillinger, men her er et forslag til et par forbedringer:
 
-Husk at dette IKKE skal skrives som en rapport om våre problemer!
+\begin{itemize}
+\item Mulighet til å endre språk.
+\item Mulighet til å endre utseendet på siden (se eksempel i figur \ref{fig:vglive}).
+\item Mulighet til å endre hvilken type graf som skal vises. 
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figurer/5Diskusjon/Vglive.jpg}
+\caption{Skjermbilder fra VGlive \cite{vglive}. I det øverste skjermbildet kan man velge at man vil ha nattmodus slik at det blir et mørkt utseende som vist i det nederste skjermbildet.}
+\label{fig:vglive}
+\end{figure}
+
+\subsection{Testing}
+\todo[inline]{Skrive om unittesting, ng-test og forbedringer knyttet til dette?}
+
+\section{Problemet med CORS under utviklingen}
+CORS-restriksjonen har vært et vesentlig problem under utviklingen av applikasjonen. Restriksjonen hindrer tilgang til headere som trengs for å gjennomføre en Digest-request. Dette hindrer dermed brukeren tilgang til robotkontrolleren, med mindre CORS blir slått av manuelt (noe som ikke er anbefalt av sikkerhetsmessige årsaker).
+
+Et forslag til videre forbedring av applikasjonen kan være å finne en løsning på dette restriksjons-problemet. En potensiell løsning kan være å spesifisere på serversiden at de aktuelle headerne skal bli eksponert. Dette kan være vanskelig å få til siden det sikkert er strenge sikkerhetsregler angående dette.
 
 \section{Måloppnåelse}
 \todo[inline]{Mats/Tobias skriv her}

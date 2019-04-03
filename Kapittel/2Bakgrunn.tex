@@ -9,6 +9,14 @@ For å forstå hvordan applikasjonen fungerer kan det være nyttig å få en inn
 
 Hver robot har en tilhørende robotkontroller som styrer ulike aspekter med roboten. Alle robotkontrollerne har en API-tjeneste (Robot Web Services). Denne tjenesten gjør det mulig å utvikle egne applikasjoner som kan kommunisere med ABB sine roboter. Kontrollerne har hver sin filtjeneste hvor ulike filer kan hentes eller lagres. Noen av disse filene blir brukt til å beskrive et program i en lakkeringsjobb. En slik fil kalles for en brush-fil. Filen kan bli lest inn i en brush-tabell for å få et mer helhetlig bilde av dataene og en bredere forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner hvilket omtales som kanaler. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Hver kanal kan ha et egendefinert navn for å gjøre det enklere å huske hva de beskriver.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figurer/2Bakgrunn/Flytskjema.png}
+\caption{Informasjonsflyt mellom datamaskin, robotkontroller og robot \cite{flytskjema}.}
+\label{fig:flytskjema}
+\end{figure}
+
+
 Robot Studio-programmet fra ABB er et nyttig hjelpemiddel dersom man vil teste de ulike funksjonene ved robotene uten direkte oppkobling mot en fysisk maskin. I programmet kan man opprette en virtuell robot med tilhørende kontroller som gjør det lettere å teste ut funksjoner i applikasjonen. 
 
 \section{Generelt om applikasjonsutvikling for web}
