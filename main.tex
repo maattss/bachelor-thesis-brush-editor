@@ -65,6 +65,11 @@
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
+% For checkmarks
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -115,7 +120,7 @@
 
 \thispagestyle{empty}
 \begin{figure}[ht]
-        \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{Figurer/1Introduksjon/Forside}}%
+        \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{Figurer/1Introduksjon/Forside}}%
         %\caption{}
         %\label{}
 \end{figure}
@@ -228,7 +233,7 @@ Liten tekst om person som bør takkes. Ikke glem å inkludere veileder\ldots
 
 \listoftables % Prints the list of tables
 
-\listoflistings % Prints the list of code listings
+%\listoflistings % Prints the list of code listings
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
