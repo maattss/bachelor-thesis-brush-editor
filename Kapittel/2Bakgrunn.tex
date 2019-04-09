@@ -7,14 +7,16 @@ Dette kapittelet vil ta for seg nødvendig kunnskap om de viktigste hjelpemidlen
 \section{Om lakkeringsroboter}
 For å forstå hvordan applikasjonen fungerer kan det være nyttig å få en innføring i \textbf{hvordan lakkeringsrobotene til ABB fungerer:}
 
-\textbf{Hver robot har en tilhørende robotkontroller} som styrer ulike aspekter med roboten. Alle robotkontrollerne har en \textbf{API-tjeneste (Robot Web Services)}. Denne tjenesten gjør det mulig å utvikle egne applikasjoner som kan kommunisere med ABB sine roboter. Kontrollerne har hver sin filtjeneste hvor ulike \textbf{filer kan hentes eller lagres}. Noen av disse filene blir brukt til å beskrive et program i en lakkeringsjobb. En slik fil kalles for en \textbf{brush-fil}. Filen kan bli lest inn i en \textbf{brush-tabell} for å få et mer helhetlig bilde av dataene og en bredere forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner hvilket omtales som kanaler. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Hver kanal kan ha et egendefinert navn for å gjøre det enklere å huske hva de beskriver.
+\textbf{Hver robot har en tilhørende robotkontroller} som styrer ulike aspekter med roboten. Alle robotkontrollerne inkludere en \textbf{API-tjeneste (Robot Web Services)}. Denne tjenesten gjør det mulig å utvikle egne applikasjoner som kan kommunisere med ABB sine roboter. Hvordan en informasjonsflyt vil se ut mellom roboten, robotkontrolleren og en datamaskin er vist under (figur \ref{fig:flytskjema}).
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\textwidth]{Figurer/2Bakgrunn/Flytskjema.png}
 \caption{Informasjonsflyt mellom datamaskin, robotkontroller og robot \cite{flytskjema}.}
 \label{fig:flytskjema}
 \end{figure}
+
+Kontrollerne har hver sin filtjeneste hvor ulike \textbf{filer kan hentes eller lagres}. Noen av disse filene blir brukt til å beskrive et program i en lakkeringsjobb. En slik fil kalles for en \textbf{brush-fil}. Filen kan bli lest inn i en \textbf{brush-tabell} for å få et mer helhetlig bilde av dataene og en bredere forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner hvilket omtales som kanaler. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Hver kanal kan ha et egendefinert navn for å gjøre det enklere å huske hva de beskriver.
 
 Robot Studio-programmet fra ABB er et nyttig hjelpemiddel dersom man vil \textbf{teste de ulike funksjonene ved robotene uten direkte oppkobling} mot en fysisk maskin. I programmet kan man opprette en \textbf{virtuell robot} med tilhørende kontroller som gjør det lettere å teste ut funksjoner i applikasjonen. 
 

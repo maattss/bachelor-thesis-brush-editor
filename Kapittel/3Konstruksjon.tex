@@ -60,7 +60,7 @@ Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/NavKomponentSmal.png}
-    \caption{Navigasjonslinjen vist på smal skjerm.}
+    \caption{Navigasjonslinjen i applikasjonen (smal skjerm).}
     \label{fig:navSmall}
 \end{figure}
 
@@ -69,7 +69,7 @@ Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/NavKomponentBred.png}
-    \caption{Navigasjonslinjen vist på bred skjerm.}
+    \caption{Navigasjonslinjen i applikasjonen (bred skjerm).}
     \label{fig:navWide}
 \end{figure}
 
@@ -81,12 +81,12 @@ Applikasjonen inneholder en komponent hvor man kan endre innstillinger knyttet t
     \item Knappen for å \textbf{tilbakestille kanalnavnene} endrer navnene til standardverdiene \textbf{«Atom», «Fluid», «Shape 1», «Shape 2», «High volt»}. Dette kan være nyttig dersom brukeren har endret på navnene og så glemt hva de ulike kanalene egentlig betyr.
 \end{itemize}
 
-%\begin{figure}
-%    \centering
-%    \includegraphics{}
-%    \caption{Caption}
-%    \label{fig:my_label}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{Figurer/3Konstruksjon/Settings.PNG}
+    \caption{Innstillingene i applikasjonen.}
+    \label{fig:settings}
+\end{figure}
 
 \noindent Innstillingskomponenten åpnes/skjules ved hjelp av et trykk på «settings»-knappen i navigasjonslinjen. Den kan også skjules enten ved å gjennomføre en endring i innstillingene eller bare ved å klikke på krysset i hjørnet.
 
@@ -96,19 +96,27 @@ Denne komponenten \textbf{viser informasjon knyttet til filen} som er lastet inn
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/Filinfokomponent.png}
-    \caption{Filinformasjonskomponenten i applikasjonen.}
+    \caption{Filinformasjonen i applikasjonen.}
     \label{fig:filInfor}
 \end{figure}
 
 \subsection{Informasjonskomponenten i applikasjonen}
 I applikasjonen er det laget en informasjonskomponent for å \textbf{vise frem informasjon og feilmeldinger til brukeren}. Dette kan være nyttig dersom brukeren trenger en \textbf{tilbakemelding} etter å ha utført en handling. For eksempel får brukeren en tilbakemelding når innstillingene har blitt endret. Hvis endringen er vellykket, vil komponenten vise en \textbf{vellykket melding} og hvis noe går galt, vil en \textbf{feilmelding} dukke opp. Ved en eventuell feilmelding vil brukeren få vite hva som gikk galt, slik at feilen kan bli rettet opp i. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/InfoKomponent.png}
-    \caption{Suksessmelding i informasjonskomponenten i applikasjonen.}
-    \label{fig:Info}
+    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/SuccessMsg.PNG}
+    \caption{Suksessmelding i applikasjonen.}
+    \label{fig:success}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/ErrorMsg.PNG}
+    \caption{Feilmelding i applikasjonen.}
+    \label{fig:error}
+\end{figure}
+
 
 \subsection{Tabellkomponenten i applikasjonen}
 Etter at en brushfil er lastet opp, vil tabellen bli fylt med informasjon om brushen. Tabellen inneholder samme antall kolonner som det finnes kanaler i brushfilen. \textbf{Hver kolonne representerer en kanal} som sier noe om hva de tilhørende verdiene definerer. Hvis man endrer på noen av navnene, vil de redigerte kanalnavnene bli \textbf{lagret i en cookie} slik at man får disse navnene opp neste gang man leser inn en fil fra samme enhet (med forbehold om at brukeren ikke sletter cookies i mellomtiden). Om brukeren ikke har vært inne på applikasjonen før, vil det bli lastet inn standard kanalnavn (Atom, Fluid, Shape 1, Shape 2, High volt). Etter at dataene fra filen er lagt inn i tabellen vil det være mulig å \textbf{endre på verdiene etter behov}. Det blir gjennomført \textbf{validering av alle verdier} etter hvert som brukeren fyller de inn og grafen oppdateres for hver endring som blir gjort.
@@ -159,18 +167,18 @@ Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-f
 \section{Layout i applikasjonen}
 Fokuset i denne utviklingsprosessen har vært å lage en \textbf{oversiktlig og brukervennlig} applikasjon som fungerer bra på enheter med \textbf{små skjermer}. Layouten er av den grunn enkel med forholdsvis få elementer. Helt øverst finnes en navigasjonsbar som inkluderer ulike valg og innstillinger. Under denne finner vi en fleksibel plass hvor visningen avhenger av hva brukeren har åpnet. Her kan \textbf{filinformasjon, innstillinger, filutforsker, brush-mapping eller statusmeldinger} vises, og for å gjøre layouten oversiktlig, \textbf{vises kun en av disse om gangen}. Tabellen og grafen er plassert under dette igjen, men hvis den fleksible plassen ikke brukes vil tabellen og grafen flyttes opp. Hvordan tabell og graf vises \textbf{avhenger av skjermstørrelse} på enheten som brukes. Hvis skjermen er stor, vil tabellen og grafen vises ved siden av hverandre, mens på mindre skjermer vil grafen flyttes under tabellen. Figur \ref{fig:layout_stor} viser hvordan layouten ser ut på en større skjerm med filinformasjon åpnet. I figur \ref{fig:layout_liten} ser man hvordan applikasjonen ser ut på en mindre skjerm. Her er den fleksible plassen ikke brukt og man ser da hvordan grafen og tabellen er flyttet opp, samt hvordan grafen er plassert under tabellen.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/LayoutStorSkjerm}
-    \caption{Oversiktsbilde av applikasjonen på stor skjerm.}
-    \label{fig:layout_stor}
-\end{figure}
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Figurer/3Konstruksjon/LayoutLitenSkjerm}
-    \caption{Oversiktsbilde av applikasjonen på liten skjerm.}
+    \caption{Oversiktsbilde av applikasjonen (smal skjerm).}
     \label{fig:layout_liten}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/LayoutStorSkjerm}
+    \caption{Oversiktsbilde av applikasjonen (bred skjerm).}
+    \label{fig:layout_stor}
 \end{figure}
 
 \section{Tjenester brukt i applikasjonen}

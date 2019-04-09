@@ -2,12 +2,10 @@
 \chapter{Diskusjon}
 \label{diskusjon} % Bruk \ref{diskusjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
-I dette kapittelet skal de ulike beslutningene som er tatt i løpet av utviklingen bli drøftet. For- og motargumentene som har vært relevante for valgene, vil bli fremstilt. Kapittelet inkluderer også diskusjon rundt problemer som oppstod underveis og forslag til forbedringer ved videre utvikling.
-
-%I dette kapittelet skal de ulike beslutningene som er tatt i løpet av utviklingen bli drøftet, der for- og motargumentene som var relevante for valgene vil bli fremstilt. Kapittelet inkluderer også problemer som oppstod underveis og forslag til forbedringer ved videre utvikling.
+I dette kapittelet skal de ulike beslutningene som er tatt i løpet av utviklingen bli drøftet. For- og motargumentene som har vært relevante for valgene, vil bli fremstilt. Kapittelet inkluderer også diskusjon rundt problemer med applikasjonen og forslag til forbedringer ved videre utvikling.
 
 \section{Begrunnelse av tekniske valg}
-Det var flere tekniske valg som måtte bli tatt før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon, samt at produktet som utvikles skal bli moderne og fremtidsrettet.
+Det var flere tekniske valg som måtte tas før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon, samt at produktet som utvikles skal bli moderne og fremtidsrettet.
 
 Det første og viktigste valget var hvilket web-rammeverk som skulle bli brukt. De resterende valgene ble deretter gjort med hensyn til hvilket web-rammeverk som var valgt. I dette kapittelet vil det bli diskutert hvilke krav og forventninger som var satt til valgene og hva som ble de endelige avgjørelsen.
 
@@ -83,7 +81,7 @@ Basert på rutenettsystem & Ja & Ja & Ja &  \\ \hline
 Direkte linkede klasser & \cellcolor[HTML]{FF4136}Nei & Ja & \cellcolor[HTML]{FF4136}Nei &  \\ \hline
 \end{tabular}%
 }
-* Egen oppfatting
+* Subjektiv vurdering
 \end{table}
 
 \noindent Valget falt til slutt på Bootstrap ettersom det var dette rammeverket som oppfylte de viktigste egenskapene. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et moderne preg. Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. Dette førte til at Angular Material sitt tooltip-verktøy ble brukt som erstatter på de aktuelle elementene. 
@@ -106,7 +104,7 @@ God dokumentasjon* & \cellcolor[HTML]{FF4136}Nei & Nei &  \\ \hline
 Brukervennlig* & Ja & \cellcolor[HTML]{2ECC40}Ja &  \\ \hline
 Mest brukt \cite{topDistributedVersionControlSystems} & Ja & Nei &  \\ \hline
 \end{tabular}
-\\ * Egen oppfatning
+\\ * Subjektiv vurdering
 \end{table}
 
 Ettersom Git oppfylte de viktigste egenskapene, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og 
@@ -118,7 +116,7 @@ I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grene
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{Figurer/5Diskusjon/Workflow.png}
-\caption{Eksempel på en workflow i Git \cite{workflow_bilde}}
+\caption{Eksempel på en workflow i Git \cite{workflow_bilde}.}
 \label{fig:workflow2}
 \end{figure}
 
@@ -141,7 +139,7 @@ Private grener & Ja & Ja &  \\ \hline
 Importering og eksportering av prosjekt & \cellcolor[HTML]{FF4136}Nei & Ja &  \\ \hline
 Mest brukt \cite{top10versioncontrolsystems} & Ja & \cellcolor[HTML]{FF4136}Nei &  \\ \hline
 \end{tabular}
-\\ * Egen oppfatning
+\\ * Subjektiv vurdering
 \end{table}
 
 Den tidligere erfaringen ble avgjørende i dette valget og førte til at GitHub ble vår faste arbeidsplattform. GitHub har flere nyttige funksjoner, deriblant «GitHub Issues» hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert (se figur \ref{fig:github_issues}).
