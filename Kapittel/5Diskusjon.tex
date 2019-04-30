@@ -2,15 +2,17 @@
 \chapter{Diskusjon}
 \label{diskusjon} % Bruk \ref{diskusjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
-I dette kapittelet skal de ulike beslutningene som er tatt i løpet av utviklingen bli drøftet. For- og motargumentene som har vært relevante for valgene, vil bli fremstilt. Kapittelet inkluderer også diskusjon rundt problemer med applikasjonen og forslag til forbedringer ved videre utvikling.
+I dette kapittelet blir de ulike beslutningene som er tatt i løpet av utviklingen drøftet. Forventinger og krav som var satt til valgene og hva som ble de endelige avgjørelsene vil bli diskutert. I tillegg, inkluderer kapittelet diskusjon rundt problemer med applikasjonen og forslag til forbedringer ved videre utvikling.
+%For- og motargumentene som har vært relevante for valgene vil bli fremstilt.
 
-\section{Begrunnelse av tekniske valg}
-Det var flere tekniske valg som måtte tas før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet har vært å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon, samt at produktet som utvikles skal bli moderne og fremtidsrettet.
-
-Det første og viktigste valget var hvilket web-rammeverk som skulle bli brukt. De resterende valgene ble deretter gjort med hensyn til hvilket web-rammeverk som var valgt. I dette kapittelet vil det bli diskutert hvilke krav og forventninger som var satt til valgene og hva som ble de endelige avgjørelsen.
+\section{Begrunnelse og forklaringer knyttet til tekniske valg}
+Det var flere tekniske valg som måtte tas før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet var å bruke teknologier som er blant de mest aktuelle i dag. Dette for å få nytte av god og oppdatert dokumentasjon, samt at produktet som utvikles skal bli moderne og fremtidsrettet.
+%Det første og viktigste valget var hvilket web-rammeverk som skulle benyttes. De resterende valgene ble deretter gjort med hensyn til dette valget.
+%I dette kapittelet vil det bli diskutert hvilke krav og forventninger som var satt til valgene og hva som ble de endelige avgjørelsen.
 
 \subsection{Hvorfor Angular ble valgt som web-rammeverk}
-Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde det vanskelig å velge hvilket som skulle brukes i dette prosjektet. I hovedsak var det tre rammeverk som ble vurdert: React, Angular og Vue.js. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene (figur \ref{fig:FrameworkPop}). Andre muligheter som Ember.js og Backbone.js ble også studert. Backbone.js ble utelatt fra vurderingen på bakgrunn av alderen og oppdateringsfrekvensen til rammeverket. Backbone.js var et veldig populært rammeverk tidligere, men etter introduksjonen av moderne rammeverk har interessen dalt kraftig (figur \ref{fig:FrameworkPop}). Ember.js ble heller ikke vurdert videre da populariteten ikke kan sammenlignes med Angular/React og veksten ikke kan sammenlignes med Vue.js (figur \ref{fig:FrameworkPop}) \cite{jsFrameworks}.
+%Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde valget krevende.
+Det første og viktigste valget var hvilket web-rammeverk som skulle benyttes. På grunn av det store antallet JavaScript rammerverk/bibliotek som finnes i dag, var dette et krevende valg. I hovedsak var det tre rammeverk som ble vurdert: React, Angular og Vue.js. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene (figur \ref{fig:FrameworkPop}). I tillegg til disse tre, ble andre muligheter som Ember.js og Backbone.js også evaluert. Backbone.js ble utelatt fra vurderingen på grunn av alderen og oppdateringsfrekvensen. Backbone.js var et veldig populært rammeverk tidligere, men etter introduksjonen av moderne rammeverk har interessen dalt kraftig (figur \ref{fig:FrameworkPop}). Ember.js ble heller ikke vurdert videre da populariteten ikke kan sammenlignes med Angular/React og veksten ikke kan sammenlignes med Vue.js (figur \ref{fig:FrameworkPop}) \cite{jsFrameworks}.
 
 \begin{figure}[H]
     \centering
@@ -19,38 +21,41 @@ Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde det van
     \label{fig:FrameworkPop}
 \end{figure}
 
-Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er komponentbaserte (beskrevet i kapittel \ref{AngularKomponenter}). Allikevel har de mange ulike egenskaper som gjør hvert enkelt mer eller mindre egnet til ulike prosjekter.
+Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er komponentbaserte (beskrevet i kapittel \ref{AngularKomponenter}). Allikevel har de mange ulike egenskaper som gjør hver av dem mer/mindre egnet til ulike prosjekter.
 \begin{itemize}
-    \item \textbf{React} er et JavaScript-bibliotek for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript. I tillegg er React-applikasjoner basert på en virtuell Document Object Model (DOM). Denne modellen skiller seg fra tradisjonell HTML DOM ved at kun elementene som endres i programmet oppdateres i visningen \cite{reactVirtualDOM}. %Dette kan gjøre innlastingstida betydelig raskere enn i en tradisjonell DOM-innlasting. 
-    Det er også mulig med enveis binding av data i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
+    \item \textbf{React} er et JavaScript-bibliotek for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript. I tillegg er React-applikasjoner basert på en virtuell Document Object Model (DOM). En representasjon av brukergrensesnittet er lagret i minnet som synkroniseres med den «ekte» DOM-en. Dette gjør utvikling av applikasjoner enklere \cite{reactVirtualDOM}. Det er også mulig med enveis binding av data i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
     
-    \item \textbf{Angular} er et fullverdig JavaScript-rammeverk utviklet av Google. Angular er etterfølgere til Angular.js, men ettersom rammeverkene er svært forskjellige, er det viktig at de ikke forveksles med hverandre. I motsetning til de andre verktøyene bruker Angular TypeScript som utviklingsspråk. TypesScript er en Javascript-utvidelse som introduserer statisk typing og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen. En annen unik egenskap med Angular, er muligheten for toveis databinding. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdata-en. Brukere kan da manipulere dataen som blir lagret \cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert umiddelbart og lagret i programminnet.
+    \item \textbf{Angular} er et fullverdig JavaScript-rammeverk utviklet av Google og er etterfølgeren til Angular.js. Ettersom rammeverkene er svært forskjellige, er det viktig at de ikke forveksles med hverandre. I motsetning til de andre verktøyene bruker Angular TypeScript som utviklingsspråk. TypesScript er en Javascript-utvidelse som introduserer statisk typing og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen \cite{staticTyping}. En annen unik egenskap med Angular, er muligheten for toveis databinding. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdata-en. Brukere kan da manipulere dataen som blir lagret \cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert umiddelbart og lagret i programminnet.
     
-    \item \textbf{Vue.js} er i likhet med React et Javascript bibliotek og ikke et rammeverk. Målet til grunnleggeren av Vue.js var å lage et lett anvendelig bibliotek. Dette ble realisert ved å la kjernen i Vue.js kun fokusere på visningslaget av applikasjonen. Kjernen kan utvides ved å legge til offisielle tilleggsbibliotek ved behov. Denne tilpasningsmuligheten beskrives ofte som Vue.js sin største fordel i forhold til Angular og React. Vue.js har, i likhet med React, kun enveis data binding \cite{VueInformation}.
+    \item \textbf{Vue.js} er i likhet med React et Javascript-bibliotek og ikke et rammeverk. Målet til grunnleggeren av Vue.js var å lage et lett anvendelig bibliotek. Dette ble realisert ved å la kjernen i Vue.js kun fokusere på visningslaget av applikasjonen. Kjernen kan utvides ved å legge til offisielle tilleggsbibliotek ved behov. Denne tilpasningsmuligheten beskrives ofte som Vue.js sin største fordel i forhold til Angular og React. Vue.js har, i likhet med React, kun enveis data binding \cite{VueInformation}.
 \end{itemize}
 
-\noindent Figur \ref{fig:FrameworkPop} viser at Vue.js har hatt en bra vekst de siste årene, men at Angular og React er de mest populære. Det ble derfor etter hvert tatt en beslutning om å utelukke Vue.js fra vurderingen. I det videre arbeidet med å finne det rette verktøyet ble blant annet introduksjons-guiden til Angular og React gjennomført. Guidene inkluderte en rask introduksjon hvor målet var å lage en liten applikasjon. Disse var nyttige for å få et innblikk i hvordan Angular og React fungerte.
+\noindent Figur \ref{fig:FrameworkPop} viser at Vue.js har hatt en bra vekst de siste årene, men at Angular og React er de mest populære. Det ble derfor etter hvert besluttet å utelukke Vue.js fra den videre vurderingen. Deretter ble introduksjons-guidene til Angular og React gjennomført, for å få et bedre innblikk i hvordan begge fungerer. Guidene inkluderte en rask introduksjon hvor målet var å lage en liten applikasjon. Disse var nyttige for å få et innblikk i hvordan Angular og React fungerte.
+%I det videre arbeidet med å finne det rette verktøyet ble blant annet introduksjons-guiden til Angular og React gjennomført.
 
 Angular blir ofte betraktet som vanskeligere å lære, på grunn av størrelsen på rammeverket. Det finnes flere innebygde funksjoner og tjenester i Angular som kan være vanskelig å sette seg inn i med en gang \cite{angularvsreact}. 
 
 For utviklere som kommer fra en objektorientert bakgrunn, med lite JavaScript-erfaring med JavaScript, kan Angular allikevel være lettere å lære seg React. TypeScript-implementasjonen gjør at Angular har mer til felles med et standard objektorientert språk som Java, C++ eller C\#.
 
-\textbf{Den endelige beslutningen ble å bruke Angular som web-rammeverk i dette prosjektet}. Funksjonene, støtten for TypeScript og mulighetene som er bygget inn i rammeverket gjorde at Angular ble det foretrukne valget fremfor React som har en høyere popularitet.
+\textbf{Den endelige beslutningen ble å bruke Angular som web-rammeverk i dette prosjektet}. Funksjonene, støtten for TypeScript og mulighetene som er bygget inn i rammeverket gjorde at Angular ble det foretrukne valget, til tross for React sin  som har en høyere popularitet.
 
 \subsection{Hvorfor Chart.js ble valgt som graf-rammeverk}
 En viktig del av denne applikasjonen er grafen som viser frem informasjon om valgt brush. En viktig beslutning i prosjektet var derfor å velge et passende graf-bibliotek. 
 
-Biblioteket måtte ha mulighet til å vise frem grafen med et oversiktlig og moderne utseende. Målet ble derfor å finne et bibliotek som tilfredsstilte dette kravet, i tillegg til at det var enkelt å bruke. Det skulle kun bli vist frem ett enkelt stolpediagram og derfor var det ikke så viktig med mange grafmuligheter innad i biblioteket. Det ble også lagt stor vekt på at det skulle være enkelt å integrere biblioteket med Angular. Etter å ha undersøkt en stund kom det frem to kandidater som skilte seg ut fra de andre: Chart.js og Chartist.js. Begge bibliotekene er åpen kildekode og det finnes utvidelser som gjør det enkelt å integrere dem i en Angular-applikasjon. 
+Biblioteket måtte ha mulighet til å vise frem grafen på en oversiktlig måte, med et moderne utseende. Målet ble derfor å finne et bibliotek som var enkelt i bruk og samtidig tilfredsstilte dette kravet. Det var kun ett enkelt stolpediagram som skulle bli vist frem, og derfor var mange grafmuligheter innad i biblioteket ikke så viktig. Det ble også lagt stor vekt på at det skulle være enkelt å integrere biblioteket med Angular. Etter å ha undersøkt mange ulike alternativer var det til slutt to kandidater som skilte seg ut: Chart.js og Chartist.js. Begge bibliotekene er åpen kildekode og det finnes utvidelser som gjør det enkelt å integrere dem i en Angular-applikasjon. 
 
 \begin{itemize}
     \item \textbf{Chart.js} fokuserer på å være enkelt og brukervennlig. Antall valgmuligheter er derfor mindre enn i mange andre bibliotek. Chart.js inneholder 8 ulike typer grafer, hvor stolpediagram er en av dem. Utseendet til grafene som lages ved hjelp av Chart.js er moderne og størrelsen er responsiv  \cite{chartjs}. Utvidelsen \href{https://github.com/valor-software/ng2-charts}{Ng2-charts} gjør det enkelt å bruke biblioteket i Angular. Chart.js kan, etter integreringen, brukes som en hvilken som helst annen intern komponent i applikasjonen.
     \item \textbf{Chartist.js} prioriterer også å være et enkelt bibliotek. Allikevel inneholder Chartist.js en del flere muligheter og graftyper enn Chart.js. Utseendet er moderne og responsivt, men annerledes enn Chart.js \cite{chartistjs}. I likhet med Chart.js finnes det en utvidelse, \href{https://github.com/willsoto/ng-chartist}{Ng-chartist}, som gjør det lett å integrere Chartist.js i Angular-applikasjonen.
 \end{itemize}
 
-\noindent Disse bibliotekene har mange likhetstrekk og begge er gode alternativer. Valget denne gangen falt på Chart.js hovedsakelig på grunn av færre valgmuligheter. Applikasjonen hadde ikke behov for avanserte muligheter.
+\noindent Disse bibliotekene har mange likhetstrekk og begge er gode alternativer. Siden grafen i denne applikasjonen ikke hadde behov for avanserte tilpasningsmuligheter, falt valget til slutt på Chart.js. 
+
+% Valget denne gangen falt på Chart.js hovedsakelig på grunn av færre valgmuligheter. Applikasjonen hadde ikke behov for avanserte muligheter.
 
 \subsection{Hvorfor Bootstrap ble valgt som stil-rammeverk}
-I oppstarten av dette prosjektet stod designvalget mellom å bruke Bootstrap, Foundation eller Angular Material for å gjøre siden mer attraktiv. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Mye av grunnen til at Angular Material ble tatt opp til vurdering, var fordi det var bestemt at rammeverket rundt prosjektet skulle være Angular. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
+I oppstarten av dette prosjekter stod valget mellom Bootstrap, Foundation og Angular Material som verktøyet for å stilsette applikasjonen. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Mye av grunnen til at Angular Material ble tatt opp til vurdering, var fordi det var bestemt at rammeverket rundt prosjektet skulle være Angular. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
+% Old: I oppstarten av dette prosjektet stod designvalget mellom å bruke Bootstrap, Foundation eller Angular Material for å gjøre siden mer attraktiv.
 
 % Tabellfarger, Grønn: 2ECC40, Rød: FF4136, Gul: FFDC00
 \begin{table}[ht]
@@ -84,14 +89,16 @@ Direkte linkede klasser & \cellcolor[HTML]{FF4136}Nei & Ja & \cellcolor[HTML]{FF
 * Subjektiv vurdering
 \end{table}
 
-\noindent Valget falt til slutt på Bootstrap ettersom det var dette rammeverket som oppfylte de viktigste egenskapene. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et moderne preg. Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. Dette førte til at Angular Material sitt tooltip-verktøy ble brukt som erstatter på de aktuelle elementene. 
+\noindent Valget falt til slutt på Bootstrap ettersom det var dette rammeverket som oppfylte flest av de viktige egenskapene. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et moderne preg. Bruken av rammeverket har for det meste fungert bra, sett bort i fra et importeringsproblem ved bruk av tooltipene. Dette førte til at Angular Material sitt tooltip-verktøy ble brukt som erstatter på de aktuelle elementene. 
+%Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. 
 
-Selv om det er mange fordeler med Bootstrap så finnes det spesielt én stor ulempe. Ved å ta i bruk det mest brukte rammeverket får man ikke noe unikt design på nettsiden. Dette ble ikke tatt veldig mye hensyn til i denne applikasjonen, ettersom funksjonaliteten hadde en vesentlig høyere prioritet enn det å lage et glimrende design. 
+Selv om det er mange fordeler med Bootstrap så finnes det spesielt én stor ulempe. Ved å ta i bruk det mest brukte rammeverket får man ikke noe unikt design på nettsiden. Dette hensynet ble ikke vektlagt i denne applikasjonen, ettersom funksjonaliteten hadde en høyere prioritet enn et unikt design. 
+%Dette ble ikke tatt veldig mye hensyn til i denne applikasjonen, ettersomfunksjonaliteten hadde en vesentlig høyere prioritet enn det å lage et glimrende de-sign
 
 \subsection{Hvorfor Git ble valgt som versjonskontroll}
-Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, SVN, Bazaar, Darcs, osv. Et DVCS holder styr på forandringer i filer slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir lettere å samarbeide og holde kontroll på endringer. Valget av DVCS sto mellom Git og Mercurial siden begge disse er blant de mest brukte. Noen av de ønskede egenskapene satt til valget var:
+Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, SVN, Bazaar, Darcs, osv. Et DVCS holder styr på forandringer i filer slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir lettere å samarbeide og holde kontroll på endringer. Valget av DVCS sto mellom Git og Mercurial da disse er blant de mest brukte i dag. Noen av de ønskede egenskapene satt til valget var:
 
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|
 >{\columncolor[HTML]{2ECC40}}c |
@@ -110,8 +117,10 @@ Mest brukt \cite{topDistributedVersionControlSystems} & Ja & Nei &  \\ \hline
 Ettersom Git oppfylte de viktigste egenskapene, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og 
 har vært en viktig faktor for at en god arbeidsflyt har blitt opprettholdt.
 
-I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grenen inneholdt siste stabile versjon av applikasjonen og ble oppdatert regelmessig (fra dev-grenen) gjennom hele perioden. Dev-grenen ble brukt til å implementere ny funksjonalitet, og dette førte til at den inneholdt funksjoner som ikke alltid var skikkelig testet. For å effektivisere bruken av versjonskontrollen, ble det ofte opprettet nye grener ut fra dev-grenen. Dette ble gjort slik at man kunne arbeide fritt, uten at det førte til problemer i dev-grenen. Etter at en ny funksjonalitet var fullført i den nye grenen, ble den slått sammen med dev igjen. Dersom det ble oppdaget underveis at den nye funksjonaliteten ikke ville fungere, ble denne grenen bare slettet uten problemer. 
-% Eksempel på en workflow i med en Master, Hotfix, Release, Dev gren og to Feature grener
+\subsection{Hvordan Git ble brukt som versjonskontroll}
+I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grenen inneholdt siste stabile versjon av applikasjonen og ble oppdatert regelmessig (fra dev-grenen) gjennom hele perioden. Dev-grenen ble brukt til å implementere ny funksjonalitet, og dette førte til at den inneholdt funksjoner som ikke alltid var skikkelig testet. For å effektivisere bruken av versjonskontrollen, ble det ofte opprettet nye grener ut fra dev-grenen. Dette ble gjort slik at man kunne arbeide fritt, uten at det førte til problemer i dev-grenen. Etter at en ny funksjonalitet var fullført i den nye grenen, ble den slått sammen med dev igjen. Dersom det ble oppdaget underveis at den nye funksjonaliteten ikke ville fungere, ble denne grenen bare slettet uten at dette skapte problemer for resten av prosjektet.
+
+I figur \ref{fig:workflow2} kan man se et eksempel på en workflow med en Master-, Hotfix-, Release-, Dev-gren og to Feature-grener. 
 
 \begin{figure}[H]
 \centering
@@ -121,7 +130,7 @@ I dette prosjektet hadde man to hovedgrener: «Master» og «Dev». Master-grene
 \end{figure}
 
 \subsection{Hvorfor GitHub ble valgt som plattform}
-Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom GitLab og GitHub (som følge av at Git ble valgt som versjonskontroll). På begge disse plattformene kan man lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt. GitHub og GitLab er relativt like, så det var vanskelig å finne avgjørende egenskaper:
+Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom GitLab og GitHub (som følge av at Git ble valgt som versjonskontroll). Begge disse plattformene inkluderer støtte for å lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt. Fordi GitHub og GitLab er relativt like, så det var vanskelig å finne avgjørende egenskaper:
 
 \begin{table}[H]
 \centering
@@ -142,7 +151,7 @@ Mest brukt \cite{top10versioncontrolsystems} & Ja & \cellcolor[HTML]{FF4136}Nei 
 \\ * Subjektiv vurdering
 \end{table}
 
-Den tidligere erfaringen ble avgjørende i dette valget og førte til at GitHub ble vår faste arbeidsplattform. GitHub har flere nyttige funksjoner, deriblant «GitHub Issues» hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig kunne man også se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert (se figur \ref{fig:github_issues}).
+Den tidligere erfaringen ble avgjørende i dette valget og førte til at GitHub ble valgt som arbeidsplattform. GitHub har flere nyttige funksjoner, deriblant «GitHub Issues» hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne se hva som måtte gjøres, og samtidig se tilbake på ting som hadde blitt gjort. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert (se figur \ref{fig:github_issues}).
 
 % Problemene er sortert slik at man kan se hva som skal gjøres, hva som blir gjort nå og hva som skal bli gjort
 
@@ -154,40 +163,152 @@ Den tidligere erfaringen ble avgjørende i dette valget og førte til at GitHub 
 \end{figure}
 
 \section{Begrunnelse av designvalg}
-I dette prosjektet har det vært noen viktige designvalg som har blitt tatt. Disse valgene relaterer til hvordan nettsiden skal se ut og hva som skal bli tatt mest hensyn til. Hvordan disse valgene har blitt gjort og hvorfor skal bli diskutert nærmere i dette kapittelet. 
+I forbindelse med hvordan nettsiden skulle se ut og hva som skal fokuseres på, har det blitt tatt ulike designvalg i prosjektet. Hvordan dette har blitt gjort og hvorfor de ulike valgene har blitt tatt vil bli diskutert nærmere i dette delkapittelet.
+
+%I dette prosjektet har det vært noen viktige designvalg som har blitt tatt. Disse valgene relaterer til hvordan nettsiden skal se ut og hva som skal bli tatt mest hensyn til. Hvordan disse valgene har blitt gjort og hvorfor skal bli diskutert nærmere i dette kapittelet. 
 
 \subsection{Hvorfor det var størst fokus på mobil}
-I dag har de aller fleste en smarttelefon tilgjengelig. Dette gjør at man kan tilnærme seg et mobilvennlig brukergrensesnitt når man utvikler web-applikasjoner i dag. Dette har også vært tilnærmingen i dette prosjektet ettersom programvaren som blir brukt av ABB i dag kun fungerer på Windows-maskiner. Mobilfokuset baserer seg på et responsivt design som kan tilpasse seg ulike skjermstørrelser. Dette gjør at de ansatte hos ABB kan bruke sine egne mobiltelefoner, istedenfor å oppsøke en Windows-maskin, når de skal koble seg til en robot. 
+I dag har de aller fleste en smarttelefon tilgjengelig. Dette gjør at man kan tilnærme seg et mobilvennlig brukergrensesnitt når man utvikler web-applikasjoner. Dette har også vært tilnærmingen i dette prosjektet ettersom programvaren som blir brukt av ABB i dag kun fungerer på Windows-maskiner. Mobilfokuset baserer seg på et responsivt design som kan tilpasse seg ulike skjermstørrelser. Dette gjør at de ansatte hos ABB kan bruke sine egne mobiltelefoner, istedenfor å oppsøke en Windows-maskin, når de skal koble seg til en robot. 
 
-Legg til figur her (feks. illustrasjon av ansatt med mobil kobles opp mot robot)
+%Legg til figur her (feks. illustrasjon av ansatt med mobil kobles opp mot robot)
 
 \subsection{Design og oppsett av komponentene}
-Underveis i utviklingen har det grunnleggende designet endret seg mye. Dette er fordi det har blitt lagt til nye komponenter og funksjoner etter hvert og disse måtte få en passende plassering. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. Målet har vært å holde designet oversiktlig slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
+Etterhvert som nye komponenter og funksjoner ble lagt til, var det viktig at disse også fikk en passende plasseringen i layouten. Det har derfor vært en del endringer i det grunnleggende designet underveis i prosjektet. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. Målet har vært å holde designet oversiktlig slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
+
+%Underveis i utviklingen har det grunnleggende designet på applikasjonen endret seg en del. Dette er fordi det har blitt lagt til nye komponenter og funksjoner etter hvert og disse måtte få en passende plassering. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. Målet har vært å holde designet oversiktlig slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{Figurer/5Diskusjon/Komponenter.png}
-\caption{Oversikt over struktur av komponentene i applikasjonen.}
+\caption{Strukturen til komponentene i applikasjonen.}
 \label{fig:komponenter}
 \end{figure}
 
 I feltet \textbf{«Navigasjonsbar»} befinner det seg en liggende navigasjonsbar som blir vist frem i toppen av vinduet til enhver tid. Denne er satt her for å gjøre det enkelt å åpne viktige verktøy. Hvis applikasjonen nettopp er åpnet vil dette være den eneste komponenten som viser frem noe. 
 
-I feltet \textbf{ «Verktøy/tilbakemelding»} vil det variere hva som blir vist frem og feltet vil fjernes dersom ingenting er valgt. Det som potensielt blir vist er brush-mapping, robot-filutforsker, filinformasjon, innstillinger, feil- og suksessmeldinger. Det kan ikke bli vist frem flere av disse komponentene på samme tid. Grunnen til dette er at det ikke er nødvendig å bruke disse komponentene samtidig, i tillegg til at applikasjonen blir mye ryddigere ved å vise de individuelt. Det er en egen tjeneste (visningstjenesten) med funksjoner som holder styr på hvilke komponenter som skal åpnes/lukkes etter hvert som brukeren tar ulike valg.
+I feltet \textbf{ «Verktøy/tilbakemelding»} vil det variere hva som blir vist frem og feltet vil fjernes dersom ingenting er valgt. Det som kan bli vist er her; brush-mapping, robot-filutforsker, filinformasjon, innstillinger, feil- og suksessmeldinger. Det kan ikke bli vist frem flere av disse komponentene på samme tid (foruten om feil- og suksessmeldinger, som er uavhengige). Vurderingen har vært at det ikke er nødvendig å vise disse komponentene samtidig og at dette kunne skapt en uoversiktlig layout på applikasjonen. En egen visningstjeneste er definert. Denne inneholder funksjoner som holder styr på hvilke komponenter som skal åpnes/lukkes etter hvert som brukeren tar ulike valg.
+% Grunnen til dette er at det ikke er nødvendig å bruke disse komponentene samtidig, i tillegg til at applikasjonen blir mye ryddigere ved å vise de individuelt.
 
-I feltene \textbf{ «Tabell»} og \textbf{«Graf»} vil brush-tabellen og den tilhørende grafen vises. Disse komponentene vil alltid bli vist så lenge en brush-fil er lastet inn. Grunnen til dette er at de er relevante for de fleste komponentene som befinner seg i «Verktøy/tilbakemelding»-feltet. Dersom skjermen til brukeren er for liten til å vise de to komponentene side om side, vil grafen automatisk bli flyttet ned. 
+I feltene \textbf{«Tabell»} og \textbf{«Graf»} vil brush-tabellen og den tilhørende grafen vises. Disse komponentene vil alltid bli vist så lenge en brush-fil er lastet inn. Grunnen til dette er at de er relevante for de fleste komponentene som befinner seg i «Verktøy/tilbakemelding»-feltet. Dersom skjermen til brukeren er for liten til å vise de to komponentene side om side, vil grafen automatisk posisjonere seg under tabellen. 
 
-\todo[inline]{Tobias legg til oversikt som viser nav, innstillinger, tabell og graf her (etter at nytt utseende til innstillinger er ferdig)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figurer/5Diskusjon/Oversikt.png}
+    \caption{Oversiktsbilde av applikasjonen.}
+    \label{fig:oversikt}
+\end{figure}
+
+\section{Tilbakemelding fra brukere av dagens løsning}
+Denne applikasjonen har blitt testet av ansatte i ABB som har erfaring med det nåværende programmet. De ulike funksjonene i applikasjonen ble testet og det ble samlet inn tilbakemeldinger om hva som var bra og hva som eventuelt kunne forbedres. Noen av de punktene som gikk igjen er er liste opp under:
+%Det var et par hovedpunkt angående forbedringer som utmerket seg i de fleste tilbakemeldingene:
+
+\begin{itemize}
+\item Mer informasjon til brukeren om hvor dataene som blir vist kommer fra og hva de representerer.
+\item Flere innstillingsmuligheter slik at applikasjonen blir mer fleksibel.
+\item Flere redigeringsmuligheter av brush-dataene i tabellen slik at man ikke måtte gjøre dette manuelt i brush-filene.
+\end{itemize}
+
+\noindent Tilbakemeldingene ble nyttige i diskusjonen av hva som bør prioriteres ved videre utvikling av applikasjonen.
+
+%\noindent Disse tilbakemeldingene gav et godt overblikk over de forbedringene som burde prioriteres ved videre utvikling.
+
+
+% Det han ville forbedre:
+% Vite hvilken robot som er koblet til
+% Legge til og fjerne rader i tabellen
+% Tooltip med info om kanaler (max channel value etc.)
+% Info om filen hvor filen er hentet fra
+% Legg til versjon i settings
+% Endre farge på stolpediagram
+% Endre farge på verdier når disse er endret
+% Slette rader (ikke mulig i dagens versjon)
+
+% Skriv om dette:
+% Mer info til brukeren om hva dataene viser
+% Flere innstillingsmuligheter (velge robot)
+% Flere redigeringsvalg av data (brushdata)
 
 
 \section{Forslag til forbedringer ved videre utvikling}
-I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, siden det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
+For å gjøre videreutvikling av denne applikasjonen lettere, blir det i dette delkapittelet tatt for seg ulik forbedringspotensialer til applikasjonen. Disse kan brukes til å ta applikasjonen ett steg videre. Knapp tid har i de fleste tilfellene vært den avgjørende faktoren for at disse forbedringene har blitt gjennomført. 
 
-\subsection{Sikrere autentiseringsmetode enn Digest}
-Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot Web Service (API) i dette prosjektet. I dag vurderes denne formen for autentisering ofte som som ikke sikker nok. Selv om Digest er sikrere enn Basic Authentication (forklart i kapittel \ref{basicAuthentication}), har metoden likevel klare mangler:
+%I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, siden det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
+
+\subsection{Mer informasjon til brukeren}
+Et av de viktigste forbedringspotensialene (som også ble nevnt i tilbakemeldingene) er å vise frem mer informasjon. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, hadde en forbedret visning av disse forbedret applikasjonen. Noen eksempler på hvilken informasjonen brukerne ville se tydeligere er:
+% Å vise frem mer informasjon er et av de viktigste forbedringspotensialene ettersom dette ble påpekt av brukere av dagens løsning når de testet denne applikasjonen. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, var det ønskelig at den skulle bli vist tydeligere frem.
 
 \begin{itemize}
-\item Krypteringen (MD5) er utdatert og reversibel \cite{md5_outdated}. Det fører til at angripere kan få tak i brukernavn og passord til brukere.
+    \item Hvilken robot applikasjonen er koblet til. 
+    \item Synligere informasjon om kanalene (maks kanalverdi, måleenhet, etc.).
+    \item Informasjon om filen som er åpen i tabellen.
+    \item Hvilken versjon av applikasjonen som er i bruk.
+\end{itemize}
+
+\noindent Dersom man går inn i innstillingene vil IP-adressen til den valgte roboten og informasjon om maksverdi (dersom man velger en kanal) bli synliggjort. Det kan være litt tungvint å skjønne dette dersom man ikke har brukt applikasjonen og det er derfor forståelig at denne informasjonen er ønsket på mer synlige steder. Et forslag til løsning kan være å vise informasjon om den valgte roboten over tabellen og lage tooltips til kanalene for å vise frem maksverdi, måleenheten etc.
+
+Man finner også informasjon om hvilken fil som er åpen i tabellen dersom man åpner filinformasjonen. Filinformasjonskomponenten trengs siden den gir rom for å endre på navn og filkommentar, men man kunne for eksempel vist frem filnavnet over tabellen. Her kunne også versjonsnummeret blitt vist frem.
+
+% Vite hvilken robot som er koblet til
+% Tooltip med info om kanaler (max channel value etc.)
+% Info om filen hvor filen er hentet fra
+% Legg til versjon i settings
+
+
+\subsection{Flere redigeringsmuligheter til brush-dataene i tabellen}
+Den eneste nåværende redigeringsmuligheten i applikasjonen er å slette innholdet i en rad (sette alle verdiene til 0). Det kunne med fordel vært lagt til flere redigeringsvalg som:
+
+%I applikasjonen finnes det ett redigeringsverktøy for manipulering av dataene i tabellen. Dette verktøyet sletter innholdet i raden (fjerner ikke raden). Etter testingen, utført av brukerne av den nåværende løsningen, ble det konkludert med at det kan legges til flere redigeringsvalg ved videre utvikling:
+
+\begin{itemize}
+\item Legge til/fjerne rader i tabellen. 
+\item Tillate innskriving av ugyldige verdier i tabell, men vis at det ikke er mulig å lagre disse verdiene.
+\end{itemize}
+
+\noindent Legge til og fjerne rader er noe som i dag må gjøres manuelt i brushfilen. For å øke bruksområdet til applikasjonen kan det derfor være en god fremtidig løsning å legge til dette.
+
+%\noindent Legge til og fjerne rader er noe som nå må legges til manuelt i filen som blir lest inn og derfor kan det være en god fremtidig løsning å legge dette inn som et valg i applikasjonen istedenfor. 
+
+I denne applikasjonen er det brukt inputvalidering for å sørge for at brukeren ikke har muligheten til å taste inn ugyldige verdier. Et potensielt forbedringspotensiale (ifølge tilbakemeldingene) kunne vært å la brukeren taste inn ugyldige verdier, men la de få en form for beskjed om ugyldige verdier.
+
+%I denne applikasjonen er det brukt inputvalidering for å sørge for at brukeren ikke har muligheten til å taste inn ugyldige verdier. Ifølge tilbakemeldingene kunne det vært bedre å la brukeren taste inn ugyldige verdier, men la de få en form for beskjed at dette ikke var en gyldig verdi. 
+
+% Legge til og fjerne rader i tabellen
+% Tillate verdier høyere enn maksverdi, men vis ved hjelp av farge at dette ikke er mulig
+
+\subsection{Flere innstillinger i applikasjonen}
+Det finnes tre ulike innstillingsmuligheter i denne applikasjonen:
+%Slik applikasjonen er nå så finnes det tre egenskaper som kan endres i innstillinger:
+
+\begin{itemize}
+\item Endre maksverdi for en kanal.
+\item Endre IP-adresse for å bytte robot.
+\item Tilbakestille kanalnavn til standard.
+\end{itemize}
+%\noindent Som man kan se er det fullt mulig å legge til flere nyttige innstillinger enn de som allerede er der. En av tilbakemeldingene fra brukerne som testet applikasjonen var at de hadde et ønske om å velge farge på søylene i grafen, så dette kunne blitt lagt til ved videre utvikling. Det finnes ikke noen innstillinger som endrer på utseendet i applikasjonen, så dette kunne også vært mulig å legge til.
+
+\noindent Et klart forbedringspotensiale er inkludering av flere innstillingsmuligheter. Et forslag her (fra tilbakemeldingene) var å legge til muligheten til å ender utseendet til applikasjonen. Dette kan være i form av farge på søylene i grafen, eller introduksjon av valg for «mørk modus».
+
+%Samtidig er det lurt å tenke over uttrykket «less is more», fordi applikasjonen blir ikke nødvendigvis bedre av å legge til mange nye innstillinger. 
+Forøvrig er det lurt å tenke over uttrykket «less is more» og ikke legge til innstillinger som ikke har en nytteverdi for brukerene. Dette vil kunne føre til en mer uoversiktlige applikasjon.
+
+\subsection{Flere funksjoner i filvelgeren}
+Komponenten hvor man har muligheten til åpne og bla i filer fra filsystemet til robotkontrolleren kunne vært utvidet med flere funksjoner. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere i filvelgeren:
+
+\begin{itemize}
+    \item Opprette ny mappe/fil
+    \item Slette mappe/fil
+    \item Endre navn på mappe/fil
+    \item Duplisere mappe/fil
+\end{itemize}
+
+\noindent Dette er ikke kritiske funksjoner, men de hadde gjort filvelgeren mer komplett. Målet med dette prosjektet er på sikt å kunne bytte ut den eksisterende Windows-applikasjonen og det er da en fordel at slike funksjoner er på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen tekniske utfordringer knyttet til implementasjonen. Knapp tid var det som gjorde at disse funksjonene ble nedprioritert i dette prosjektet.
+
+\subsection{Sikrere autentiseringsmetode enn Digest}
+Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot Web Service (API). I dag vurderes denne formen for autentisering ofte som mindre sikker. Selv om Digest er sikrere enn Basic Authentication (forklart i kapittel \ref{basicAuthentication}), har metoden likevel klare mangler:
+
+\begin{itemize}
+\item Krypteringen (MD5) er utdatert og reversibel \cite{md5_outdated}. Det resultere i at angripere kan få tak i brukernavn og passord til brukere.
 \item Det er til en viss grad sårbart for replay-angrep (se figur \ref{fig:replayAttack}). Selv om det blir brukt en engangsverdi (nonce) for hver tilkobling, så er det opp til serveren å sjekke at engangsverdien ikke blir brukt flere ganger. Hvis dette ikke blir sjekket av serveren, vil det være mulig å utføre et replay-angrep \cite{replayAttack}.
 \end{itemize}
 % Her kan man se et eksempel på et replay-angrep. Person E snapper opp det hashede passordet til person A. Deretter sender person E det hashede videre til person B for å få tilgang til ressurser.
@@ -206,12 +327,12 @@ Det er brukt Digest for å autentisere brukere som skal koble seg opp til Robot 
 \item Man kan velge hvilken informasjon som skal være tilgjengelig/skjult for brukeren.
 \end{itemize}
 
-\noindent Ulempen er at det er krevende å sette opp OAuth, men dette ville hevet sikkerheten i applikasjonen betydelig.
+\noindent Ulempen er at det er krevende å sette opp OAuth, men dette ville hevet sikkerheten i kommunikasjonen mellom robotkontrolleren og applikasjonen betydelig.
 
 \subsection{Forbedre kodestrukturen}
-Koden i dette prosjektet har, som i de fleste prosjekter, rom for forbedring. En av de viktigste ville vært å bruke mer av Angular sine egne moduler. Disse modulene inneholder flere funksjoner som forenkler utviklingsprosessen betraktelig. 
+Koden i dette prosjektet har, som i de fleste prosjekter, rom for forbedring. En av de største er: mer bruk av Angular sine egne moduler. Disse modulene inneholder flere funksjoner som forenkler utviklingsprosessen betraktelig. 
 
-En ryddig kodestruktur er en av hovedfordelene ved å implementere ferdige moduler. I tillegg minker sjansen for å gjøre noe som frembringer feil i applikasjonen. Problemet med modulene er at det kan være komplisert og tidkrevende å sette seg inn i dem. Derfor kan det være lurt å bare bruke Angular sine ferdige moduler ved implementasjon av store og kompliserte funksjoner. Dette er noe som må vurderes for hvert enkelt tilfelle. 
+En ryddig kodestruktur er en av hovedfordelene ved å implementere ferdige moduler. I tillegg minker sjansen for å gjøre noe som frembringer feil i applikasjonen. Problemet med modulene er at det kan være komplisert og tidkrevende å sette seg inn i dem. Derfor kan det være lurt å bare bruke Angular sine ferdige moduler ved implementasjon av store og kompliserte funksjoner. Dette er noe som må vurderes i hvert enkelt tilfelle. 
 
 I denne applikasjonen er det i hovedsak to moduler som kunne blitt brukt/brukt mer i applikasjonen: 
 
@@ -221,67 +342,40 @@ I denne applikasjonen er det i hovedsak to moduler som kunne blitt brukt/brukt m
     \item Forms Module er en modul som inneholder ulike funksjoner knyttet til håndteringen av HTML-skjema. Den inkluderer blant annet validering av email og maks-/minimumslengde på input. En av funksjonene i Forms Module, er NgModels. Den blir brukt til å binde dataobjekter til HTML-malen i visningen, enten som en enveis- eller toveis-binding \cite{formsModule}. NgModels er brukt i applikasjonen for å binde verdiene fra brush-objektene til HTML-malen i tabellvisningen, men kunne gjerne blitt brukt mer i resten av applikasjonen også. For eksempel i innstillingene for å sjekke at brukeren ikke skriver inn ulovlige verdier. Ved å øke bruken av Forms Module ville koden også blitt mer robust, ettersom valideringsfunksjonene brukt i denne applikasjonen er laget manuelt. 
 \end{itemize}
 
-\noindent I tillegg til en flittigere bruk av Angular-moduler i applikasjonen, har også inndelingen av komponenter og tjenester et forbedringspotensial. Det må alltid bli tatt en vurdering på hvordan man skal dele inn applikasjonen. I dette prosjektet er det forsøkt å gjøre dette på en fornuftig måte, men ettersom kodebasen utvikles kontinuerlig er det utfordrende å opprettholde en naturlig inndeling. Det er viktig at inndelingen holdes dynamisk slik at den ikke blir uoversiktlig. Et eksempel på dette kan man finne i filvelgertjenesten. Denne tjenesten håndterer logikken bak filvelger-komponenten og brushmapping-komponenten. Grunnen til at det ble valgt en felles filvelger-tjeneste for disse komponentene, var at begge skulle kommunisere med Robot APIet. Likevel har det i ettertid vist seg at det kunne vært lurt og dele denne tjenesten i to, da komponentene hadde flere ulikheter enn først antatt.
+%Det må alltid bli tatt en vurdering på hvordan man skal dele inn applikasjonen.
+\noindent I tillegg til en flittigere bruk av Angular-moduler i applikasjonen, har også inndelingen av komponenter og tjenester et forbedringspotensial. Hvordan man skal dele inn applikasjonen er alltid en viktig vurdering. I dette prosjektet er det forsøkt å gjøre dette på en fornuftig måte, men ettersom kodebasen utvikles kontinuerlig er det utfordrende å opprettholde en naturlig inndeling. Det er viktig at inndelingen holdes dynamisk slik at den ikke blir uoversiktlig. Et eksempel på dette kan man finne i filvelgertjenesten. Denne tjenesten håndterer logikken bak filvelger-komponenten og brushmapping-komponenten. Grunnen til at det ble valgt en felles filvelger-tjeneste for disse komponentene, var at begge skulle kommunisere med Robot API-et. Likevel har det i ettertid vist seg at det kunne vært lurt og dele denne tjenesten i to, da komponentene hadde flere ulikheter enn først antatt.
 
 %Grunnen til at det ble laget en felles filvelger-tjeneste for disse komponentene var at begge skal kommunisere med Robot APIet. Likevel kan det i ettertid se ut som at det burde vært skilt i to ulike tjenester, siden komponentene hadde flere ulikheter enn først antatt. 
-
-
-\subsection{Flere funksjoner i filvelgeren}
-Komponenten hvor man har muligheten til åpne og bla filer fra filsystemet til robotkontrolleren kunne vært utvidet med flere funksjoner. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere i filvelgeren:
-\begin{itemize}
-    \item Opprette ny mappe/fil
-    \item Slette mappe/fil
-    \item Endre navn på mappe/fil
-    \item Duplisere mappe/fil
-\end{itemize}
-
-\noindent Dette er ikke kritiske funksjoner, men de hadde gjort filvelgeren mer komplett. Målet med dette prosjektet er på sikt å kunne bytte ut den eksisterende Windows-applikasjonen og det er da en fordel at slike muligheter er på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen tekniske utfordringer knyttet til implementasjonen. Knapp tid var det som gjorde at disse funksjonene ble nedprioritert i dette prosjektet.
-
-\subsection{Flere innstillinger i applikasjonen}
-Slik applikasjonen er nå så finnes det tre egenskaper som kan endres i innstillinger:
-
-\begin{itemize}
-\item Endre maksverdi for en kanal.
-\item Endre IP-adresse for å bytte robot.
-\item Tilbakestille kanalnavn til standard.
-\end{itemize}
-
-\noindent Som man kan se er det fullt mulig å legge til flere nyttige innstillinger enn de som allerede er der. Det finnes ikke noen innstillinger som endrer på utseendet i applikasjonen, så dette kunne vært mulig å legge til. Samtidig er det lurt å tenke over uttrykket «less is more». Applikasjonen blir ikke nødvendigvis bedre av å legge til 1000 nye innstillinger, men her er et forslag til et par forbedringer:
-
-\begin{itemize}
-\item Mulighet til å endre språk.
-\item Mulighet til å endre utseendet på siden.
-\item Mulighet til å endre hvilken type graf som skal vises. 
-\end{itemize}
 
 \section{Problemet med CORS under utviklingen}
 \label{CORS_problem}
 CORS-restriksjonen har vært et stort problem under utviklingen av applikasjonen. Restriksjonen hindrer tilgang til headerene som trengs for å gjennomføre en Digest-request. Dette hindrer dermed brukeren tilgang til robotkontrolleren, med mindre CORS blir slått av manuelt (noe som ikke er anbefalt av sikkerhetsmessige årsaker).
 
-Et forslag til videre forbedring av applikasjonen kan være å finne en løsning på dette restriksjons-problemet. En potensiell løsning kan være å spesifisere, på serversiden, at de aktuelle headerne skal bli eksponert. 
-%Dette kan være vanskelig å få til siden det sikkert er strenge sikkerhetsregler angående dette.
+Et forslag til videre forbedring av applikasjonen kan være å finne en løsning på dette restriksjons-problemet. Dette kan løses ved å spesifisere at de aktuelle headerene skal bli eksponert, på serversiden.
 
 \section{Denne applikasjonen sammenlignet med dagens løsning}
-% Sammenligning mellom dagens løsning og denne løsningen. Begrensinger? Fordeler/ulemper?
-Programmet som blir brukt for redigering av brush-filer i dag (omtalt som dagens løsning) er \textbf{gammelt}, og det skiller seg derfor fra applikasjonen i dette prosjektet som er bygget ved bruk av \textbf{nymotens hjelpemidler}. Aldersforskjellen gjør at det er \textbf{tydelige forskjeller i utseendet} av programmet (se figur DAGENSLØSNING VS APPLIKASJONEN). De andre forskjellene går mer på funksjonene i programmet. Denne applikasjonen har noen \textbf{funksjoner som ikke finnes i dagens løsning}, men det finnes også \textbf{funksjoner i dagens løsning som ikke eksisterer i applikasjonen}. Her vil det bli diskutert hvilke funksjoner det er snakk om og hvorfor de er inkludert/ekskludert.
+Programmet som blir brukt for redigering av brush-filer i dag (omtalt som dagens løsning) er gammelt. Det skiller seg derfor veldig fra applikasjonen i dette prosjektet, som er bygget med nyere hjelpemidler. Aldersforskjellen gjør at det er tydelige forskjeller i utseendet til programmet (se figur). Den største forskjellen mellom disse programmene er at denne applikasjonen er bygget som en webapplikasjon, mens dagens løsning er et Windows-program. Det finnes fordeler og ulemper med begge disse (diskuteres videre i denne delen).
 
-\subsection{Implementerte funksjoner som ikke finnes i dagens løsning}
-I denne applikasjonen finnes det noen \textbf{tilleggsfunksjoner} som ikke eksisterer i dagens løsning. Disse er lagt til for å gi brukerne \textbf{flere valgmuligheter} og dermed også en bedre brukeropplevelse. Begrepet \textbf{«less is more»} har vært en viktig del av tankegangen når funksjonene har blitt lagt til, fordi det har vært fokus på å holde applikasjonen ryddig og \textbf{ikke legge til for mye}. Tilleggsfunksjonene som finnes i applikasjonen er: 
+\subsection{Ulemper med webapplikasjonen}
+På grunn av sikkerhet har alle nettlesere visse restriksjoner på hva applikasjoner kan gjøre. En av disse er ingen direkte tilgang til filsystemet på enheten. For å få tilgang til lokale filer må applikasjonen benytte seg av JavaScript sitt \href{https://developer.mozilla.org/en-US/docs/Web/API/File}{fil-API}. Innlasting av filer via dette API-et fungerer på lignende måte som i dagens system. Brukeren blar gjennom filsystemet og velger en fil som skal bli lastet inn. Men lagring av filen fungerer litt annerledes. På grunn av bedrensinger i API-et er det kun mulig å laste ned filen. Brukeren må så velge manuelt flytte/lagre denne på det stedet som den hører hjemme. Lagring av filer er derfor mer tungvint enn i dagens løsning hvor lagre bare vil overskrive den filen som er åpnet automatisk.
+
+En annen ulempe med denne applikasjonen er at man må ha tilgang til internett for at den skal fungere bra. Uten tilgang til internett vil all Bootstrap-stilsettingen og diverse script som lastes ned når programmet kjøres, ikke fungerer. Noen deler av applikasjonen vil fortsatt fungere, men mye vil ikke vises eller ikke fungere optimalt.
+
+\subsection{Fordeler med webapplikasjonen}
+Den største fordelen med å lage applikasjonen som en webapplikasjon er at det gjør den veldig fleksibel. Applikasjonen kan kjøres på de fleste enheter som finnes i dag, mens dagens applikasjon er begrenset til Windows-plattformen. Som beskrevet tidligere, har denne fleksibiliteten vært drivkraften bak gjennomføring av dette prosjektet.
+
+En annen fordel er at man kan legge til funksjoner som har vært ønsket av brukerne. Siden applikasjonen er bygget fra bunnen av har det vært mulig å ta hensyn til ønsker fra dagens brukere i utviklingen. Noen eksempler på slike funksjoner er:
 \begin{itemize}
-	\item \textbf{Endre maksimumverdi for én kanal}. Lagt til slik at brukeren ikke trenger forholde seg til standard maksverdier som er lagt inn. Gir mulighet for en mer effektiv bruk.
-	\item \textbf{Endre IP-adresse for å bytte robot}. Lagt til slik at brukeren kan skifte robot ved hjelp av å skrive inn ønsket robot sin IP-adresse. 
-	\item \textbf{Slette innholdet i en rad}. Lagt til slik at brukeren slipper å manuelt sette alle kolonnene i raden til 0. 
-	\item \textbf{Endre navn på kanaler} (kan også bli satt tilbake til standard). Lagt til slik at brukeren kan få en bedre forståelse for hva kanalene egentlig gjør ved å endre til passende navn. 
-	\item \textbf{Lagring av verdier i cookies} (brukt for å lagre kanalnavn og maksimumsverdier). Lagt til slik at brukeren slipper å ta vare på/huske de verdiene som er brukt i en økt. De vil automatisk bli lastet inn i neste økt.
+    \item \textbf{Slette innholdet i en rad}: Lagt til slik at brukeren slipper å manuelt sette alle feltene i en brush i raden til 0.
+    \item \textbf{Endre maksverdi for én kanal}: Lagt til slik at brukeren ikke trenger forholde seg til standard maksverdier som er lagt inn og gir mulighet for en mer effektiv bruk.
+    \item \textbf{Endre navn på kanaler}: Lagt til slik at brukeren kan få en bedre forståelse for hva kanalene egentlig gjør ved å endre til passende navn.
 \end{itemize}
-\noindent Endre maksimumverdi og IP-adresse kan gjøres i innstillinger, mens slette innholdet i en rad og endre navn på kanaler kan gjøres i tabellen.
 
-\subsection{Funksjoner fra dagens løsning som ikke finnes i applikasjonen}
-\todo[inline]{Tobias/Mats skriv her}
-
-% Legg til dette kapittelet hvis vi må ha det med
-% \subsection{Forskjell i ytelse}
-% \todo[inline]{Tobias/Mats skriv her}
+\noindent I tillegg inkluderer denne applikasjonen noen funksjoner som er naturlige å ha med fordi dette er en webapplikasjon:
+\begin{itemize}
+    \item \textbf{Endre IP-adresse for å bytte robot}: Lagt til slik at brukeren kan skifte robot ved hjelp av å skrive inn ønsket roboten sin IP-adresse.
+    \item\textbf{Lagring av kanalnavn og maks-verdier i cookies}: Lagt til slik at brukeren slipper å ta vare på de verdiene som er brukt i en økt. De vil automatisk bli lastet inn i neste økt.
+\end{itemize}
 
 \section{Oppsummering}
 Diskusjon rundt applikasjonen og ulike valg knyttet til utviklingen har i dette kapittelet blitt tatt opp. Valgene av Angular som rammeverk, Bootstrap som stil-bibliotek etc. har blitt diskutert. Ulike tanker og begrunnelser rundt disse valgene, samt mulige andre løsninger enn de som ble valgt har blitt presentert. I tillegg, har ulike forslag til forbedringer av applikasjonen og sammenligning av funksjonaliteten med dagens løsning spilt en sentral rolle i kapittelet. 

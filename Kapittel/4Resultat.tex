@@ -2,15 +2,12 @@
 \chapter{Resultat}
 \label{resultat} % Bruk \ref{resultat}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
-% Objektive, målbare resultater
-\todo[inline]{Tobias/Mats skriv intro her}
+% Intro
+Resultatet inneholder en test av applikasjonen i dagens mest populære nettlesere. Testen er gjennomført for å se at programmet fungerer bra i alle de største nettleserne, uavhengig av operativsystem. I dette kapittelet vil resultater og forklaring knyttet til denne testen bli gjennomgått.
 
-
-% Tabellfarger
-% Grønn: 2ECC40, Rød: FF4136, Gul: FFDC00
-
+% Tabellfarger: 2ECC40 (grønn), FF4136 (rød), FFDC00 (gul)
 \section{Testing av funksjoner i ulike nettlesere}
-Denne applikasjonen har blitt testet i flere av dagens mest populære nettlesere. Testingen har blitt gjennomført på \textbf{forskjellige enheter} med \textbf{ulike operativsystemer}. Dette har blitt gjort for å få en oversikt over hvordan applikasjonen tilpasser seg i ulike miljø. Her er oversikten over \textbf{testenhetene}: 
+Funksjonene som har blitt testet anses å være viktige for å oppnå en \textbf{positiv brukeropplevelse}. De samme funksjonene har blitt testet på alle testenhetene og resultatene i hvert enkelt tilfelle vil besvares som \textbf{ja}, \textbf{delvis} eller \textbf{nei}. Enhetene som har blitt benyttet i testen er
 
 \begin{table}[H]
 \centering
@@ -25,8 +22,6 @@ Huawei P20 Pro & Android 9 Pie & Mobil \\ \hline
 \end{tabular}
 \caption{Enheter brukt i nettleser-test}
 \end{table}
-
-\noindent De funksjonene som har blitt testet anses å være viktige for å oppnå en \textbf{positiv brukeropplevelse}. De samme funksjonene har blitt testet på alle testenhetene. Resultatene på om funksjonen fungerte optimalt vil være enten \textbf{ja}, \textbf{delvis} eller \textbf{nei}. 
 
 \subsection{Resultater i tabell}
 \begin{table}[H]
@@ -265,54 +260,16 @@ Endre innstillinger/filinformasjon &
 \caption{Testresultater nettlesere på mobil og nettbrett}
 \end{table}
 
-\subsection{Forklaring av resultater}
-Ett av målene med applikasjonen var at den skulle fungere bra på de fleste enheter og derfor ble det gjennomført en test i ulike nettlesere. Testen tok for seg det som ble ansett som de viktigste funksjonene til applikasjonen og sjekket at disse fungerte som ønsket. Det første som ble oppdaget under testingen var at støtten for Internet Explorer (IE) ikke var aktivert i Angular-prosjektet. ikke inkluderte støtte for Internet Explorer (IE). Angular inkluderer støtte for versjon for IE, men dette er deaktivert som standard. For å nå ut til flest mulige brukere, ble derfor dette aktivert og støtte for IE lagt til.
+\subsection{Forklaring av resultatene}
+Ett av målene med applikasjonen var at den skulle fungere bra på de fleste enheter, i de vanligste nettleserene. Det ble derfor gjennomført en \textbf{test} som tok for seg de \textbf{mest populære nettleserene}. Det som ble ansett som de viktigste funksjonene til applikasjonen ble testet. Det første som ble oppdaget under testingen var at støtten for Internet Explorer (IE) ikke var aktivert i Angular-prosjektet. Angular inkluderer støtte for versjon 9, 10 og 11 for IE, men dette er deaktivert som standard. For å nå ut til flest mulige brukere, ble derfor dette aktivert og \textbf{støtte for IE lagt til}.
 
-Resultatet av testen viser at applikasjonen fungerer bra i de fleste nettleserne. Utseendet og layouten er tilnærmet identisk i alle tilfelle og komponentene oppfører seg som tiltenkt. Allikevel er det noen viktig forskjeller mellom de ulike nettleserene. Inputvalidering er en av disse: På grunn av forskjellig håndtering av HTML-inputfeltet i de forskjellige nettleserne, er det noen problemer med inputvalideringen. Til testing i utviklingen av applikasjonen er Chrome nettleseren som har blitt brukt. Chrome er i dag den klart mest brukte nettleseren på verdensbasis \cite{browserStats}, og fokuset i dette prosjektet har derfor vært å lage en applikasjon som fungerer bra i denne nettleseren. Selv om det også har vært et mål om å lage en applikasjonen som fungerer i mange nettlesere, er ikke alle funksjonene nødvendigvis optimalisert.
+Resultatet av testen viser at applikasjonen fungerer bra i de fleste nettleserne. Utseendet og layouten er tilnærmet identisk i alle tilfellene og komponentene oppfører seg som tiltenkt. Allikevel er det noen \textbf{forskjeller mellom de ulike nettleserene}, og inputvalidering er en av disse. På grunn av forskjellig håndtering av HTML-inputfeltene, er det \textbf{svakheter med inputvalideringen} i noen av nettleserene. Til testing i utviklingen av applikasjonen er Chrome brukt som nettleser. Chrome er i dag den klart mest brukte nettleseren på verdensbasis \cite{browserStats}, og fokuset i dette prosjektet har derfor vært å lage en applikasjon som fungerer bra i denne nettleseren. Selv om det også har vært et mål om å lage en applikasjonen som fungerer i mange nettlesere, har ikke fokuset vært på optimalisering av funksjoner i alle nettleserene.
 
-Inputfeltene i tabellen er definert med «number» som type. De ulike nettleserne håndtere denne HTML-typen ulikt. I Chrome og Opera er det ikke mulig å skrive inn irrelevante tegn som for eksempel bokstaver. Derfor får man her en automatisk inputvalidering som hindrer brukeren i å skrive inn de fleste ugyldige tegnene. Firefox, Safari og Edge hindrer ikke brukeren i å skrive inn ugyldige tegn i inputfeltene. På grunn av dette, har er det lagt til en funksjon i applikasjonen som setter verdien til 0 i feltet hvis brukeren skriver inn en ugyldig verdi, for eksempel en bokstav. I Internet Explorer kan man skrive inn bokstaver i feltet uten at det resulterer i feilmeldinger eller at feltet blir satt til 0. På grunn av disse manglene er Firefox, Safari og Edge marker som delvis og IE markert som rødt på inputvalidering i test-resultatet.
+Inputfeltene i tabellen er definert med «\textbf{number}» som type. De ulike nettleserne håndtere denne HTML-typen ulikt. I \textbf{Chrome og Opera er det ikke mulig å skrive inn ugyldige tegn}, som for eksempel bokstaver. Derfor får man her en automatisk inputvalidering som hindrer brukeren i å skrive inn de fleste ugyldige tegnene. \textbf{Firefox, Safari og Edge hindrer ikke brukeren i å skrive inn ugyldige tegn} i inputfeltene. Derfor er det lagt til en funksjon i applikasjonen som setter verdien til 0 i feltet hvis brukeren skriver inn en ugyldig verdi. I \textbf{Internet Explorer kan også man skrive inn bokstaver i inputfeltet} uten at feltet blir satt til 0, så lenge man skriver et tall først. Dette er er fordi Internet Explorer ser på denne inputen som gyldig. På grunn av disse manglene er Firefox, Safari og Edge markert som delvis og IE markert som rødt på inputvalidering i test-resultatet.
 
-I tillegg problemene med inputvalidering er opplasting og nedlasting av filer på iOS-enheter begrenset på grunn av manglende filsystem. Dette resulterer i at opp- og nedlasting av brushfiler ikke fungerer optimalt. Per dags dato er man avhengig av å bruke \href{https://support.apple.com/kb/PH19386}{iCloud Drive} (Apple sin online lagringstjeneste) til å laste opp filene. Ved nedlasting av filer får man kun muligheten til å vise filen, men ingen valg om å lagre denne på grunn av begrensingene i iOS.
-
-\section{Testing av applikasjonens brukervennlighet}
-\todo[inline]{Tobias/Mats skriv her}
-Hvem har testet applikasjonen, hva var tilbakemeldingene, osv.
-
-\subsection{Resultater}
-\begin{table}[H]
-\begin{tabular}{|l|c|c|c|}
-\hline
-\multicolumn{4}{|c|}{\textbf{Testing}} \\ \hline
-\textbf{Skjønte du:} & \textbf{Ansatt 1} & \textbf{Ansatt 2} & \textbf{Ansatt 3} \\ \hline
-- hvordan du skulle åpne en fil (lokalt/robot)? &  &  &  \\ \hline
-- hvordan du skulle laste ned en fil (lokalt/robot)? &  &  &  \\ \hline
-- spørsmålet om maksverdiene du fikk da du åpnet en ny fil? &  &  &  \\ \hline
-- at du kunne endre kanalnavn? &  &  &  \\ \hline
-- at du kunne endre filnavn og -kommentar? &  &  &  \\ \hline
-- hvordan man kunne åpne og lukke komponenter? &  &  &  \\ \hline
-- feil- og suksessmeldinger som kom opp? &  &  &  \\ \hline
-- hva grafen viste frem? &  &  &  \\ \hline
-- hva innstillingene gjorde? &  &  &  \\ \hline
-- forklaringen i tooltipene? &  &  &  \\ \hline
-\end{tabular}
-\end{table}
-
-\subsection{Forklaring av resultater}
-
-%\section{Sammenlikning av ytelse med av dagens løsning}
-%\todo[inline]{Mats/Tobias: Skriv om ytelsesforskjeller mellom denne løsningen og dagens løsning}
-
-% \section{Sammenlikning av dagens løsning}
-% \todo[inline]{Mats/Tobias: Skriv kort introduksjon}
-% \subsection{Forskjell i ytelse}
-% \todo[inline]{Mats/Tobias: Skriv om dette}
-% \subsection{Forskjell i størrelse på kodebase}
-% \todo[inline]{Mats/Tobias: Skriv om dette}
-% \subsection{Forskjell i utviklingstid}
-% \todo[inline]{Mats/Tobias: Skriv om dette}
-
-% \section{Testing av koden}
-% Unittesting, ng-test?
+I tillegg til problemene med inputvalidering er \textbf{opplasting og nedlasting av filer på iOS-enheter begrenset} på grunn av manglende filsystem. Dette resulterer i at opp- og nedlasting av brushfiler ikke fungerer optimalt. Per dags dato er man avhengig av å bruke \href{https://support.apple.com/kb/PH19386}{iCloud Drive} (Apple sin online lagringstjeneste) til å laste opp filene. Ved nedlasting av filer får man kun muligheten til å vise filen, men ingen valg om å lagre denne på grunn av begrensingene i iOS.
 
 \section{Oppsummering}
-\todo[inline]{Mats/Tobias skriv dette}
+Resultatet av testen viser at \textbf{applikasjonene fungerer bra i alle nettleserne}. Noen forskjeller er det ved inputvalidering på grunn av ulik håndtering av tallinput i nettleserne. I tillegg er mangelen på et innebygd filsystem i iOS noe som begrenser applikasjonen ved bruk enheter som kjører dette operativsystemet. Konklusjonen blir derfor at applikasjonen fungere bra i alle nettleseren som ble testet, men med noen begrensinger i enkelte av dem.
+
+%Allikevel fungerer de fleste viktigste funksjonene, og applikasjonen kan brukes uansett hvilken enhet/operativsystem brukeren benytter seg av.
