@@ -19,7 +19,9 @@ Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-
 
 \subsection{Navngiving av variabler}
 \textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel så er variabelnavnet for kanalnavnene navngitt som \textbf{«channelNames»}. Dette gjør det oversiktlig å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
-\todo[inline]{Legge til tekst om filnavn}
+
+\subsection{Navngiving av filer}
+Filnavnene i dette prosjektet følger \textbf{Angular sin stilguide}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Ett typisk eksempel (for flere se figur \ref{fig:filestruktur}) er «brush-graph.component.ts». «Brush graph» er navnet, mens «component» beskriver at dette er en komponent.
 
 \subsection{Hvordan Single responsibility-prinsippet er fulgt}
 Single responsibility er et prinsipp som går ut på at hver modul, klasse eller funksjon kun skal ha ansvar for \textbf{én} handling. For eksempel hvis funksjonen \textbf{«toLowerCase(text)»} skal ta inn en tekst og gjøre om hele teksten til små bokstaver så kan den ikke gjøre noe mer enn det. %Hvis funksjonen i tillegg hadde lagt en liste over alle ordene i teksten så ville ikke funksjonen lengre oppfylt prinsippet.
@@ -70,7 +72,7 @@ Den øverste komponenten i applikasjonen er navigasjonslinjen. Her vil man finne
 \end{figure}
 
 \subsection{Innstillingskomponenten i applikasjonen}
-Applikasjonen inneholder en komponent hvor man kan endre innstillinger knyttet til applikasjonen. Disse innstillingene inkluderer: endring av \textbf{maksimal verdi for en kanal}, endring av \textbf{IP-adresse til roboten} og mulighet for å \textbf{tilbakestille kanalnavn}. 
+Applikasjonen inneholder en komponent hvor man kan endre innstillinger knyttet til applikasjonen. Disse innstillingene inkluderer endring av \textbf{maksimal verdi for en kanal}, endring av \textbf{IP-adresse til roboten} og mulighet for å \textbf{tilbakestille kanalnavn}. 
 \begin{itemize}
     \item Man kan enkelt \textbf{endre maksverdi} for en kanal ved å først velge aktuell kanal og deretter skrive inn ønsket maksverdi for denne kanalen. Den maksimale kanalverdien blir brukt i inputvalideringen i tabellen, slik at brukeren ikke kan taste inn noe høyere enn denne verdien i kanalen. Disse verdiene blir lagret i en cookie slik at brukeren kan nytte de samme maksverdiene hver gang applikasjonen skal bli brukt. Standardverdiene for alle kanalane er satt til \textbf{1000}.
     \item Man kan \textbf{endre IP-adressen til roboten} ved å skrive inn ønsket IP-adresse. Dette kan være nyttig å endre dersom brukeren skal koble seg til en robotkontroller som har enn annen adresse enn standardadressen 127.0.0.1 (localhost). 
@@ -139,14 +141,13 @@ Filvelgerkomponenten gjør det mulig for brukeren å \textbf{navigere seg frem o
 
 Filvelgerkomponenten tar kun for seg \textbf{visningen av filer, mapper og valg} ved oppkobling mot Robot Web Services. All logikken rundt dette er separert ut som en egen tjeneste (filvelgertjenesten, kapittel \ref{filvelgerTjenesteRef}).
 %Mappene og filene er sortert alfabetisk, men alle mappene vises over filene for å gjøre det enklere å navigere i mapper med mange filer.
-\todo[inline]{Leggt til figur av filvegerkomponenten}
 
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\textwidth]{Figurer/2Bakgrunn/Filinfokomponent.png}
-%    \caption{Filinformasjonskomponenten i applikasjonen}
-%    \label{fig:filInfor}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/fileExplorer.png}
+    \caption{Velge fil fra roboten i applikasjonen}
+    \label{fig:filChooser}
+\end{figure}
 
 \subsection{Brushmapping-komponenten til roboten}
 Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-funksjon for å \textbf{finne frem til riktig brush-fil}. Komponenten gir brukeren mulighet til å velge fil basert på en kombinasjon av \textbf{tre valg: «program», «material» og «option»} (figur \ref{fig:brushMapping}). Applikasjonen bruker så en formel til å bestemme filnavnet basert på valgene til brukeren. Formelen hentes fra REST APIet til robotkontrolleren og ett eksempel kan være for eksempel være \textbf{«100*Program + Material»} (merk at denne formelen ikke bruker option-valget). Hvis brukervalget da er programnummer 1 og materialnummer 1 vil korresponderende filnavn være \textbf{«Table101.bt»}. For å gjøre det enklere for brukeren å velge riktige valg, har program-, material- og option-verdiene et korresponderende navn. \textbf{Programnummeret} er ofte navnet til lakkeringsobjektet, for eksempel en bilmodell. \textbf{Materialnummeret} beskriver som regel fargen til objektet, for eksempel rød. Valgene i brukergrensesnittet viser både navn og korresponderende nummer. Det er i tillegg \textbf{mulig å åpne filen direkte} ved hjelp av nummeret i filnavnet. Da kan man i stedet skrive inn dette for å hente riktig fil. Dette kan være nyttig for brukeren i tilfeller hvor samme filen brukes ofte. Hvis ikke filnummeret eller valgene korresponder til en fil i filsystemet til robotkontrolleren vil brukeren få valget med å \textbf{opprette en ny fil}.
