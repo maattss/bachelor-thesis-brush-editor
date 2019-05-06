@@ -3,15 +3,11 @@
 \label{diskusjon} % Bruk \ref{diskusjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
 I dette kapittelet blir \textbf{de ulike beslutningene} som er tatt i løpet av utviklingen drøftet. \textbf{Forventinger og krav} som var satt til valgene og hva som ble de endelige avgjørelsene vil bli diskutert. I tillegg, inkluderer kapittelet diskusjon rundt \textbf{problemer med applikasjonen} og \textbf{forslag til forbedringer} ved videre utvikling.
-%For- og motargumentene som har vært relevante for valgene vil bli fremstilt.
 
 \section{Begrunnelse og forklaringer knyttet til tekniske valg}
 Det var flere tekniske valg som måtte tas før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet var å \textbf{bruke metoder og hjelpemidler som er blant de mest aktuelle i dag}. Dette for å få nytte av god og oppdatert dokumentasjon, samt at produktet som utvikles skal bli \textbf{moderne og fremtidsrettet}.
-%Det første og viktigste valget var hvilket web-rammeverk som skulle benyttes. De resterende valgene ble deretter gjort med hensyn til dette valget.
-%I dette kapittelet vil det bli diskutert hvilke krav og forventninger som var satt til valgene og hva som ble de endelige avgjørelsen.
 
 \subsection{Hvorfor Angular ble valgt som web-rammeverk}
-%Det finnes i dag utallige JavaScript rammeverk/bibliotek, noe som gjorde valget krevende.
 Det første og viktigste valget var hvilket \textbf{web-rammeverk} som skulle benyttes. På grunn av det store antallet JavaScript rammerverk/bibliotek som finnes i dag, var dette et krevende valg. I hovedsak var det tre rammeverk som ble vurdert: \textbf{React, Angular og Vue.js}. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene (figur \ref{fig:FrameworkPop}). I tillegg til disse tre, ble andre muligheter som \textbf{Ember.js og Backbone.js} også evaluert. Backbone.js ble utelatt fra vurderingen på grunn av alderen og oppdateringsfrekvensen. Backbone.js var et veldig populært rammeverk tidligere, men etter introduksjonen av moderne rammeverk har interessen dalt kraftig (figur \ref{fig:FrameworkPop}). Ember.js ble heller ikke vurdert videre da populariteten ikke kan sammenlignes med Angular/React og veksten ikke kan sammenlignes med Vue.js (figur \ref{fig:FrameworkPop}) \cite{jsFrameworks}.
 
 \begin{figure}[H]
@@ -23,7 +19,7 @@ Det første og viktigste valget var hvilket \textbf{web-rammeverk} som skulle be
 
 Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er \textbf{komponentbaserte} (beskrevet i kapittel \ref{AngularKomponenter}). Allikevel har de mange \textbf{ulike egenskaper} som gjør hver av dem mer/mindre egnet til ulike prosjekter.
 \begin{itemize}
-    \item \textbf{React} er et \textbf{JavaScript-bibliotek} for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en \textbf{blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript}. I tillegg er React-applikasjoner basert på en \textbf{virtuell Document Object Model (DOM)}. En representasjon av brukergrensesnittet er lagret i minnet som synkroniseres med den «ekte» DOM-en. Dette gjør utvikling av applikasjoner enklere. React tar seg av attributt- og  hendelses-håndteringen, samt den manuell DOM-oppdatering som utvikleren ellers måtte gjort \cite{reactVirtualDOM}. Det er også mulig med \textbf{enveis binding av data} i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
+    \item \textbf{React} er et \textbf{JavaScript-bibliotek} for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er syntaksen som består av en \textbf{blanding av \href{https://reactjs.org/docs/introducing-jsx.html}{JSX} og JavaScript}. I tillegg er React-applikasjoner basert på en \textbf{virtuell Document Object Model (DOM)}. En representasjon av brukergrensesnittet er lagret i minnet som synkroniseres med den «ekte» DOM-en. Dette gjør utvikling av applikasjoner enklere fordi React tar seg av attributt- og  hendelses-håndteringen samt DOM-oppdateringen. Dette måtte utvikleren ellers gjort selv \cite{reactVirtualDOM}. Det er også mulig med \textbf{enveis binding av data} i React. Dette binder variabler til HTML DOM-elementer og resulterer i at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) oppdateres.
     
     \item \textbf{Angular} er et \textbf{fullverdig JavaScript-rammeverk} utviklet av Google og er etterfølgeren til Angular.js. Ettersom rammeverkene er svært forskjellige, er det viktig at de ikke forveksles med hverandre. I motsetning til de andre verktøyene bruker Angular \textbf{TypeScript som utviklingsspråk}. TypesScript er en Javascript-utvidelse som introduserer \textbf{statisk typing} og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen \cite{staticTyping}. En annen unik egenskap med Angular, er muligheten for \textbf{toveis databinding}. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdata-en. Brukere kan da manipulere dataen som blir lagret \cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert umiddelbart og lagret i programminnet.
     
@@ -31,7 +27,6 @@ Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er \textb
 \end{itemize}
 
 \noindent Figur \ref{fig:FrameworkPop} viser at \textbf{Vue.js har hatt en bra vekst} de siste årene, men at \textbf{Angular og React er de mest populære}. Det ble derfor etter hvert besluttet å utelukke Vue.js fra den videre vurderingen. Deretter ble introduksjons-guidene til Angular og React gjennomført, for å få et bedre innblikk i hvordan begge fungerer. Guidene inkluderte en rask introduksjon hvor målet var å lage en liten applikasjon. Disse var nyttige for å få et innblikk i hvordan Angular og React fungerte.
-%I det videre arbeidet med å finne det rette verktøyet ble blant annet introduksjons-guiden til Angular og React gjennomført.
 
 \textbf{Angular blir ofte betraktet som vanskeligere å lære}, på grunn av størrelsen på rammeverket. Det finnes flere innebygde funksjoner og tjenester i Angular som kan være vanskelig å sette seg inn i med en gang \cite{angularvsreact}. 
 
@@ -51,11 +46,10 @@ Biblioteket måtte ha mulighet til å \textbf{vise frem grafen på en oversiktli
 
 \noindent Disse bibliotekene har mange likhetstrekk og begge er gode alternativer. Siden grafen i denne applikasjonen \textbf{ikke hadde behov for avanserte tilpasningsmuligheter, falt valget til slutt på Chart.js}. 
 
-% Valget denne gangen falt på Chart.js hovedsakelig på grunn av færre valgmuligheter. Applikasjonen hadde ikke behov for avanserte muligheter.
-
 \subsection{Hvorfor Bootstrap ble valgt som stil-rammeverk}
-I oppstarten av dette prosjekter stod valget mellom \textbf{Bootstrap, Foundation og Angular Material} som verktøyet for å stilsette applikasjonen. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Mye av grunnen til at Angular Material ble tatt opp til vurdering, var fordi det var bestemt at rammeverket rundt prosjektet skulle være Angular. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
-% I oppstarten av dette prosjektet stod designvalget mellom å bruke Bootstrap, Foundation eller Angular Material for å gjøre siden mer attraktiv.
+I oppstarten av dette prosjekter stod valget mellom \textbf{Bootstrap, Foundation og Angular Material} som verktøyet for å stilsette applikasjonen. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Angular Material ble vurdert fordi det utvikles av det samme teamet som utvikler Angular. Det var allerede bestemt at web-rammeverket for applikasjonen skulle være Angular, og derfor var det naturlig å ta med Angular Material i vurderingen. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
+
+%Da dette valget ble tatt var det allerede bestemt at web-rammeverket for applikasjonen skulle være Angular. Det førte til at Angular Material også ble tatt opp til vurdering, ettersom det er et verktøy fra den samme plattformen. Det ble satt opp noen egenskaper (viktige og mindre viktige) for de ulike rammeverkene:
 
 % Tabellfarger, Grønn: 2ECC40, Rød: FF4136, Gul: FFDC00
 \begin{table}[ht]
@@ -90,13 +84,11 @@ Direkte linkede klasser & \cellcolor[HTML]{FF4136}Nei & Ja & \cellcolor[HTML]{FF
 \end{table}
 
 \noindent \textbf{Valget falt til slutt på Bootstrap} ettersom det var dette rammeverket som \textbf{oppfylte flest av de viktige egenskapene}. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et \textbf{moderne preg}. Bruken av rammeverket har for det meste fungert bra, sett bort i fra et \textbf{importeringsproblem ved bruk av tooltipene}. Dette førte til at \textbf{Angular Material} sitt tooltip-verktøy ble \textbf{brukt som erstatter} på de aktuelle elementene. 
-%Bruken av rammeverket har for det meste fungert ypperlig, men det oppstod noen importeringsproblemer da tooltipene fra Bootstrap skulle brukes. 
 
 Selv om det er mange fordeler med Bootstrap så finnes det spesielt én stor ulempe. Ved å ta i bruk det mest brukte rammeverket får man \textbf{ikke noe unikt design} på nettsiden. Dette hensynet ble ikke vektlagt i denne applikasjonen, ettersom \textbf{funksjonaliteten hadde en høyere prioritet enn et unikt design}. 
-%Dette ble ikke tatt veldig mye hensyn til i denne applikasjonen, ettersomfunksjonaliteten hadde en vesentlig høyere prioritet enn det å lage et glimrende de-sign
 
 \subsection{Hvorfor Git ble valgt som versjonskontroll}
-Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, SVN, Bazaar, Darcs, osv. \textbf{Et DVCS holder styr på forandringer i filer} slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir \textbf{lettere å samarbeide og holde kontroll på endringer}. Valget av DVCS sto mellom \textbf{Git og Mercurial} da disse er blant de mest brukte i dag. Noen av de \textbf{ønskede egenskapene} satt til valget var:
+Versjonskontroll er essensielt når det kommer til applikasjonsutvikling. Det finnes flere såkalte Distribuerte Versjonskontrollsystemer (DVCS), slik som Git, Mercurial, SVN, Bazaar, Darcs, osv. \textbf{Et DVCS holder styr på forandringer i filer} slik at en kan gå tilbake til spesifikke versjoner av applikasjonen senere. Det gjør at det blir \textbf{lettere å samarbeide og holde kontroll på endringer}. Valget av DVCS sto mellom \textbf{Git og Mercurial} da disse er blant de mest brukte i dag. Noen av de \textbf{ønskede egenskapene} som ble brukt i valget var:
 
 \begin{table}[H]
 \centering
@@ -114,7 +106,7 @@ Mest brukt \cite{topDistributedVersionControlSystems} & Ja & Nei &  \\ \hline
 \\ * Subjektiv vurdering
 \end{table}
 
-Ettersom \textbf{Git oppfylte de viktigste egenskapene}, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og 
+\noindent Ettersom \textbf{Git oppfylte de viktigste egenskapene}, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og 
 har vært en viktig faktor for at en god arbeidsflyt har blitt opprettholdt.
 
 \subsection{Hvordan Git ble brukt som versjonskontroll}
@@ -130,7 +122,8 @@ I figur \ref{fig:workflow2} kan man se et \textbf{eksempel på en arbeidsflyt} m
 \end{figure}
 
 \subsection{Hvorfor GitHub ble valgt som plattform}
-Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom \textbf{GitLab og GitHub} (som følge av at Git ble valgt som versjonskontroll). Begge disse plattformene inkluderer støtte for å lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt. Fordi GitHub og GitLab er \textbf{relativt like}, så det var vanskelig å finne avgjørende egenskaper:
+Valget om hvilken plattform som skulle bli brukt for dette prosjektet stod mellom \textbf{GitLab og GitHub} (som følge av at Git ble valgt som versjonskontroll). Begge disse er \textbf{relativt like}. Blant annet støtter begge plattformene lagring av kildekode og andre filer i \textbf{oppbevaringsmapper}, slik at man får en bedre oversikt over prosjektet. For å kunne vurdere forskjellene mellom Github og Gitlab, ble det satt opp en liste med \textbf{avgjørende egenskaper}:
+%Begge disse plattformene inkluderer støtte for å lagre kildekode og andre filer i oppbevaringsmapper slik at man får en bedre oversikt over prosjektet. Fordi GitHub og GitLab er \textbf{relativt like}, så det var vanskelig å finne avgjørende egenskaper:
 
 \begin{table}[H]
 \centering
@@ -151,7 +144,7 @@ Mest brukt \cite{top10versioncontrolsystems} & Ja & \cellcolor[HTML]{FF4136}Nei 
 \\ * Subjektiv vurdering
 \end{table}
 
-Den \textbf{tidligere erfaringen ble avgjørende} i dette valget og førte til at \textbf{GitHub ble valgt} som arbeidsplattform. GitHub har \textbf{flere nyttige funksjoner}, deriblant \textbf{«GitHub Issues»} hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne \textbf{se hva som måtte gjøres}, og samtidig \textbf{se tilbake på ting som hadde blitt gjort}. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert. Figur \ref{fig:github_issues} viser en skjermdump fra GitHub Issues underveis i dette prosjektet.
+\noindent Den \textbf{tidligere erfaringen ble avgjørende} i dette valget og førte til at \textbf{GitHub ble valgt} som arbeidsplattform. GitHub har \textbf{flere nyttige funksjoner}, deriblant \textbf{«GitHub Issues»} hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne \textbf{se hva som måtte gjøres}, og samtidig \textbf{se tilbake på ting som hadde blitt gjort}. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert. Figur \ref{fig:github_issues} viser en skjermdump fra GitHub Issues underveis i dette prosjektet.
 
 \begin{figure}[H]
 \centering
@@ -163,19 +156,11 @@ Den \textbf{tidligere erfaringen ble avgjørende} i dette valget og førte til a
 \section{Begrunnelse av designvalg}
 I forbindelse med hvordan nettsiden skulle se ut og hva som skal fokuseres på, har det blitt tatt ulike designvalg i prosjektet. Hvordan dette har blitt gjort og hvorfor de ulike valgene har blitt tatt vil bli diskutert nærmere i dette delkapittelet.
 
-%I dette prosjektet har det vært noen viktige designvalg som har blitt tatt. Disse valgene relaterer til hvordan nettsiden skal se ut og hva som skal bli tatt mest hensyn til. Hvordan disse valgene har blitt gjort og hvorfor skal bli diskutert nærmere i dette kapittelet. 
-
 \subsection{Hvorfor det var størst fokus på mobil}
-De siste årene 10 årene har bruken av internett på håndholdte enheter eksplodert \cite{platformStats}. På grunn av dette, har det i de senere årene blitt mer og mer vanlig å fokusere på et mobilvennlig brukergrensesnitt ved utvikling av nye webapplikasjoner. Dette har også vært tilfelle i dette prosjektet. Dagens løsning hos ABB er, som nevnt tidligere, en Windows-applikasjon. For å øke fleksibiliteten og gjøre det enklere for brukerne å redigere brush-filer, har fokuset helt fra starten av vært, å utvikle et bra mobilt grensesnitt med et responsivt design. Målet har vært å kunne ha samme funksjonalitet som dagens løsning, i en oversiktlig webapplikasjon. Dermed kan brukerne selv stå fritt til å velge hvilke/-en enhet de vil benytte seg av.
-
-%I dag har de aller fleste en smarttelefon tilgjengelig. Dette gjør at man kan tilnærme seg et mobilvennlig brukergrensesnitt når man utvikler web-applikasjoner. Dette har også vært tilnærmingen i dette prosjektet ettersom programvaren som blir brukt av ABB i dag kun fungerer på Windows-maskiner. Mobilfokuset baserer seg på et responsivt design som kan tilpasse seg ulike skjermstørrelser. Dette gjør at de ansatte hos ABB kan bruke sine egne mobiltelefoner, istedenfor å oppsøke en Windows-maskin, når de skal koble seg til en robot. 
-
-%Legg til figur her (feks. illustrasjon av ansatt med mobil kobles opp mot robot)
+De siste årene 10 årene har bruken av internett på håndholdte enheter eksplodert \cite{platformStats}. På grunn av dette har det i de senere årene blitt mer og mer vanlig å fokusere på et mobilvennlig brukergrensesnitt ved utvikling av nye webapplikasjoner. Dette har også vært tilfelle i dette prosjektet. Dagens løsning hos ABB er, som nevnt tidligere, en Windows-applikasjon. For å øke fleksibiliteten og gjøre det enklere for brukerne å redigere brush-filer, har fokuset helt fra starten av vært å utvikle et bra mobilt grensesnitt med et responsivt design. Målet har vært å kunne ha samme funksjonalitet som dagens løsning, i en oversiktlig webapplikasjon. Dermed kan brukerne stå fritt til å velge hvilkeen enhet de vil benytte seg av.
 
 \subsection{Design og oppsett av komponentene}
-Etterhvert som nye komponenter og funksjoner ble lagt til, var det viktig at disse også fikk en passende plasseringen i layouten. Det har derfor vært en del \textbf{endringer i det grunnleggende designet underveis i prosjektet}. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. \textbf{Målet har vært å holde designet oversiktlig} slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
-
-%Underveis i utviklingen har det grunnleggende designet på applikasjonen endret seg en del. Dette er fordi det har blitt lagt til nye komponenter og funksjoner etter hvert og disse måtte få en passende plassering. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. Målet har vært å holde designet oversiktlig slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
+Etter hvert som nye komponenter og funksjoner ble lagt til, var det viktig at disse også fikk en passende plasseringen i layouten. Det har derfor vært en del \textbf{endringer i det grunnleggende designet underveis i prosjektet}. Tidlig i utviklingen var det svært få komponenter å holde styr på, men etter hvert som flere har blitt lagt til har det vært viktigere å opprettholde strukturen. \textbf{Målet har vært å holde designet oversiktlig} slik at brukeren ikke må streve for å finne ut hvordan applikasjonen skal brukes. 
 
 \begin{figure}[H]
 \centering
@@ -186,8 +171,7 @@ Etterhvert som nye komponenter og funksjoner ble lagt til, var det viktig at dis
 
 I feltet \textbf{«Navigasjonsbar»} befinner det seg en \textbf{liggende navigasjonsbar} som blir vist frem i toppen av vinduet til enhver tid. Denne er satt her for å gjøre det enkelt å åpne viktige verktøy. Hvis applikasjonen nettopp er åpnet vil dette være den eneste komponenten som viser frem noe. 
 
-I feltet \textbf{«Verktøy/tilbakemelding»} vil det \textbf{variere hva som blir vist frem} og feltet vil fjernes dersom ingenting er valgt. Det som kan bli vist er her; \textbf{brush-mapping, robot-filutforsker, filinformasjon, innstillinger, feil- og suksessmeldinger}. Det kan \textbf{ikke bli vist frem flere av disse komponentene på samme tid} (foruten om feil- og suksessmeldinger, som er uavhengige). Vurderingen har vært at det ikke er nødvendig å vise disse komponentene samtidig og at dette \textbf{kunne skapt en uoversiktlig layout} i applikasjonen. En \textbf{egen visningstjeneste er definert}. Denne inneholder funksjoner som holder styr på hvilke komponenter som skal åpnes/lukkes etter hvert som brukeren tar ulike valg.
-% Grunnen til dette er at det ikke er nødvendig å bruke disse komponentene samtidig, i tillegg til at applikasjonen blir mye ryddigere ved å vise de individuelt.
+I feltet \textbf{«Verktøy/tilbakemelding»} vil det \textbf{variere hva som blir vist frem} og feltet vil fjernes dersom ingenting er valgt. Det som kan bli vist er her; \textbf{brush-mapping, robot-filutforsker, filinformasjon, innstillinger, feil- og suksessmeldinger}. Det kan \textbf{ikke bli vist frem flere av disse komponentene på samme tid} (foruten om feil- og suksessmeldinger, som er uavhengige). Vurderingen har vært at det ikke er nødvendig å vise disse komponentene samtidig og at dette kunne skapt \textbf{en uoversiktlig applikasjonen}. En \textbf{egen visningstjeneste er definert}. Denne inneholder funksjoner som holder styr på hvilke komponenter som skal åpnes/lukkes etter hvert som brukeren tar ulike valg.
 
 I feltene \textbf{«Tabell»} og \textbf{«Graf»} vil \textbf{brush-tabellen og den tilhørende grafen vises}. Disse komponentene vil alltid bli vist så lenge en brush-fil er lastet inn. Grunnen til dette er at de er relevante for de fleste komponentene som befinner seg i «Verktøy/tilbakemelding»-feltet. \textbf{Dersom skjermen til brukeren er for liten} til å vise de to komponentene side om side, \textbf{vil grafen automatisk posisjonere seg under tabellen}. 
 
@@ -199,8 +183,7 @@ I feltene \textbf{«Tabell»} og \textbf{«Graf»} vil \textbf{brush-tabellen og
 \end{figure}
 
 \section{Tilbakemelding fra brukere av dagens løsning}
-Denne applikasjonen har blitt \textbf{testet av ansatte i ABB} som har erfaring med det nåværende programmet. De ulike funksjonene i applikasjonen ble testet og det ble samlet inn tilbakemeldinger om \textbf{hva som var bra} og \textbf{hva som eventuelt kunne forbedres}. Noen av de punktene som gikk igjen er er listet opp under:
-%Det var et par hovedpunkt angående forbedringer som utmerket seg i de fleste tilbakemeldingene:
+Denne applikasjonen har blitt \textbf{testet av ansatte i ABB} som har erfaring med det nåværende programmet. De ulike funksjonene i applikasjonen ble testet og det ble samlet inn tilbakemeldinger om \textbf{hva som var bra} og \textbf{hva som eventuelt kunne forbedres}. Noen av de punktene som gikk igjen er listet opp under:
 
 \begin{itemize}
 \item Mer informasjon til brukeren om hvor dataene som blir vist kommer fra og hva de representerer.
@@ -210,86 +193,60 @@ Denne applikasjonen har blitt \textbf{testet av ansatte i ABB} som har erfaring 
 
 \noindent Tilbakemeldingene ble nyttige i diskusjonen av hva som bør prioriteres ved videre utvikling av applikasjonen.
 
-%\noindent Disse tilbakemeldingene gav et godt overblikk over de forbedringene som burde prioriteres ved videre utvikling.
-
-
-% Det han ville forbedre:
-% Vite hvilken robot som er koblet til
-% Legge til og fjerne rader i tabellen
-% Tooltip med info om kanaler (max channel value etc.)
-% Info om filen hvor filen er hentet fra
-% Legg til versjon i settings
-% Endre farge på stolpediagram
-% Endre farge på verdier når disse er endret
-% Slette rader (ikke mulig i dagens versjon)
-
-% Skriv om dette:
-% Mer info til brukeren om hva dataene viser
-% Flere innstillingsmuligheter (velge robot)
-% Flere redigeringsvalg av data (brushdata)
-
-
 \section{Forslag til forbedringer ved videre utvikling}
-For å gjøre videreutvikling av denne applikasjonen lettere, blir det i dette delkapittelet tatt for seg ulike \textbf{forbedringspotensialer til applikasjonen}. Disse kan brukes til å ta applikasjonen ett steg videre. \textbf{Knapp tid} har i de fleste tilfellene vært den avgjørende faktoren for at disse forbedringene har ikke blitt gjennomført. 
-
-%I dette prosjektet er det forsøkt å tilrettelegge så mye som mulig for videre utvikling, siden det er et par punkter som kunne trengt forbedring. Det finnes ulike grunner til at disse delene av applikasjonen ikke er optimale, men knapp tid har i mange av tilfellene vært en avgjørende faktor. I dette kapittelet vil det bli diskutert hvilke forbedringer man kan gjennomføre for å ta applikasjonen et steg videre. 
+For å gjøre videreutvikling av denne applikasjonen lettere, blir det i dette delkapittelet tatt for seg ulike \textbf{forbedringspotensialer til applikasjonen}. Disse kan brukes til å ta applikasjonen ett steg videre. \textbf{Knapp tid} har i de fleste tilfellene vært den avgjørende faktoren for at disse forbedringene ikke har blitt gjennomført. 
 
 \subsection{Mer informasjon til brukeren}
-Et av de viktigste forbedringspotensialene (som også ble nevnt i tilbakemeldingene) er å vise frem mer informasjon. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, hadde en forbedret visning av disse forbedret applikasjonen. Noen eksempler på hvilken informasjonen brukerne ville se tydeligere er:
-% Å vise frem mer informasjon er et av de viktigste forbedringspotensialene ettersom dette ble påpekt av brukere av dagens løsning når de testet denne applikasjonen. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, var det ønskelig at den skulle bli vist tydeligere frem.
+Et av de viktigste \textbf{forbedringspotensialene} (som også ble nevnt i tilbakemeldingene) er å \textbf{vise frem mer informasjon}. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, hadde en forbedret visning av disse styrket programmet. \textbf{Noen eksempeler} på hvilken informasjon brukerne ville se tydeligere er:
 
 \begin{itemize}
-    \item Hvilken robot applikasjonen er koblet til. 
-    \item Synligere informasjon om kanalene (maks kanalverdi, måleenhet, etc.).
-    \item Informasjon om filen som er åpen i tabellen.
-    \item Hvilken versjon av applikasjonen som er i bruk.
+    \item \textbf{Hvilken robot applikasjonen er koblet til.} 
+    \item Synligere \textbf{informasjon om kanalene} (maks kanalverdi, måleenhet, etc.).
+    \item Informasjon om \textbf{filen som er åpen} i tabellen.
+    \item Hvilken \textbf{versjon av applikasjonen} som er i bruk.
 \end{itemize}
 
-\noindent Dersom man går inn i innstillingene vil IP-adressen til den valgte roboten og informasjon om maksverdi (dersom man velger en kanal) bli synliggjort. Det kan være litt tungvint å skjønne dette dersom man ikke har brukt applikasjonen og det er derfor forståelig at denne informasjonen er ønsket på mer synlige steder. Et forslag til løsning kan være å vise informasjon om den valgte roboten over tabellen og lage tooltips til kanalene for å vise frem maksverdi, måleenheten etc.
+\noindent Dersom man går inn i \textbf{innstillingene} vil \textbf{IP-adressen} til den valgte roboten og informasjon om \textbf{maksverdi} (dersom man velger en kanal) \textbf{bli synliggjort}. Dersom brukeren \textbf{ikke har benyttet applikasjonen} før, kan det nok være \textbf{litt vanskelig å forstå} at man må åpne innstillingene for å få tilgang til denne informasjonen. Et \textbf{forslag} til løsning kan derfor være å \textbf{vise informasjon om den valgte roboten} over tabellen og lage \textbf{tooltips til kanalene} for å vise frem maksverdi, måleenheten og annen nødvendig informasjon. 
 
-Man finner også informasjon om hvilken fil som er åpen i tabellen dersom man åpner filinformasjonen. Filinformasjonskomponenten trengs siden den gir rom for å endre på navn og filkommentar, men man kunne for eksempel vist frem filnavnet over tabellen. Her kunne også versjonsnummeret blitt vist frem.
-
-% Vite hvilken robot som er koblet til
-% Tooltip med info om kanaler (max channel value etc.)
-% Info om filen hvor filen er hentet fra
-% Legg til versjon i settings
-
+Man finner også informasjon om \textbf{hvilken fil som er åpen} i tabellen dersom man åpner filinformasjonen. \textbf{Filinformasjonskomponenten trengs} ettersom den gir rom for å \textbf{endre} på både \textbf{filnavn og -kommentar}. Det kunne likevel blitt \textbf{vist frem filnavn} over tabellen slik at brukeren \textbf{ikke trenger} å åpne filinformasjonskomponenten for å få tak i denne informasjonen. Her kunne også \textbf{versjonsnummeret} til applikasjonen blitt vist frem.
 
 \subsection{Flere redigeringsmuligheter til brush-dataene i tabellen}
-Den eneste nåværende redigeringsmuligheten i applikasjonen er å slette innholdet i en rad (sette alle verdiene til 0). Det kunne med fordel vært lagt til flere redigeringsvalg som:
-
-%I applikasjonen finnes det ett redigeringsverktøy for manipulering av dataene i tabellen. Dette verktøyet sletter innholdet i raden (fjerner ikke raden). Etter testingen, utført av brukerne av den nåværende løsningen, ble det konkludert med at det kan legges til flere redigeringsvalg ved videre utvikling:
+Den eneste \textbf{nåværende redigeringsmuligheten} i applikasjonen er å \textbf{slette innholdet i en rad} (sette alle verdiene til 0). Den ble lagt til slik at brukeren slipper å gjøre dette manuelt, for alle verdier i raden, dersom det er nødvendig. Det kunne med fordel vært \textbf{lagt til flere} redigeringsvalg som:
 
 \begin{itemize}
 \item Legge til/fjerne rader i tabellen. 
 \item Tillate innskriving av ugyldige verdier i tabell, men vis at det ikke er mulig å lagre disse verdiene.
 \end{itemize}
 
-\noindent Legge til og fjerne rader er noe som i dag må gjøres manuelt i brushfilen. For å øke bruksområdet til applikasjonen kan det derfor være en god fremtidig løsning å legge til dette.
+\noindent \textbf{Legge til og fjerne rader} er noe som i dag må gjøres \textbf{manuelt} i brushfilen. Dette er en \textbf{tungvint løsning} og det kunne derfor vært nyttig å \textbf{legge til dette} som en mulighet i applikasjonen.
+For eksempel, kunne dette blitt gjort ved å legge til en \textbf{ny knapp} i hver rad, som \textbf{fjerner hele raden}. I tillegg til en knapp under nederste rad i tabellen som \textbf{legger til en ny}.
 
-%\noindent Legge til og fjerne rader er noe som nå må legges til manuelt i filen som blir lest inn og derfor kan det være en god fremtidig løsning å legge dette inn som et valg i applikasjonen istedenfor. 
+%Det kunne for eksempel blitt \textbf{lagt til mulighet for å fjerne hele raden} ved en knapp på enden av den aktuelle raden og så kunne det blitt lagt til en knapp under nederste rad i tabellen der man kunne \textbf{lagt til en rad}.
 
-I denne applikasjonen er det brukt inputvalidering for å sørge for at brukeren ikke har muligheten til å taste inn ugyldige verdier. Et potensielt forbedringspotensiale (ifølge tilbakemeldingene) kunne vært å la brukeren taste inn ugyldige verdier, men la de få en form for beskjed om ugyldige verdier.
 
-%I denne applikasjonen er det brukt inputvalidering for å sørge for at brukeren ikke har muligheten til å taste inn ugyldige verdier. Ifølge tilbakemeldingene kunne det vært bedre å la brukeren taste inn ugyldige verdier, men la de få en form for beskjed at dette ikke var en gyldig verdi. 
-
-% Legge til og fjerne rader i tabellen
-% Tillate verdier høyere enn maksverdi, men vis ved hjelp av farge at dette ikke er mulig
+I denne applikasjonen er det brukt \textbf{inputvalidering} for å sørge for at brukeren ikke har muligheten til å taste inn \textbf{ugyldige verdier}. En forbedring her (ifølge tilbakemeldingene) kunne vært å \textbf{la brukeren taste inn ugyldige verdier}, men la de få en form for \textbf{beskjed om at verdien er ugyldig}. Dette var ønskelig ettersom \textbf{brukerne som regel har god kontroll} på hvilke verdier som er ugyldige, men at de vil \textbf{oppbevare dem der midlertidig}.
 
 \subsection{Flere innstillinger i applikasjonen}
+Det finnes  \textbf{tre ulike innstillingsmuligheter} i denne applikasjonen. Det er mulig å  \textbf{endre maksverdi} for en kanal, \textbf{endre IP-adresse} for å bytte robot og  \textbf{tilbakestille kanalnavn} til standard. Det kunne fint vært lagt til  \textbf{flere innstillingsmuligheter} enn de som eksisterer. Noen  \textbf{forslag} som kom frem fra tilbakemeldingene var:
+
+\begin{itemize}
+\item Mulighet til å  \textbf{endre utseendet} til applikasjonen.
+\item Mulighet til å \textbf{endre språk}. 
+\end{itemize} 
+
+Ved  \textbf{endring av utseendet} kunne det for eksempel blitt lagt til mulighet for å  \textbf{endre farge på søyler i grafen}, introdusert et valg for  \textbf{ «mørk modus»}, etc. Angående mulighet til å  \textbf{endre språk} kunne man hatt et  \textbf{engelsk og norsk} flagg ved siden av hverandre oppe i et hjørne, slik at brukeren kunne valgt  \textbf{hvilket språk som skulle bli brukt}. Ellers er det lurt å tenke over uttrykket  \textbf{ «less is more»} og ikke legge til innstillinger som  \textbf{ikke har en nytteverdi} for brukerene. Dette vil  \textbf{føre til} en mer  \textbf{uoversiktlig} applikasjon. 
+
+
 Det finnes tre ulike innstillingsmuligheter i denne applikasjonen:
-%Slik applikasjonen er nå så finnes det tre egenskaper som kan endres i innstillinger:
 
 \begin{itemize}
 \item Endre maksverdi for en kanal.
 \item Endre IP-adresse for å bytte robot.
 \item Tilbakestille kanalnavn til standard.
 \end{itemize}
-%\noindent Som man kan se er det fullt mulig å legge til flere nyttige innstillinger enn de som allerede er der. En av tilbakemeldingene fra brukerne som testet applikasjonen var at de hadde et ønske om å velge farge på søylene i grafen, så dette kunne blitt lagt til ved videre utvikling. Det finnes ikke noen innstillinger som endrer på utseendet i applikasjonen, så dette kunne også vært mulig å legge til.
 
 \noindent Et klart forbedringspotensiale er inkludering av flere innstillingsmuligheter. Et forslag her (fra tilbakemeldingene) var å legge til muligheten til å ender utseendet til applikasjonen. Dette kan være i form av farge på søylene i grafen, eller introduksjon av valg for «mørk modus».
-
-%Samtidig er det lurt å tenke over uttrykket «less is more», fordi applikasjonen blir ikke nødvendigvis bedre av å legge til mange nye innstillinger. 
+ 
 Forøvrig er det lurt å tenke over uttrykket «less is more» og ikke legge til innstillinger som ikke har en nytteverdi for brukerene. Dette vil kunne føre til en mer uoversiktlige applikasjon.
 
 \subsection{Flere funksjoner i filvelgeren}
@@ -341,10 +298,7 @@ I denne applikasjonen er det i hovedsak \textbf{to moduler som kunne blitt brukt
     \item \textbf{Forms Module} er en modul som inneholder ulike funksjoner knyttet til \textbf{håndteringen av HTML-skjema}. Den inkluderer blant annet validering av e-post og maks-/minimumslengde på input. En av funksjonene i Forms Module, er NgModels. Den blir brukt til å binde dataobjekter til HTML-malen i visningen, enten som en enveis- eller toveis-binding \cite{formsModule}. NgModels er brukt i applikasjonen for å binde verdiene fra brush-objektene til HTML-malen i tabellvisningen, men kunne gjerne blitt brukt mer i resten av applikasjonen også. For eksempel i innstillingene for å sjekke at brukeren ikke skriver inn ulovlige verdier. Ved å øke bruken av \textbf{Forms Module ville koden også blitt mer robust}, ettersom valideringsfunksjonene brukt i denne applikasjonen er laget manuelt. 
 \end{itemize}
 
-%Det må alltid bli tatt en vurdering på hvordan man skal dele inn applikasjonen.
-\noindent I tillegg til en flittigere bruk av Angular-moduler i applikasjonen, har også \textbf{inndelingen av komponenter og tjenester et forbedringspotensial}. Hvordan man skal dele inn applikasjonen er alltid en viktig vurdering. I dette prosjektet er det forsøkt å gjøre dette på en fornuftig måte, men ettersom \textbf{kodebasen utvikles kontinuerlig} er det utfordrende å opprettholde en naturlig inndeling. Det er \textbf{viktig at inndelingen holdes dynamisk} slik at den ikke blir uoversiktlig. Et eksempel på dette kan man finne i filvelgertjenesten. Denne tjenesten håndterer logikken bak filvelger-komponenten og brushmapping-komponenten. Grunnen til at det ble valgt en felles filvelger-tjeneste for disse komponentene, var at begge skulle kommunisere med Robot API-et. Likevel har det i ettertid vist seg at det kunne vært lurt og dele denne tjenesten i to, da komponentene hadde flere ulikheter enn først antatt.
-
-%Grunnen til at det ble laget en felles filvelger-tjeneste for disse komponentene var at begge skal kommunisere med Robot APIet. Likevel kan det i ettertid se ut som at det burde vært skilt i to ulike tjenester, siden komponentene hadde flere ulikheter enn først antatt. 
+\noindent I tillegg til en flittigere bruk av Angular-moduler i applikasjonen, har også \textbf{inndelingen av komponenter og tjenester et forbedringspotensial}. Det er viktig å ha en klar filosofi for hvordan man skal dele inn applikasjonen. I dette prosjektet er det forsøkt å gjøre dette på en fornuftig måte, men ettersom \textbf{kodebasen utvikles kontinuerlig} er det utfordrende å opprettholde en naturlig inndeling. Det er \textbf{viktig at inndelingen holdes dynamisk} slik at den ikke blir uoversiktlig. Et eksempel på dette kan man finne i filvelgertjenesten. Denne tjenesten håndterer logikken bak filvelger-komponenten og brushmapping-komponenten. Grunnen til at det ble valgt en felles filvelger-tjeneste for disse komponentene, var at begge skulle kommunisere med Robot API-et. Likevel har det i ettertid vist seg at det kunne vært lurt og dele denne tjenesten i to, da komponentene hadde flere ulikheter enn først antatt.
 
 \section{Problemet med CORS under utviklingen}
 \label{CORS_problem}
@@ -353,7 +307,7 @@ I denne applikasjonen er det i hovedsak \textbf{to moduler som kunne blitt brukt
 Et forslag til videre forbedring av applikasjonen kan være å finne en løsning på dette restriksjons-problemet. Dette \textbf{kan løses ved å spesifisere at de aktuelle headerene skal bli eksponert, på serversiden}.
 
 \section{Denne applikasjonen sammenlignet med dagens løsning}
-Programmet som blir brukt for redigering av brush-filer i dag (omtalt som dagens løsning) er gammelt. Det skiller seg derfor veldig fra applikasjonen i dette prosjektet, som er bygget med nyere hjelpemidler. Aldersforskjellen gjør at det er \textbf{tydelige forskjeller i utseendet} til programmene (se figur). Den største forskjellen mellom disse programmene er at \textbf{denne applikasjonen er bygget som en webapplikasjon}, mens \textbf{dagens løsning er et Windows-program}. Det finnes fordeler og ulemper med begge disse:
+Programmet som blir brukt for redigering av brush-filer i dag (omtalt som dagens løsning) er gammelt. Det skiller seg derfor veldig fra applikasjonen i dette prosjektet, som er bygget med nyere hjelpemidler. Aldersforskjellen gjør at det er \textbf{tydelige forskjeller i utseendet} til programmene (se figur). Den største forskjellen mellom disse programmene er at \textbf{denne applikasjonen er bygget som en webapplikasjon}, mens \textbf{dagens løsning er et Windows-program}. Det finnes fordeler og ulemper med begge disse løsningene:
 
 \subsection{Ulemper med webapplikasjonen}
 På grunn av sikkerhet har alle nettlesere \textbf{visse restriksjoner} på hva applikasjoner kan gjøre. En av disse er \textbf{ingen direkte tilgang til filsystemet} på enheten. For å få tilgang til lokale filer må applikasjonen benytte seg av JavaScript sitt \href{https://developer.mozilla.org/en-US/docs/Web/API/File}{fil-API}. Innlasting av filer via dette API-et fungerer på lignende måte som i dagens system. Brukeren blar gjennom filsystemet og velger en fil som skal bli lastet inn. Men lagring av filen fungerer litt annerledes. På grunn av bedrensinger i API-et er det kun mulig å laste ned filen. Brukeren må så manuelt velge og flytte/lagre denne på det stedet som den hører hjemme.
@@ -371,10 +325,11 @@ En annen fordel er at man kan legge til funksjoner som har vært ønsket av bruk
     \item \textbf{Endre navn på kanaler}: Lagt til slik at brukeren kan få en bedre forståelse for hva kanalene egentlig gjør ved å endre til passende navn.
 \end{itemize}
 
-\noindent I tillegg inkluderer denne applikasjonen noen funksjoner som er naturlige å ha med fordi dette er en webapplikasjon:
+\subsection{Spesielle funksjoner i webapplikasjonen}
+Det er naturlig å ha med noen funksjoner i denne applikasjonen som ikke finnes i dagens løsning. Webapplikasjonen som er utviklet skal for det meste brukes på håndholdte enheter. Disse vil man, i motsetning til hva som er tilfelle med dagens løsning, flytte rundt på og koble seg til ulike robotkontrollere. Av denne grunnen, trenger den noen ekstra innstillinger.
 \begin{itemize}
-    \item \textbf{Endre IP-adresse for å bytte robot}: Lagt til slik at brukeren kan skifte robot ved hjelp av å skrive inn ønsket roboten sin IP-adresse.
-    \item\textbf{Lagring av kanalnavn og maks-verdier i cookies}: Lagt til slik at brukeren slipper å ta vare på de verdiene som er brukt i en økt. De vil automatisk bli lastet inn i neste økt.
+    \item \textbf{Endre IP-adresse for å bytte robot:} Lagt til slik at brukeren enkelt kan koble seg opp mot flere forskjellige robotkontrollere med samme enheten. Da hver enhet som brukes i dagens løsning stort sett brukes opp mot én robot, har denne funksjonen ikke vært nødvendig.
+    \item \textbf{Lagring av kanalnavn og maks-verdier i cookies:} Lagt til slik at verdiene som brukeren har lagt inn ikke slettes når brukeren avslutter programmet. Hvis brukeren har endret kanalnavn eller maks-verdier vil disse automatisk bli lastet inn i neste økt.
 \end{itemize}
 
 \section{Oppsummering}

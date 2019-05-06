@@ -21,13 +21,14 @@ Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-
 \textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel så er variabelnavnet for kanalnavnene navngitt som \textbf{«channelNames»}. Dette gjør det oversiktlig å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
 
 \subsection{Navngiving av filer}
-Filnavnene i dette prosjektet følger \textbf{Angular sin stilguide}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Ett typisk eksempel (for flere se figur \ref{fig:filestruktur}) er «brush-graph.component.ts». «Brush graph» er navnet, mens «component» beskriver at dette er en komponent.
+Filnavnene i dette prosjektet følger \textbf{Angular sin stilguide}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Et typisk eksempel (for flere se figur \ref{fig:filestruktur}) er «brush-graph.component.ts». «Brush graph» er navnet, mens «component» beskriver at dette er en komponent.
 
 \subsection{Hvordan Single responsibility-prinsippet er fulgt}
-Single responsibility er et prinsipp som går ut på at hver modul, klasse eller funksjon kun skal ha ansvar for \textbf{én} handling. For eksempel hvis funksjonen \textbf{«toLowerCase(text)»} skal ta inn en tekst og gjøre om hele teksten til små bokstaver så kan den ikke gjøre noe mer enn det. %Hvis funksjonen i tillegg hadde lagt en liste over alle ordene i teksten så ville ikke funksjonen lengre oppfylt prinsippet.
+Single responsibility er et prinsipp som går ut på at hver modul, klasse eller funksjon kun skal ha ansvar for \textbf{én} handling. For eksempel hvis funksjonen \textbf{«toLowerCase(text)»} skal ta inn en tekst og gjøre om hele teksten til små bokstaver så kan den ikke gjøre noe mer enn det.
 
-I denne applikasjonen har det blitt prøvd å ta hensyn til dette hver gang en ny funksjon, klasse eller modul har blitt opprettet. Koden blir lettere å endre og forstå (spesielt hvis leseren ikke har skrevet koden selv) hvis dette prinsippet blir fulgt \cite{SingleReponsibility}.  
+I denne applikasjonen har man tatt hensyn til dette hver gang en ny funksjon, klasse eller modul har blitt opprettet. Koden blir lettere å endre og forstå (spesielt hvis leseren ikke har skrevet koden selv) hvis dette prinsippet blir fulgt \cite{SingleReponsibility}.  
 
+% I denne applikasjonen har det blitt prøvd å ta hensyn til dette hver gang en ny funksjon, klasse eller modul har blitt opprettet. 
 %I denne applikasjonen er dette prinsippet tatt hensyn til hver gang det har blitt opprettet en ny funksjon, klasse eller modul. Dette fører til at \textbf{koden blir lettere å endre på og forstå}, spesielt hvis leseren ikke har skrevet den aktuelle koden selv \cite{SingleReponsibility}.  
 
 \subsection{Inndeling av komponenter og tjenester}
