@@ -127,85 +127,6 @@
 %\clearpage
 
 %----------------------------------------------------------------------------------------
-%	TITLE PAGE - REMOVED
-%----------------------------------------------------------------------------------------
-
-%\begin{titlepage}
-%\begin{center}
-
-%\vspace*{.06\textheight}
-%{\scshape\LARGE \univname\par}\vspace{1.5cm} % University 
-%\textsc{\Large Bacheloroppgave}\\[0.5cm] % Thesis type
-
-%\HRule \\[0.4cm] % Horizontal line
-%{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
-%\HRule \\[1.5cm] % Horizontal line
- 
-%\begin{minipage}[t]{0.4\textwidth}
-%\begin{flushleft} \large
-%\emph{Forfattere:}\\
-%\authorname % Author name - remove the \href bracket to remove the link
-%\end{flushleft}
-%\end{minipage}
-%\begin{minipage}[t]{0.4\textwidth}
-%\begin{flushright} \large
-%\emph{Veileder:} \\
-%\supname % Supervisor name - remove the \href bracket to remove the link  
-%\end{flushright}
-%\end{minipage}\\[3cm]
- 
-%\vfill
-
-%\large \textit{A thesis submitted in fulfillment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
-%\textit{in the}\\[0.4cm]
-%\groupname\\
-%\deptname\\[2cm] % Research group name and department name
- 
-%\vfill
-
-%{\large \today}\\[4cm] % Date
-%\includegraphics{Logo} % University/department logo - uncomment to place it
- 
-%\vfill
-%\end{center}
-%\end{titlepage}
-
-%----------------------------------------------------------------------------------------
-%	DECLARATION PAGE - REMOVED
-%----------------------------------------------------------------------------------------
-
-%\begin{declaration}
-%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
-%\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
-
-%\begin{itemize} 
-%\item This work was done wholly or mainly while in candidature for a research degree at this University.
-%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-%\item Where I have consulted the published work of others, this is always clearly attributed.
-%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-%\item I have acknowledged all main sources of help.
-%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-%\end{itemize}
- 
-%\noindent Signed:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
- 
-%\noindent Date:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-%\end{declaration}
-
-%\cleardoublepage
-
-%----------------------------------------------------------------------------------------
-%	QUOTATION PAGE
-%----------------------------------------------------------------------------------------
-
-%\vspace*{0.2\textheight}
-
-%\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
-
-%\hfill Dave Barry
-%----------------------------------------------------------------------------------------
 %	SAMMENDRAG
 %----------------------------------------------------------------------------------------
 
@@ -216,23 +137,8 @@ Formålet med denne oppgaven var å lage en web-applikasjon som skal gjøre det 
 
 Oppgaven var utlyst av Universitetet i Stavanger med ABB som oppdragsgiver og gruppen stod fritt til å velge hvilke rammeverk som skulle brukes og hvilke funksjonaliteter som skulle implementeres. Resultatet ble en webapplikasjon med et komponentbasert designmønster, basert på JavaScript-rammeverket Angular.
 
-Fokuset i denne oppgaven har vært å lage et enkelt og responsivt design, slik at applikasjonen er lett å bruke på håndholdte enheter. I tillegg, har prosjektet fokusert på å lage en applikasjon som kan bygges videre på.
+Fokuset i denne oppgaven har vært å lage et enkelt og responsivt design, slik at applikasjonen er lett å bruke på håndholdte enheter. I tillegg, har prosjektet fokusert på å lage en applikasjon som har gode forutsetninger for å bygges videre i fremtiden.
 
-
-%Old
-%Formålet med denne oppgaven var å lage en web-applikasjon som skal gjøre det lettere for ansatte ved ABB å redigere brush-filer.
-%\noindent Angular har blitt brukt for å løse denne oppgaven. Det er et rammeverk som blir brukt til å lage web-applikasjoner ved å dele opp programmet i komponenter.
-%\noindent Angular har blitt brukt til å løse denne oppgaven. Dette er et JavaScript-rammeverk brukt til å lage web-applikasjoner med et komponentbasert designmønster. 
-% \noindentFokuset i denne oppgaven har vært å lage et enkelt og responsivt design slik at applikasjonen er lett å bruke på håndholdte enheter. I tilleg til dette har prosjektet hatt fokus på a låge en applikasjon som kan bygges videre på.
-
-% Oppgavens sammendrag skrive her (MAKS 1 side)\ldots
-% Innhold
-% \begin{itemize}
-%     \item Hva var formålet med denne oppgaven. Lage en ny brush editor som kan brukes i nettleseren, slik at den kan brukes på håndholdte enheter.
-%     \item Oppgaven var utlyst av Universitetet i Stavanger med ABB som oppdragsgiver. Gruppen stod fritt til å velge hvordan oppgaven skulle løses/hva den skulle inneholde av funskjonalitet/hvilke rammeverk som skulle brukes.
-%     \item Hvordan ble oppgaven løst: Webapplikajson skrevet ved hjelp av Angular
-%     \item Fokus i oppgaven: Responsivt og enkelt design slik at den er lett å bruke på mobil
-% \end{itemize}
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -241,7 +147,7 @@ Fokuset i denne oppgaven har vært å lage et enkelt og responsivt design, slik 
 
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-Først vil vi gjerne takke vår veileder, Morten Mossige (ABB), for utmerket hjelp og veiledning gjennom denne perioden. Vi vil også rette en takk Andres Skaar (ABB) for teknisk hjelp knyttet til utviklingen av applikasjonen. Uten god hjelp fra disse to, ville oppgaven ikke vært mulig. I tillegg vil vi rette en stor takk til ABB og UiS for å ha foreslått en interessant oppgave som har gjort denne perioden både spennende og utfordrende for oss. Til slutt en takk til alle andre som har vært involvert i denne prosessen. 
+Først vil vi gjerne takke vår veileder, Morten Mossige (ABB), for utmerket hjelp og veiledning gjennom denne perioden. Vi vil også rette en takk til Andres Skaar (ABB) for teknisk hjelp knyttet til utviklingen av applikasjonen. Uten god hjelp fra disse to, ville oppgaven ikke vært mulig. I tillegg vil vi rette en stor takk til ABB og UiS for å ha foreslått en interessant oppgave som har gjort denne perioden både spennende og utfordrende for oss. Til slutt en takk til alle andre som har hjulpet oss i denne perioden. 
 \end{acknowledgements}
 
 %----------------------------------------------------------------------------------------
@@ -260,63 +166,32 @@ Først vil vi gjerne takke vår veileder, Morten Mossige (ABB), for utmerket hje
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+\begin{abbreviations}{ll}
 
-\textbf{HTML} & \textbf{H}yper \textbf{T}ext \textbf{M}arkup \textbf{L}anguage\\
-\textbf{CSS} & \textbf{C}ascading \textbf{S}tyle \textbf{S}heet\\
-\textbf{JS} & \textbf{J}ava \textbf{S}cript\\
-\textbf{TS} & \textbf{T}ype \textbf{S}cript\\
-\textbf{NPM} & \textbf{N}ode \textbf{P}ackage \textbf{M}anager\\
-\textbf{CLI} & \textbf{C}ommand \textbf{L}ine \textbf{I}nterface\\
-\textbf{DOM} & \textbf{D}ocument \textbf{O}bject \textbf{M}odel\\
-\textbf{MVC} & \textbf{M}odel \textbf{V}iew \textbf{C}ontroller\\
-\textbf{URI} & \textbf{U}niform \textbf{R}esource \textbf{I}dentifier\\
+% Forkortelser i alfabetisk rekkefølge
 \textbf{API} & \textbf{A}pplication \textbf{P}rogramming \textbf{I}nterface\\
-\textbf{REST} & \textbf{RE}presentational  \textbf{S}tate \textbf{T}ransfer\\
+\textbf{CLI} & \textbf{C}ommand \textbf{L}ine \textbf{I}nterface\\
 \textbf{CORS} & \textbf{C}ross \textbf{O}rigin \textbf{R}esource \textbf{S}haring \\
-\textbf{IE} & \textbf{I}nternet \textbf{E}xplorer
-%\textbf{UI} & \textbf{U}ser \textbf{I}nterface
+\textbf{CSS} & \textbf{C}ascading \textbf{S}tyle \textbf{S}heet\\
+\textbf{DOM} & \textbf{D}ocument \textbf{O}bject \textbf{M}odel\\
+\textbf{DVCS} & \textbf{D}istributed \textbf{V}ersion \textbf{C}ontrol \textbf{S}ystem\\
+\textbf{HTML} & \textbf{H}yper\textbf{T}ext \textbf{M}arkup \textbf{L}anguage\\
+\textbf{HTTP} & \textbf{H}yper\textbf{T}ext \textbf{T}ransfer \textbf{P}rotocol\\
+\textbf{HTTPS} & \textbf{H}yper\textbf{T}ext \textbf{T}ransfer \textbf{P}rotocol \textbf{S}ecure\\
+\textbf{IE} & \textbf{I}nternet \textbf{E}xplorer\\
+\textbf{IP} & \textbf{I}nternet \textbf{P}rotocol\\
+\textbf{JS} & \textbf{J}ava \textbf{S}cript\\
+\textbf{JSX} & \textbf{J}ava \textbf{S}cript \textbf{X}ML\\
+\textbf{MVC} & \textbf{M}odel \textbf{V}iew \textbf{C}ontroller\\
+\textbf{NONCE} & \textbf{N}umber Only \textbf{ONCE}\\
+\textbf{QOP} & \textbf{Q}uality \textbf{O}f \textbf{P}rotection\\
+\textbf{NPM} & \textbf{N}ode \textbf{P}ackage \textbf{M}anager\\
+\textbf{REST} & \textbf{RE}presentational  \textbf{S}tate \textbf{T}ransfer\\
+\textbf{TS} & \textbf{T}ype \textbf{S}cript\\
+\textbf{URI} & \textbf{U}niform \textbf{R}esource \textbf{I}dentifier
 
 \end{abbreviations}
 
-%----------------------------------------------------------------------------------------
-%	PHYSICAL CONSTANTS/OTHER DEFINITIONS - REMOVED
-%----------------------------------------------------------------------------------------
-
-%\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
-
-% The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-
-%Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
-%Constant Name & $Symbol$ & $Constant Value$ with units\\
-
-%\end{constants}
-
-%----------------------------------------------------------------------------------------
-%	SYMBOLS - REMOVED
-%----------------------------------------------------------------------------------------
-
-%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
-
-%$a$ & distance & \si{\meter} \\
-%$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
-%Symbol & Name & Unit \\
-
-%\addlinespace % Gap to separate the Roman symbols from the Greek
-
-%$\omega$ & angular frequency & \si{\radian} \\
-
-%\end{symbols}
-
-%----------------------------------------------------------------------------------------
-%	DEDICATION - REMOVED
-%----------------------------------------------------------------------------------------
-
-%\dedicatory{For/Dedicated to/To my\ldots} 
-
-%----------------------------------------------------------------------------------------
-%	THESIS CONTENT - CHAPTERS
-%----------------------------------------------------------------------------------------
 
 \mainmatter % Begin numeric (1,2,3...) page numbering
 
