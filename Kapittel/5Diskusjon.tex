@@ -8,7 +8,7 @@ I dette kapittelet blir de ulike beslutningene som er tatt i løpet av utvikling
 Det var flere tekniske valg som måtte tas før arbeidet med applikasjonen kunne starte. En av tankene i prosjektet var å bruke metoder og hjelpemidler som er blant \textbf{de mest aktuelle i dag}. Dette for å få nytte av god og \textbf{oppdatert dokumentasjon}, samt at produktet som utvikles skulle være \textbf{moderne og fremtidsrettet}.
 
 \subsection{Hvorfor Angular ble valgt som web-rammeverk}
-Det første og viktigste valget var hvilket \textbf{web-rammeverk} som skulle benyttes. På grunn av det store antallet JavaScript rammeverk/bibliotek som finnes i dag, var dette et krevende valg. I hovedsak var det tre rammeverk som ble vurdert: \textbf{React, Angular og Vue.js}. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene (figur \ref{fig:FrameworkPop}). I tillegg til disse tre, ble andre muligheter som \textbf{Ember.js og Backbone.js} også evaluert. Backbone.js ble utelatt fra vurderingen på grunn av alderen og oppdateringsfrekvensen. Backbone.js var et populært rammeverk tidligere, men etter introduksjonen av moderne rammeverk har interessen dalt kraftig (figur \ref{fig:FrameworkPop}). Ember.js ble heller ikke vurdert videre da populariteten ikke kan sammenlignes med Angular/React og veksten ikke kan sammenlignes med Vue.js (figur \ref{fig:FrameworkPop}) \cite{jsFrameworks}.
+Det \textbf{første og viktigste valget} var hvilket web-rammeverk som skulle benyttes. På grunn av det store antallet JavaScript rammeverk/bibliotek som finnes i dag, var dette et krevende valg. I hovedsak var det \textbf{tre rammeverk som ble vurdert: React, Angular og Vue.js}. React og Angular er de to største, mens Vue.js har hatt en kraftig vekst de siste årene (figur \ref{fig:FrameworkPop}). I tillegg til disse tre, ble andre muligheter som \textbf{Ember.js og Backbone.js} også evaluert. Backbone.js ble utelatt fra vurderingen på grunn av alderen og oppdateringsfrekvensen. Backbone.js var et populært rammeverk tidligere, men etter introduksjonen av moderne rammeverk har interessen dalt kraftig (figur \ref{fig:FrameworkPop}). Ember.js ble heller ikke vurdert videre da populariteten ikke kan sammenlignes med Angular/React og veksten ikke kan sammenlignes med Vue.js (figur \ref{fig:FrameworkPop}) \cite{jsFrameworks}.
 
 \begin{figure}[H]
     \centering
@@ -19,56 +19,50 @@ Det første og viktigste valget var hvilket \textbf{web-rammeverk} som skulle be
 
 Alle tre frontend rammeverkene/bibliotekene, React, Angular og Vue.js, er \textbf{komponentbaserte} (beskrevet i kapittel \ref{AngularKomponenter}). Allikevel har de mange \textbf{ulike egenskaper} som gjør hver av dem mer/mindre egnet til ulike prosjekter.
 \begin{itemize}
-    \item \textbf{React} er et \textbf{JavaScript-bibliotek} for å bygge brukergrensesnitt \cite{reactHistory}. React ble opprinnelig laget av Facebook, men har i dag blitt åpen kildekode og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er \href{https://reactjs.org/docs/introducing-jsx.html}{JSX}-syntaksen. JSX er en utvidelse av JavaScript som brukes i React for å kunne putte markup og logikk i samme kode. JSX kan se ut som et template-språk, men inkludere all JavaScript funksjonalitet \cite{IntroJSX}. I tillegg er React-applikasjoner basert på en \textbf{virtuell Document Object Model (DOM)}. En representasjon av brukergrensesnittet er lagret i minnet som synkroniseres med den «ekte» DOM-en. Dette gjør utvikling av applikasjoner mindre vanskelig fordi React tar seg av attributt- og  hendelses-håndteringen samt DOM-oppdateringen. Dette måtte utvikleren ellers gjort selv \cite{reactVirtualDOM}. React inkluderer også støtte for \textbf{enveis binding av data}. Variabler bindes da til HTML DOM-elementene slik at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) endres.
+    \item \textbf{React} er et \textbf{JavaScript-bibliotek} for å bygge brukergrensesnitt \cite{reactHistory}. React ble \textbf{opprinnelig laget av Facebook}, men har i dag blitt «open source» og vedlikeholdes av individuelle utviklere i tillegg til Facebook \cite{reactGithub}. En av egenskapene som skiller React fra andre bibliotek/rammeverk er \href{https://reactjs.org/docs/introducing-jsx.html}{JSX}-syntaksen. \textbf{JSX er en utvidelse av JavaScript som brukes i React} for å kunne kombinere markup og logikk i samme kode. JSX kan se ut som et template-språk, men det inkluderer all JavaScript funksjonalitet \cite{IntroJSX}. I tillegg er React-applikasjoner basert på en \textbf{virtuell Document Object Model (DOM)}. En representasjon av brukergrensesnittet er lagret i minnet som synkroniseres med den «ekte» DOM-en. Dette gjør utvikling av applikasjoner mindre vanskelig fordi React tar seg av attributt- og  hendelses-håndteringen samt DOM-oppdateringen. Dette måtte utvikleren ellers gjort selv \cite{reactVirtualDOM}. React inkluderer også støtte for \textbf{enveis binding av data}. Variabler bindes da til HTML DOM-elementene slik at visningen (HTML) oppdateres automatisk hvis dataobjektet i programminnet (JS) endres.
     
-    \item \textbf{Angular} er et \textbf{fullverdig JavaScript-rammeverk} utviklet av Google og er etterfølgeren til Angular.js. Ettersom rammeverkene er svært forskjellige, er det viktig at de ikke forveksles med hverandre. I motsetning til de andre verktøyene bruker Angular \textbf{TypeScript som utviklingsspråk}. TypesScript er en Javascript-utvidelse som introduserer \textbf{statisk typing} og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen \cite{staticTyping}. En annen unik egenskap med Angular, er muligheten for \textbf{toveis databinding}. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdataen. Brukere kan da manipulere dataen som blir lagret i minnet\cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert og lagret umiddelbart.
+    \item \textbf{Angular} er et \textbf{fullverdig JavaScript-rammeverk utviklet av Google} og er etterfølgeren til Angular.js. Ettersom rammeverkene er svært forskjellige, er det viktig at de ikke forveksles med hverandre. I motsetning til de andre verktøyene bruker Angular \textbf{TypeScript som utviklingsspråk}. TypesScript er en Javascript-utvidelse som introduserer \textbf{statisk typing} og kan derfor gjøre det enklere å unngå bugs i utviklingsfasen \cite{staticTyping}. En annen unik egenskap med Angular, er muligheten for \textbf{toveis databinding}. Dette gjør det mulig å binde HTML DOM-elementer til objekter i programdataen. Brukere kan da manipulere dataen som blir lagret i minnet\cite{AngularInformation}. Eksempelvis er dette brukt i brush-tabellen i programmet. Når brukeren endrer verdien i inputfeltene i tabellen, blir dette oppdatert og lagret umiddelbart.
     
     \item \textbf{Vue.js} er i likhet med React et \textbf{Javascript-bibliotek} og ikke et rammeverk. Målet til grunnleggeren av Vue.js var å lage et \textbf{lett anvendelig bibliotek}. Dette ble realisert ved å la kjernen i Vue.js kun \textbf{fokusere på visningslaget} av applikasjonen. Kjernen kan utvides ved å legge til offisielle tilleggsbibliotek ved behov. Denne tilpasningsmuligheten beskrives ofte som \textbf{Vue.js sin største fordel} i forhold til Angular og React. Vue.js har, i likhet med React, kun \textbf{enveis data binding} \cite{VueInformation}.
 \end{itemize}
 
-\noindent Figur \ref{fig:FrameworkPop} viser at \textbf{Vue.js har hatt en bra vekst} de siste årene, men at \textbf{Angular og React er de mest populære}. Det ble derfor etter hvert besluttet å utelukke Vue.js fra den videre vurderingen på grunnlag av at et av kriteriene var å bruke de mest aktuelle verktøyene i dette prosjektet. Etter at Vue.js var utelukket, ble introduksjons-guidene til Angular og React gjennomført for å få et bedre innblikk i hvordan disse fungerer. Guidene inkluderte en rask introduksjon hvor målet var å lage en liten applikasjon. Disse var nyttige for å få et innblikk i hvordan Angular og React fungerte.
+\noindent Figur \ref{fig:FrameworkPop} viser at \textbf{Vue.js har hatt en fin vekst} de siste årene, men at \textbf{Angular og React er de mest populære}. Det ble derfor etter hvert besluttet å utelukke Vue.js fra den videre vurderingen på grunnlag av at et av kriteriene var å bruke de mest aktuelle verktøyene i dette prosjektet. Etter at Vue.js var utelukket, ble introduksjons-guidene til Angular og React gjennomført for å få et bedre innblikk i hvordan disse fungerer. Guidene inkluderte en rask introduksjon hvor målet var å lage en liten applikasjon. Disse var nyttige for å få et innblikk i hvordan Angular og React fungerte.
 
 \textbf{Angular blir ofte betraktet som vanskeligere å lære}, på grunn av størrelsen på rammeverket. Det finnes mange innebygde funksjoner og tjenester i Angular som kan virke overveldende i starten \cite{angularvsreact}. For utviklere som kommer fra en objektorientert bakgrunn, med lite JavaScript-erfaring med JavaScript, kan Angular allikevel være lettere å lære seg enn React. TypeScript-implementasjonen gjør at \textbf{Angular har mer til felles med et standard objektorientert språk} som Java, C++ eller C\#.
 
 Den endelige \textbf{beslutningen ble å bruke Angular som web-rammeverk} i dette prosjektet. \textbf{Funksjonene, støtten for TypeScript og mulighetene som er bygget inn i rammeverket} gjorde at Angular ble det foretrukne valget, til tross for React sin  som har en høyere popularitet.
 
 \subsection{Hvorfor Chart.js ble valgt som graf-rammeverk}
-En viktig del av denne applikasjonen er grafen som \textbf{viser frem informasjon om valgt brush}. Hvilket graf-bibliotek som skulle brukes i prosjektet var derfor også viktig beslutning.
-%En viktig beslutning i prosjektet var derfor å velge et passende graf-bibliotek. 
+En viktig del av denne applikasjonen er grafen som viser frem informasjon om valgt brush. Hvilket graf-bibliotek som skulle brukes i prosjektet var derfor også en viktig beslutning. 
 
-Biblioteket måtte ha mulighet til å \textbf{vise frem grafen på en oversiktlig måte, med et moderne utseende}. Målet ble derfor å finne et bibliotek som var enkelt i bruk og samtidig tilfredsstilte dette kravet. Det var kun ett stolpediagram som skulle bli vist frem, og derfor var mange grafmuligheter innad i biblioteket ikke så viktig. Det ble også lagt stor vekt på at det skulle være \textbf{uproblematisk å integrere biblioteket med Angular}. Etter å ha undersøkt mange ulike alternativer var det til slutt to kandidater som skilte seg ut: \textbf{Chart.js og Chartist.js}. Følgende egenskaper ble tatt hensyn til i valget:
-%Begge bibliotekene er åpen kildekode og det finnes utvidelser som gjør det enkelt å integrere dem i en Angular-applikasjon. 
-
-%\begin{itemize}
-    %\item \textbf{Chart.js} fokuserer på å være oversiktlig og brukervennlig. Antall valgmuligheter er derfor mindre enn i mange andre bibliotek. Chart.js inneholder 8 ulike typer grafer, hvor stolpediagram er en av dem. Utseendet til grafene som lages ved hjelp av Chart.js er \textbf{moderne, og størrelsen er responsiv}  \cite{chartjs}. Utvidelsen \textbf{\href{https://github.com/valor-software/ng2-charts}{Ng2-charts}} gjør det enkelt å bruke biblioteket i Angular. Chart.js kan, etter integreringen, brukes som en hvilken som helst annen intern komponent i applikasjonen.
-    %\item \textbf{Chartist.js} prioriterer også å være et simpelt bibliotek. Allikevel inneholder Chartist.js en del \textbf{flere muligheter og graftyper enn Chart.js}. \textbf{Utseendet er moderne og responsivt}, men annerledes enn Chart.js \cite{chartistjs}. I likhet med Chart.js finnes det en utvidelse, \textbf{\href{https://github.com/willsoto/ng-chartist}{Ng-chartist}}, som gjør det lett å integrere Chartist.js i Angular-applikasjonen.
-%\end{itemize}
+Biblioteket måtte ha mulighet til å vise frem grafen på en \textbf{oversiktlig måte, med et moderne utseende}. Målet ble derfor å finne et bibliotek som var enkelt i bruk og samtidig tilfredsstilte dette kravet. Det ble også lagt stor vekt på at det skulle være \textbf{uproblematisk å integrere biblioteket med i Angular}. Etter å ha undersøkt mange ulike alternativer var det til slutt to kandidater som skilte seg ut: \textbf{Chart.js og Chartist.js}. Tabell \ref{tab:chart} beskriver egenskapene brukt i vurderingen.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|}
 \hline
 \multicolumn{1}{|c|}{\textbf{Egenskaper}} & \multicolumn{1}{c|}{\textbf{Chart.js}} & \multicolumn{1}{c|}{\textbf{Chartist.js}} & \multicolumn{1}{c|}{\textbf{Viktig}} \\ \hline
-Tidligere erfaring & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{FF4136}Nei & \checkmark \\ \hline
 Enkelt å integrere i Angular & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja & \checkmark \\ \hline
-Responsivt utseende & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja & \checkmark \\ \hline
-Moderne utseende* & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja & \checkmark \\ \hline
+Responsiv størrelse & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja & \checkmark \\ \hline
+Oversiktlig og moderne utseende* & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja & \checkmark \\ \hline
 God dokumentasjon* & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{2ECC40}Ja &  \\ \hline
 Flest tilpasningsmuligheter & \cellcolor[HTML]{FF4136}Nei & \cellcolor[HTML]{2ECC40}Ja &  \\ \hline
 Mest brukt \cite{topChartLib} & \cellcolor[HTML]{2ECC40}Ja & \cellcolor[HTML]{FF4136}Nei &  \\ \hline
 \end{tabular}
 \\ * Subjektiv vurdering
+\caption{Sammenligning av Chart.js og Chartist.js.}
+\label{tab:chart}
 \end{table}
 
-Begge bibliotekene er åpen kildekode og det finnes utvidelser som gjør det enkelt å integrere dem i en Angular-applikasjon. 
+\noindent Chart.js og Chartist.js har mange likhetstrekk og begge er gode alternativer. Begge bibliotekene er «open source» og det finnes utvidelser som gjør det \textbf{enkelt å integrere dem} som moduler i en Angular-applikasjon. I tillegg har begge et \textbf{oversiktlig og moderne utseende}, samt en \textbf{responsiv størrelse} som gjør at grafene tilpasser seg det området de får tildelt. 
 
-\noindent Disse bibliotekene har mange likhetstrekk og begge er gode alternativer. Siden grafen i denne applikasjonen \textbf{ikke hadde behov for avanserte tilpasningsmuligheter, falt valget til slutt på Chart.js}. 
+Da begge bibliotekene oppfylte de viktigste egenskapene, ble valget tatt basert på de mindre viktige. Grafen i denne applikasjonen hadde ikke behov for avanserte tilpasningsmuligheter, og \textbf{valget falt derfor til slutt på Chart.js fordi dette var det mest populære} av de to.
 
 \subsection{Hvorfor Bootstrap ble valgt som stil-rammeverk}
 I oppstarten av dette prosjekter stod valget mellom \textbf{Bootstrap, Foundation og Angular Material} som verktøyet for å stilsette applikasjonen. Bootstrap og Foundation ble tatt med i vurderingen som følge av at de er blant de mest populære i dag \cite{top5frontend}. Angular Material ble vurdert fordi det utvikles av det samme teamet som utvikler Angular. Det var allerede bestemt at web-rammeverket for applikasjonen skulle være Angular, og derfor var det naturlig å ha med Angular Material i vurderingen. Det ble satt opp noen \textbf{egenskaper} (viktige og mindre viktige) for de ulike rammeverkene:
 
 % Tabellfarger, Grønn: 2ECC40, Rød: FF4136, Gul: FFDC00
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|
@@ -97,6 +91,7 @@ Direkte linkede klasser & \cellcolor[HTML]{FF4136}Nei & Ja & \cellcolor[HTML]{FF
 \end{tabular}%
 }
 * Subjektiv vurdering
+\caption{Sammenligning av Bootstrap, Foundation og Angular Material.}
 \end{table}
 
 \noindent \textbf{Valget falt til slutt på Bootstrap} ettersom det var dette rammeverket som \textbf{oppfylte flest av de viktige egenskapene}. Ved aktiv bruk av klassene i Bootstrap på elementene i applikasjonen, har nettsiden fått et \textbf{elegant preg}. Bruken av rammeverket har for det meste fungert bra, sett bort i fra et \textbf{importeringsproblem ved bruk av tooltipene}. Dette førte til at \textbf{Angular Material} sitt tooltip-verktøy ble \textbf{brukt som erstatter} på de aktuelle elementene. 
@@ -120,6 +115,7 @@ Brukervennlig* & Ja & \cellcolor[HTML]{2ECC40}Ja &  \\ \hline
 Mest brukt \cite{topDistributedVersionControlSystems} & Ja & Nei &  \\ \hline
 \end{tabular}
 \\ * Subjektiv vurdering
+\caption{Sammenligning av Git og Mercurial.}
 \end{table}
 
 \noindent Ettersom \textbf{Git oppfylte de viktigste egenskapene}, ble det valgt som prosjektets versjonskontrollsystem. Dette har fungert som forventet og har vært en viktig faktor for en god arbeidsflyt i perioden.
@@ -156,14 +152,15 @@ Importering og eksportering av prosjekt & \cellcolor[HTML]{FF4136}Nei & Ja &  \\
 Mest brukt \cite{top10versioncontrolsystems} & Ja & \cellcolor[HTML]{FF4136}Nei &  \\ \hline
 \end{tabular}
 \\ * Subjektiv vurdering
+\caption{Sammenligning av GitHub og GitLab.}
 \end{table}
 
-\noindent Den \textbf{tidligere erfaringen ble avgjørende} i dette valget og førte til at \textbf{GitHub ble valgt} som arbeidsplattform. GitHub har \textbf{flere nyttige funksjoner}, deriblant \textbf{«GitHub Issues»} hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne \textbf{se hva som måtte gjøres}, og samtidig \textbf{se tilbake på oppgaver som hadde blitt gjort}. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert. Figur \ref{fig:github_issues} viser en skjermdump fra GitHub Issues underveis i dette prosjektet.
+\noindent Den tidligere erfaringen ble avgjørende i dette valget og førte til at \textbf{GitHub ble valgt som arbeidsplattform}. GitHub har \textbf{flere nyttige funksjoner}, deriblant \textbf{«GitHub Issues»} hvor man kan holde oversikt over oppgaver, forbedringer og feil i prosjektet \cite{githubIssues}. Dette ble brukt som et verktøy hvor man raskt kunne \textbf{se hva som måtte gjøres}, og samtidig \textbf{se tilbake på oppgaver som hadde blitt gjort}. Nye punkter ble lagt til etter hvert som prosjektet utviklet seg og markert ferdige når de var implementert. Figur \ref{fig:github_issues} viser en skjermdump fra GitHub Issues underveis i dette prosjektet.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{Figurer/5Diskusjon/GitHub_issues.PNG}
-\caption{GitHub Issues fra prosjektet (hentet 26.03.2019).}
+\caption{GitHub Issues fra prosjektet, hentet 26.03.2019 \cite{githubIssuesSrc}.}
 \label{fig:github_issues}
 \end{figure}
 
@@ -201,20 +198,20 @@ Denne applikasjonen har blitt \textbf{testet av ansatte i ABB} som har erfaring 
 
 \begin{itemize}
 \item \textbf{Mer informasjon} til brukeren om hvor dataene som blir vist kommer fra og hva de representerer.
-\item \textbf{Flere redigeringsmuligheter} av brush-dataene i tabellen slik at man ikke måtte gjøre dette manuelt i brush-filene.
+\item \textbf{Flere redigeringsmuligheter} av brush-dataene i tabellen slik at man ikke må gjøre dette manuelt i brush-filene.
 \item \textbf{Flere innstillingsmuligheter} slik at applikasjonen blir mer fleksibel.
 \end{itemize}
 
 \noindent Tilbakemeldingene ble nyttige i diskusjonen av hva som bør prioriteres ved videre utvikling av applikasjonen.
 
 \section{Forslag til forbedringer ved videre utvikling}
-For å gjøre videreutvikling av denne applikasjonen lettere, blir det i dette delkapittelet tatt for seg ulike \textbf{forbedringspotensialer i applikasjonen}. Disse kan brukes til å ta applikasjonen ett steg videre. \textbf{Knapp tid} har i de fleste tilfellene vært den avgjørende faktoren for at disse forbedringene ikke har blitt gjennomført. 
+For å legge mest mulig til rette for videreutvikling, blir det i dette delkapittelet tatt for seg ulike potensielle forbedringer i applikasjonen. Disse kan brukes til å ta applikasjonen ett steg videre. \textbf{Knapp tid} har i de fleste tilfellene vært den avgjørende faktoren for at disse forbedringene ikke har blitt gjennomført.
 
 \subsection{Mer informasjon til brukeren}
 Et av de viktigste \textbf{forbedringspotensialene} (som også ble nevnt i tilbakemeldingene) er å \textbf{vise frem mer informasjon}. Selv om mye av informasjonen som er ønsket allerede finnes ulike steder i applikasjonen, hadde en forbedret visning av disse styrket programmet. \textbf{Noen eksempler} på hvilken informasjon brukerne ville se tydeligere er:
 
 \begin{itemize}
-    \item \textbf{Hvilken robot} applikasjonen er koblet til. 
+    \item \textbf{Hvilken robot} applikasjonen er koblet til.
     \item Synligere \textbf{informasjon om kanalene} (maks kanalverdi, måleenhet, etc.).
     \item Informasjon om \textbf{filen som er åpen} i tabellen.
     \item Hvilken \textbf{versjon av applikasjonen} som er i bruk.
@@ -225,14 +222,14 @@ Et av de viktigste \textbf{forbedringspotensialene} (som også ble nevnt i tilba
 Man finner også informasjon om \textbf{hvilken fil som er åpen} i tabellen dersom man åpner filinformasjonen. \textbf{Filinformasjonskomponenten trengs} ettersom den gir rom for å \textbf{endre} på både \textbf{filnavn og -kommentar}. Det kunne likevel blitt \textbf{vist frem filnavn} over tabellen slik at brukeren \textbf{ikke trenger} å åpne filinformasjonskomponenten for å få tak i denne informasjonen. Her kunne også \textbf{versjonsnummeret} til applikasjonen blitt vist frem.
 
 \subsection{Flere redigeringsmuligheter til brush-dataene i tabellen}
-Den eneste \textbf{nåværende redigeringsmuligheten} i applikasjonen er å \textbf{slette innholdet i en rad} (sette alle verdiene til 0). Den ble lagt til slik at brukeren slipper å gjøre dette manuelt for alle verdier i raden, dersom det er nødvendig. Det kunne med fordel vært \textbf{lagt til flere} redigeringsvalg som:
+Den eneste \textbf{nåværende redigeringsmuligheten} i applikasjonen er å \textbf{slette innholdet i en rad} (sette alle verdiene til 0). Den ble lagt til slik at brukeren slipper å gjøre dette manuelt for alle verdier i raden, dersom det skulle være nødvendig. Det kunne med fordel vært \textbf{lagt til flere} redigeringsvalg som:
 
 \begin{itemize}
 \item \textbf{Legge til/fjerne rader} i tabellen. 
 \item \textbf{Tillate innskriving av ugyldige verdier} i tabell, men vis at det ikke er mulig å lagre disse verdiene.
 \end{itemize}
 
-\noindent \textbf{Legge til og fjerne rader} er noe som i dag må gjøres \textbf{manuelt} i brushfilen. Dette er en \textbf{tungvint løsning} og det kunne derfor vært nyttig å \textbf{legge til dette} som en mulighet i applikasjonen. For eksempel, kunne dette blitt gjort ved å legge til en \textbf{ny knapp} i hver rad som \textbf{fjerner hele raden}. I tillegg til en knapp under nederste rad i tabellen som \textbf{legger til en ny rad}.
+\noindent \textbf{Legge til og fjerne rader} er noe som i dag må gjøres \textbf{manuelt} i brushfilen. Dette er en \textbf{tungvint løsning} og det kunne derfor vært nyttig å legge til dette som en mulighet i applikasjonen. For eksempel kunne dette blitt gjort ved å legge til en \textbf{ny knapp} i hver rad som \textbf{fjerner hele raden}. I tillegg til en knapp under nederste rad i tabellen som \textbf{legger til en ny rad}.
 
 I denne applikasjonen er det brukt \textbf{inputvalidering} for å sørge for at brukeren ikke har muligheten til å taste inn \textbf{ugyldige verdier}. En forbedring her (ifølge tilbakemeldingene) kunne vært å \textbf{la brukeren taste inn ugyldige verdier}, men la de få en form for \textbf{beskjed om at verdien er ugyldig}. Dette var ønskelig ettersom \textbf{brukerne som regel har god kontroll} på hvilke verdier som er ugyldige. I noen tilfeller kunne det allikevel vært greit å \textbf{oppbevare dem der midlertidig}.
 
@@ -244,10 +241,10 @@ Det finnes \textbf{tre ulike innstillingsmuligheter} i denne applikasjonen: \tex
 \item Mulighet til å \textbf{endre språk}. 
 \end{itemize} 
 
-Ved \textbf{endring av utseendet} kunne det for eksempel blitt lagt til mulighet for å \textbf{endre farge på søyler i grafen}, introdusert et valg for \textbf{«mørk modus»} eller lignende. Muligheten til å \textbf{endre språk} kunne blitt implementert ved å ha et engelsk og norsk flagg ved siden av hverandre oppe i hjørnet, slik at brukeren kunne valgt hvilket språk som skulle bli brukt. Ellers er det lurt å tenke over uttrykket \textbf{ «less is more»} og ikke legge til innstillinger som \textbf{ikke har en nytteverdi} for brukerene. Dette vil føre til en mer \textbf{uoversiktlig} applikasjon. 
+Ved \textbf{endring av utseendet} kunne det for eksempel blitt lagt til mulighet for å \textbf{endre farge på søyler i grafen}, introdusert et valg for \textbf{«mørk modus»} eller lignende. Muligheten til å \textbf{endre språk} kunne blitt implementert ved å ha et engelsk og norsk flagg ved siden av hverandre oppe i hjørnet, slik at brukeren kunne valgt hvilket språk som skulle bli brukt. Ellers er det lurt å tenke over uttrykket \textbf{ «less is more»} og ikke legge til innstillinger som \textbf{ikke har en nytteverdi} for brukerene. Det vil føre til en mer \textbf{uoversiktlig} applikasjon. 
 
 \subsection{Flere funksjoner i filvelgeren}
-Komponenten hvor man har muligheten til å \textbf{åpne og bla i filer fra filsystemet til robotkontrolleren}, kunne vært \textbf{utvidet med flere funksjoner}. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere:
+Komponenten hvor man har muligheten til å åpne og bla i filer fra filsystemet til robotkontrolleren, kunne vært \textbf{utvidet med flere funksjoner}. Per dags dato er det kun mulig å bla gjennom filstrukturen, åpne filer i Brush Editoren og eksportere åpnet fil. Robot Web Service REST API inneholder flere muligheter som kunne vært nyttige å inkludere:
 
 \begin{itemize}
     \item \textbf{Opprette ny mappe/fil}
@@ -256,8 +253,7 @@ Komponenten hvor man har muligheten til å \textbf{åpne og bla i filer fra fils
     \item \textbf{Duplisere mappe/fil}
 \end{itemize}
 
-\noindent Dette er \textbf{ikke kritiske funksjoner}, men de hadde gjort filvelgeren mer komplett. For å kunne bytte ut den eksisterende Windows-applikasjonen med denne, er det en fordel at slike funksjoner er på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen markante tekniske utfordringer knyttet til implementasjonen. \textbf{Knapp tid} var det som gjorde at disse funksjonene ble nedprioritert i dette prosjektet.
-%Målet med dette prosjektet er på sikt å kunne bytte ut den eksisterende Windows-applikasjonen og det er da en fordel at slike funksjoner er på plass.
+\noindent Dette er \textbf{ikke kritiske funksjoner}, men de hadde gjort filvelgeren mer komplett. Ettersom det langsiktige målet er å erstatte den eksisterende Windows-applikasjonen med denne, hadde det vært en fordel om slike funksjoner kom på plass. Mulighetene ligger, som sagt, allerede i REST API-et, så det er ingen markante tekniske utfordringer knyttet til implementasjonen. \textbf{Knapp tid} var det som gjorde at disse funksjonene ble nedprioritert i dette prosjektet.
 
 \subsection{Sikrere autentiseringsmetode enn Digest}
 Digest-metoden er brukt for å autentisere brukere som skal koble seg opp til Robot Web Service (API). I dag vurderes denne formen for autentisering som \textbf{mindre sikker}. Selv om Digest er sikrere enn Basic Authentication (forklart i kapittel \ref{basicAuthentication}), har metoden likevel klare mangler:
@@ -331,5 +327,5 @@ Det er naturlig å ha med noen funksjoner i denne applikasjonen som \textbf{ikke
     \item \textbf{Lagring av kanalnavn og maks-verdier i cookies:} Lagt til slik at verdiene som brukeren har lagt inn ikke slettes når brukeren avslutter programmet. Hvis brukeren har endret kanalnavn eller maks-verdier vil disse automatisk bli lastet inn i neste økt.
 \end{itemize}
 
-\section{Oppsummering}
+\section{Oppsummering av kapittelet}
 Diskusjon rundt applikasjonen og ulike valg knyttet til utviklingen har i dette kapittelet blitt gjennomgått. Valgene av Angular som rammeverk, Bootstrap som stil-bibliotek etc. har blitt diskutert. Ulike tanker og begrunnelser rundt disse valgene, samt andre mulige løsninger enn de som ble valgt har blitt presentert. I tillegg har ulike forslag til forbedringer av applikasjonen og sammenligning av funksjonaliteten med dagens løsning, spilt en sentral rolle. 

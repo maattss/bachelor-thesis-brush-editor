@@ -3,10 +3,10 @@
 \label{konstruksjon} % Bruk \ref{konstruksjon}, for å referere til kapittelet andre steder i oppgaven. 
 %----------------------------------------------------------------------------------------
 
-Dette kapittelet skal gi et helhetsbilde av hvordan applikasjonen fungerer og er bygget opp. Interaksjonene mellom de ulike komponentene og tjenestene, samt hvordan disse er satt sammen, vil bli forklart. I tillegg vil en gjennomgang av ulike designmønstre og hvordan disse er brukt gi ett innblikk i de grunnleggende prinsippene brukt i utviklingen av denne applikasjonen. 
+Dette kapittelet skal gi et helhetsbilde av hvordan applikasjonen fungerer og er bygget opp. Interaksjonene mellom de ulike komponentene og tjenestene, samt hvordan disse er satt sammen, vil bli forklart. I tillegg vil en gjennomgang av ulike designmønstre og hvordan disse er brukt, gi ett innblikk i de grunnleggende prinsippene brukt i utviklingen av denne applikasjonen. 
 
 \section{Kodestruktur i applikasjonen}
-Kodestrukturen i prosjektet baserer seg LeBlanc’s lov \textbf{«Later equals never»} \cite{LeBlancsLov}. Dette innebærer å ha en ryddig kodestruktur fra starten av, og \textbf{ikke utsette ryddingen} til senere. Hvis strukturen er rotete fra start av, vil den alltid være det.
+Kodestrukturen i prosjektet baserer seg på LeBlanc’s lov \textbf{«Later equals never»} \cite{LeBlancsLov}. Dette innebærer å ha en ryddig kodestruktur fra starten av, og \textbf{ikke utsette ryddingen} til senere. Dersom strukturen er rotete fra start av, vil den alltid være det ifølge loven.
 
 \subsection{Oppsett av filer}
 \begin{wrapfigure}[22]{r}{0.35\textwidth} % [antall linjer]{float}{bredde}
@@ -15,34 +15,34 @@ Kodestrukturen i prosjektet baserer seg LeBlanc’s lov \textbf{«Later equals n
     \caption{Utdrag fra filstrukturen til applikasjonen.}
     \label{fig:filestruktur}
 \end{wrapfigure}
-Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-konvensjon \cite{angularStyleGuide}. For å ha bedre oversikt over filene i applikasjonen har fokuset vært å ha en \textbf{flat filstruktur}, i.e. færrest mulig nivå av mapper. Filene programmet er bygget opp av ligger i mappen \textbf{«app»}. Her har hver komponent sin egen mappe som inneholder fire lignende navngitte filer (se figur \ref{fig:filestruktur}). Tjenestene i applikasjonen er også samlet i en egen felles mappe, \textbf{«\_services»}.
+Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-konvensjon \cite{angularStyleGuide}. For å ha bedre oversikt over filene i applikasjonen har fokuset vært å ha en \textbf{flat filstruktur}, i.e. færrest mulig nivå av mapper. Filene programmet er bygget opp av ligger i mappen \textbf{«app»}. Inne i denne har hver komponent sin egen mappe som inneholder fire lignende navngitte filer (se figur \ref{fig:filestruktur}). Tjenestene i applikasjonen er også samlet i en egen felles mappe, \textbf{«\_services»}.
 
 \subsection{Navngiving av variabler}
-\textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel så er variabelnavnet for kanalnavnene navngitt som \textbf{«channelNames»}. Dette gjør det \textbf{oversiktlig} å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
+\textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel er variabelene for kanalnavn navngitt som \textbf{«channelNames»}. Dette gjør det \textbf{lett} å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
 
 \subsection{Navngiving av filer}
-Filnavnene i dette prosjektet følger også \textbf{Angular sin konvensjon}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Et typisk eksempel er «brush-graph.component.ts». «Brush graph» er navnet, mens «component» beskriver at dette er en komponent. Flere eksempler kan sees i figur \ref{fig:filestruktur}.
+Filnavnene i dette prosjektet følger også \textbf{Angular sin konvensjon}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Et typisk eksempel er \textbf{«brush-graph.component.ts»}. «Brush graph» er navnet, mens «component» beskriver at dette er en komponent. Flere eksempler kan sees i figur \ref{fig:filestruktur}.
 
 \subsection{Hvordan Single responsibility-prinsippet er fulgt}
 Single responsibility er et prinsipp som går ut på at hver modul, klasse eller funksjon kun skal ha \textbf{ansvaret for én handling}. For eksempel hvis funksjonen \textbf{«toLowerCase(text)»} skal ta inn en tekst og gjøre om hele teksten til små bokstaver, kan den ikke gjøre noe mer enn det.
 
-I denne applikasjonen har man tatt hensyn til dette hver gang en ny funksjon, klasse eller modul har blitt opprettet. Koden blir lettere å endre på og forstå (spesielt hvis leseren ikke har skrevet koden selv) hvis dette prinsippet blir fulgt \cite{SingleReponsibility}.  
+I denne applikasjonen har man tatt hensyn til dette hver gang en ny funksjon, klasse eller modul har blitt opprettet. Koden blir \textbf{lettere å endre på og forstå} (spesielt hvis leseren ikke har skrevet koden selv) hvis dette prinsippet blir fulgt \cite{SingleReponsibility}.  
 
 \subsection{Inndeling av komponenter og tjenester}
-Hver komponent representerer en spesifikk del av applikasjonen med et \textbf{ansvarsområde}. For eksempel har innstillingskomponenten ansvaret for å vise og endre innstillingene, mens grafkomponenten har ansvaret for å vise grafen. 
+\textbf{Hver komponent representerer en spesifikk del av applikasjonen med et ansvarsområde}. For eksempel har innstillingskomponenten ansvaret for å vise og endre innstillingene, mens grafkomponenten har ansvaret for å vise grafen. 
 
-\textbf{Tjenestene er sentrale funksjoner i applikasjonen} som ofte trengs av flere komponenter. Hver tjeneste har i likhet med komponentene ett ansvarsområde. For eksempel; brush-tjenesten lagrer og oppdaterer brush-dataen. Alle komponentene har da mulighet til å lese og endre disse.
+\textbf{Tjenestene er sentrale funksjoner i applikasjonen} som ofte brukes i flere komponenter. Hver tjeneste har i likhet med komponentene ett ansvarsområde. For eksempel; brush-tjenesten styrer lagreing og oppdatering brush-dataene. Alle komponentene har da mulighet til å lese og endre disse via denne tjenesten.
 
 \section{Designmønster i applikasjonen}
 Hvilke designmønstre som er brukt og hvordan de definerer strukturen til applikasjonen er en viktig del av enhver utviklingsprosess. I dette prosjektet har de tre mest sentrale designmønstrene vært \textbf{«mobile first»}, \textbf{dependency injection} og \textbf{komponentbasert MVC}.
 
 \subsection{Utgangspunkt i mobile first}
-Hovedfokuset under utviklingen av denne applikasjonen har vært å lage en applikasjon som først og fremst \textbf{fungerer bra på mobiltelefoner og nettbrett}. Applikasjonen skal være enkel i bruk og ikke inneholde for mange elementer som gjør den uoversiktlig. Menyen er et godt eksempel på dette. På mindre skjermer skjules valgene slik at de ikke opptar unødvendig plass på skjermen når menyen ikke er i bruk.
+Hovedfokuset under utviklingen av denne applikasjonen har vært å lage en applikasjon som først og fremst \textbf{fungerer bra på mobiltelefoner og nettbrett}. Applikasjonen skal være enkel i bruk og ikke inneholde for mange elementer som gjør den uoversiktlig. \textbf{Menyen er et godt eksempel} på dette. På mindre skjermer skjules valgene slik at de ikke opptar unødvendig plass på skjermen når menyen ikke er i bruk.
 
 Selv om hovedfokuset ikke har vært hvordan applikasjonen ser ut på større skjermer, har applikasjonen likevel et \textbf{responsivt design}. Menylinjen er også i dette tilfellet et godt eksempel. Hvis applikasjonen kjører på en enhet med stor skjerm, vil menyen utvide seg til å vise alle valgene istedenfor at den skjules (slik som på små skjermer). 
 
 \subsection{Hvordan dependency injection er brukt}
-I denne applikasjonen er dependency injection brukt for å \textbf{sende data} fra de ulike tjenestene til komponentene. Eksempelvis holder brush-tjenesten kontroll på brush-dataen lest inn i applikasjonen. For å gi komponentene som trenger det, tilgang på denne dataen, brukes dependency injection. Både grafen og tabellen (selv om de er to ulike komponenter) vil da ha \textbf{tilgang til samme data}, og en oppdatering vil reflekteres i begge komponentene.
+I denne applikasjonen er dependency injection brukt for å \textbf{sende data} fra de ulike tjenestene til komponentene. Eksempelvis holder brush-tjenesten kontroll på brush-dataen lest inn i applikasjonen. Dependency injection brukes for å gjøre denne dataen tilgjengelig for alle de komponentene som skulle trenge den. Både grafen og tabellen (selv om de er to ulike komponenter) vil da ha \textbf{tilgang til samme data}, og en oppdatering vil reflekteres i begge komponentene.
 
 \subsection{Prinsipper fra Model View Controller som er brukt}
 Mønsteret i applikasjonen er til en viss grad basert på standarder fra Model View Controller. Angular blir omtalt som et komponentbasert rammeverk og blir av den grunn også omtalt som et \textbf{komponentbasert MVC-rammeverk}. Hvis man ser på Angular fra et MVC-perspektiv, vil kontrolleren \textbf{(Controller)} være hele komponenten. Modellen \textbf{(Model)} vil være klassene som inneholder og oppdaterer data, og visningen \textbf{(View)} vil være HTML-malen som viser frem alle dataene \cite{angular_vs_react}.
@@ -84,7 +84,7 @@ Applikasjonen inneholder en komponent hvor man kan endre innstillinger knyttet t
     \label{fig:settings}
 \end{figure}
 
-\noindent Innstillingskomponenten åpnes/skjules ved hjelp av et trykk på «settings»-knappen i navigasjonslinjen. Den kan også skjules enten ved å gjennomføre en endring i innstillingene eller ved å klikke på krysset i hjørnet.
+\noindent \textbf{Innstillingskomponenten åpnes/skjules} ved hjelp av et trykk på «settings»-knappen i navigasjonslinjen. Den kan også skjules enten ved å gjennomføre en endring i innstillingene eller ved å klikke på krysset i hjørnet.
 
 \subsection{Filinformasjonskomponenten i applikasjonen}
 Denne komponenten \textbf{viser informasjon knyttet til filen} som er lastet inn. Her kan man \textbf{se og endre på filnavnet og -kommentaren}. Verdiene blir brukt ved en eksport av filen, \textbf{til roboten eller lokalt} til brukerens enhet. I likhet med innstillingskomponenten, vises og skjules denne ved hjelp av «file info»-knappen i navigasjonslinjen.
@@ -147,9 +147,7 @@ Filvelgerkomponenten tar kun for seg \textbf{visningen av filer, mapper og valg}
 \end{figure}
 
 \subsection{Brushmapping-komponenten til roboten}
-Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-funksjon for å \textbf{finne frem til riktig brush-fil}. Komponenten gir brukeren mulighet til å velge fil basert på en kombinasjon av \textbf{tre valg: «program», «material» og «option»} (figur \ref{fig:brushMapping}). Applikasjonen bruker så en formel til å bestemme filnavnet basert på valgene til brukeren. Ett eksempel kan være \textbf{«100*Program + Material»} (merk at denne formelen ikke bruker option-valget). Hvis brukervalget da er programnummer 1 og materialnummer 1 vil korresponderende filnavn være \textbf{«Table101.bt»}. For å gjøre det enklere for brukeren å velge riktige valg, har program-, material- og option-verdiene et korresponderende navn. \textbf{Programnummeret} er ofte navnet til lakkeringsobjektet, for eksempel en bilmodell. \textbf{Materialnummeret} beskriver som regel fargen til objektet, for eksempel rød. \textbf{Optionnummeret} brukes til å spesifisere diverse andre egenskaper. Valgene i brukergrensesnittet viser både navn og korresponderende nummer. Det er i tillegg \textbf{mulig å åpne filen direkte} ved hjelp av nummeret i filnavnet. Da kan man i stedet skrive inn dette for å hente riktig fil. Dette kan være nyttig for brukeren i tilfeller hvor den samme filen brukes ofte. 
-% Hvis ikke filnummeret eller valgene korresponder til en fil i filsystemet til robotkontrolleren vil brukeren få valget med å \textbf{opprette en ny fil}.
-% Formelen hentes fra REST APIet til robotkontrolleren og 
+Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-funksjon for å \textbf{finne frem til riktig brush-fil}. Komponenten gir brukeren mulighet til å velge fil basert på en kombinasjon av \textbf{tre valg: «program», «material» og «option»} (figur \ref{fig:brushMapping}). Applikasjonen bruker så en formel til å bestemme filnavnet basert på valgene til brukeren. Ett eksempel kan være \textbf{«100*Program + Material»} (merk at denne formelen ikke bruker option-valget). Hvis brukervalget da er programnummer 1 og materialnummer 1 vil korresponderende filnavn være \textbf{«Table101.bt»}. For å gjøre det enklere for brukeren å velge riktig, har program-, material- og option-verdiene et korresponderende navn. \textbf{Programnummeret} er ofte navnet til lakkeringsobjektet, for eksempel en bilmodell. \textbf{Materialnummeret} beskriver som regel fargen til objektet, for eksempel rød. \textbf{Optionnummeret} brukes til å spesifisere diverse andre egenskaper. Valgene i brukergrensesnittet viser både navn og korresponderende nummer. Det er i tillegg \textbf{mulig å åpne filen direkte} ved hjelp av nummeret i filnavnet. Dette kan være nyttig for brukeren i tilfeller hvor den samme filen brukes ofte. 
 
 \textbf{Denne komponenten fokuserer kun på visningen}. Logikken og kommunikasjonen med robotkontrollerens REST API skjer i filvelger-tjenesten.
 
@@ -161,7 +159,7 @@ Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-f
 \end{figure}
 
 \section{Layout i applikasjonen}
-Fokuset i denne utviklingsprosessen har vært å lage en \textbf{oversiktlig og brukervennlig} applikasjon som fungerer bra på enheter med \textbf{små skjermer}. Layouten er av den grunn simpel, med forholdsvis få elementer. Helt øverst finnes en navigasjonsbar som inkluderer ulike valg og innstillinger. Under denne finner vi en fleksibel plass hvor visningen avhenger av hva brukeren har åpnet. Her kan \textbf{filinformasjon, innstillinger, filutforsker, brush-mapping eller statusmeldinger} vises. For å gjøre layouten oversiktlig, \textbf{vises kun en av disse om gangen}. Tabellen og grafen er plassert under dette igjen, men hvis den fleksible plassen ikke brukes, vil tabellen og grafen flyttes opp. Hvordan tabell og graf vises \textbf{avhenger av skjermstørrelse} på enheten som brukes. Hvis \textbf{skjermen er stor}, vil tabellen og grafen vises \textbf{ved siden av hverandre}, mens på \textbf{mindre skjermer} vil grafen flyttes \textbf{under tabellen}. Figur \ref{fig:layout_stor} viser hvordan layouten ser ut på en større skjerm med filinformasjon åpnet. I figur \ref{fig:layout_liten} ser man hvordan applikasjonen ser ut på en mindre skjerm. Her er den fleksible plassen ikke brukt og man ser da hvordan grafen og tabellen er flyttet opp, samt hvordan grafen er plassert under tabellen.
+Fokuset i denne utviklingsprosessen har vært å lage en \textbf{oversiktlig og brukervennlig} applikasjon som fungerer bra på enheter med \textbf{små skjermer}. Layouten er av den grunn simpel, med forholdsvis få elementer. \textbf{Helt øverst finnes en navigasjonsbar} som inkluderer ulike valg og innstillinger. \textbf{Under denne finner vi en fleksibel plass hvor visningen avhenger av hva brukeren har åpnet}. Her kan filinformasjon, innstillinger, filutforsker, brush-mapping eller statusmeldinger vises. For å gjøre layouten oversiktlig, vises kun en av disse om gangen. \textbf{Tabellen og grafen er plassert under dette igjen}, men hvis den fleksible plassen ikke brukes, vil tabellen og grafen flyttes opp. Hvordan tabell og graf vises \textbf{avhenger av skjermstørrelse} på enheten som brukes. Hvis skjermen er stor, vil tabellen og grafen vises ved siden av hverandre, mens på mindre skjermer vil grafen flyttes under tabellen. Figur \ref{fig:layout_stor} viser hvordan layouten \textbf{ser ut på en større skjerm} med filinformasjon åpnet. I figur \ref{fig:layout_liten} ser man hvordan applikasjonen \textbf{ser ut på en mindre skjerm}. Her er den fleksible plassen ikke brukt og man ser da hvordan grafen og tabellen er flyttet opp, samt hvordan grafen er plassert under tabellen.
 
 \begin{figure}[H]
     \centering
@@ -185,42 +183,44 @@ I denne applikasjonen er følgende \textbf{fire tjenester definert}: \textbf{bru
 Brush-tjenesten (brush service) blir brukt til å \textbf{lagre dataene} som blir lest inn fra en brush-fil eller hentet fra roboten. Flere av komponentene trenger disse dataene (blant annet tabellen og grafen). Tjenesten gjør det mulig å \textbf{dele dataene mellom komponenter} som trenger dem. I tillegg blir applikasjonen mer \textbf{robust}; det er enkelt å legge til eller fjerne komponenter som bruker brush-dataene uten å gjøre store endringer i applikasjonen.
 
 \subsection{Sideskifter-tjenesten i applikasjonen}
-Sideskifter-tjenesten (pager service) er en mer funksjonell tjeneste. Denne består av \textbf{logikken til tabellen sin sideskifter}. Ved å inkludere en sideskifter i tabellen, får man en mer oversiktlig tabell hvis man har mange rader med data (noe brush-filene ofte har). Selv om denne tjenesten kun blir brukt i tabell-komponenten var det likevel fordelaktig å splitte denne til en egen tjeneste. Man får da fjernet en del linjer med kode fra tabell-komponenten, samt muligheten til å \textbf{bruke denne tjenesten andre steder i applikasjonen} hvis man trenger det på et senere tidspunkt.
+Sideskifter-tjenesten (pager service) er en mer \textbf{funksjonell tjeneste}. Denne består av \textbf{logikken til tabellen sin sideskifter}. Ved å inkludere en sideskifter i tabellen, får man en mer oversiktlig tabell hvis man har mange rader med data (noe brush-filene ofte har). Selv om denne tjenesten kun blir brukt i tabell-komponenten var det likevel fordelaktig å splitte denne til en egen tjeneste. Man får da fjernet en del linjer med kode fra tabell-komponenten, samt muligheten til å \textbf{bruke denne tjenesten andre steder i applikasjonen} hvis man trenger det på et senere tidspunkt.
 
 \subsection{Visningstjenesten i applikasjonen}
 Visningstjenesten (view service) bestemmer \textbf{hvilken av komponentene som skal vises} (filinformasjon, innstillinger, filutforsker, brush-mapping eller statusmeldinger). Innstillinger og filinformasjon skal kun vises hvis brukeren har lastet opp en fil og trykket på en av disse knappene. Informasjons-komponenten skal også kun vises i noen tilfeller. Visningstjenesten holder orden på dette og gjør det mulig å \textbf{vise/skjule disse komponentene} fra hvilken som helst annen komponent. For eksempel kan man bruke informasjonskomponenten til å gi tilbakemelding til brukeren om oppdateringen av innstillingene var vellykket eller ikke. Samtidig kan man, ved en annen anledning, bruke komponenten til å gi beskjed til brukeren at det har skjedd en feil i innlesingen av en fil.
-% Visningstjenesten (view service) bestemmer \textbf{visningen til innstillinger-, filinformasjon- og informasjons-komponenten}. 
 
 \subsection{Filvelgertjenesten i applikasjonen}
 \label{filvelgerTjenesteRef}
-I denne tjenesten \textbf{håndteres logikken rundt valg av fil} fra robotkontrolleren sitt filsystem. \textbf{Tjenesten styrer all kommunikasjonen mellom applikasjonen og Robot Web Service REST API-et}. Dette inkluderer mye av logikken bak valg/innlesing av fil i både filvelger- og brushmapping-komponenten. I filvelgerkomponenten innebærer dette logikken rundt navigering i filsystemet samt \textbf{henting og eksportering} av filer. I filmapping-komponenten er det logikken bak mappingen fra program-, material- og option-nummer til filnavn, i tillegg til henting av filen. 
+I denne tjenesten \textbf{håndteres logikken rundt valg av fil} fra robotkontrolleren sitt filsystem. \textbf{Tjenesten styrer all kommunikasjonen mellom applikasjonen og Robot Web Service REST API-et}. Dette inkluderer det meste av logikken bak valg/innlesing av fil i både filvelger- og brushmapping-komponenten. I filvelgerkomponenten innebærer dette navigering i filsystemet samt \textbf{henting og eksportering} av filer. I filmapping-komponenten er det logikken bak mappingen fra program-, material- og option-nummer til filnavn, i tillegg til henting av filen. 
 
-Denne tjenesten \textbf{samler all kommunikasjon mellom applikasjonen og REST API-et}. Dette gjør konfigurering av diverse parametere tilgjengelig for andre komponenter. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
+Tjenesten inkluderer også muligheten for å endre på ulike paramtere som brukes i oppkoblingen mot robotkontrolleren. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
+
+%Gjennom denne tjenesten er det også mulig å endre på ulike parametere som hører til robotkontrolleren. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
+
 
 \section{Bruken av modeller og moduler applikasjonen}
-I applikasjonen blir det brukt diverse modeller og moduler fra Angular. I denne seksjonen blir det forklart \textbf{hvilke som er brukt}.
+I applikasjonen blir det brukt diverse modeller og moduler fra Angular. I denne seksjonen blir det forklart \textbf{hvilke som er brukt} og \textbf{hvordan de brukes}.
 
 \subsection{Bruk av modeller i applikasjonen}
 Prosjektet inkluderer bruken av  Angular-modellen \textbf{«ngModel» for å binde verdiene} fra brush-objektene til HTML-malen. Dette betyr at dersom brush-objektet blir endret i kildekoden, oppdateres det automatisk i HTML-visningen og omvendt. Prinsippet omtales som \textbf{toveis-databinding} og gjør at man slipper å bruke tid på å lage funksjoner som må oppdatere objektet hver gang.
 
 \subsection{Bruk av moduler i applikasjonen}
-I dette prosjektet er det blitt brukt noen moduler. Alle modulene er offisielle Angular-moduler, bortsett fra «ChartsModule» som er importert fra en eksterne kilde. Modulene har ulike funksjoner i applikasjonen:
+I dette prosjektet hat det blitt brukt noen moduler. Alle modulene er offisielle Angular-moduler, bortsett fra «ChartsModule» som er importert fra en eksterne kilde. Modulene har ulike funksjoner i applikasjonen:
 \begin{itemize}
     \item \textbf{NgModule} er en kjernemodul fra «Angular core». Den blir omtalt som rotmodulen i applikasjonen og samler resten av modulene, tjenestene og komponentene på en plass \cite{angularModules}.
     \item \textbf{BrowserModule} er en modul fra «Angular platform-browser». Den eksporterer CommonModule, en modul som har mange innebygde tjenester. For eksempel er tjenesten «ngIf» (brukt flere ganger i applikasjonen) en del av denne modulen \cite{angular_BrowserModule}.
     \item \textbf{ChartsModule} er en modul som er importert fra «ng2-charts» og blir brukt til å tegne grafen. Biblioteket gjør det enkelt å lage grafer etter egne behov slik som det er gjort i applikasjonen \cite{angular_ChartsModule}.
     \item \textbf{MatTooltipModule} er en modul fra «Angular Material» som brukes til å legge til tooltips. Tooltips er en grei måte å forklare brukeren hva som skjer dersom det valgte objektet blir aktivert. I applikasjonen blir tooltips brukt aktivt og finnes på de fleste knappene. For eksempel vil tooltipen til knappen som sletter innholdet i en rad vise «Clear content of row» dersom brukeren sin musepeker holdes over knappen.
     \item \textbf{BrowserAnimationsModule} er en modul fra «Angular platform-browser» som er importert for å kunne bruke ulike animasjoner i Angular. For eksempel er denne nødvendig for at tooltipene fra MatTooltipModule skal fungere.
-    \item \textbf{FormsModule} er en modul fra «Angular forms» som er importert for å kunne bruke en toveis databinding. I applikasjonen blir dette brukt i tabellen hvor hver kanal i hvert brush-objekt er en egen modell. Dette er svært nyttig ettersom man slipper å lage funksjoner som må oppdatere objektet hver gang \cite{angular_FormsModule}.
+    \item \textbf{FormsModule} er en modul fra «Angular forms» som er importert for å kunne bruke toveis databinding. I applikasjonen blir dette brukt i tabellen hvor hver kanal i hvert brush-objekt er en egen modell. Dette er svært nyttig ettersom man slipper å lage funksjoner som må oppdatere objektet hver gang \cite{angular_FormsModule}.
 \end{itemize}
 
 \section{Kommunikasjon med robotkontrolleren}
-Kommunikasjonen med robotkontroller er en av de viktigste funksjonene til applikasjonen. Denne seksjonen vil ta for seg, og beskrive, ulike deler av denne prosessen. Dette inkluderer blant annet \textbf{autentisering av brukeren} og bruken av \textbf{Robot Web Services REST API}.
+Kommunikasjonen med robotkontroller er en av de viktigste funksjonene til applikasjonen. Denne seksjonen vil ta for seg, og beskrive, ulike deler av denne prosessen. Dette inkluderer \textbf{autentisering av brukeren} og bruken av \textbf{Robot Web Services REST API}.
 
 \subsection{Bruk av Robot Web Service REST API}
 Robot Web Service er en \textbf{API-tjeneste} ABB inkluderer som en del av sine robotkontrollere. API-et gjør det mulig for utviklere å \textbf{lage egne applikasjoner} som kommuniserer med ABB-roboter. I denne applikasjonen er det kun fil-delen av dette API-et som blir benyttet, men API-et inneholder også mange andre ressurser som kan utnyttes \cite{RobotWebService}.
 
-Denne applikasjonen bruker API-et til å \textbf{spørre etter filer} og til å \textbf{laste opp filer} til robotkontrolleren. Dataen sendes og mottas i XML- eller JSON-format. For å få tilgang til dataen må applikasjonen/brukeren først \textbf{autentisere} seg ved hjelp av \textbf{Digest-metoden}.
+Denne applikasjonen bruker API-et til å \textbf{spørre etter filer} og til å \textbf{laste opp filer} til robotkontrolleren. Dataen sendes og mottas i JSON-format. For å få tilgang til dataen må applikasjonen/brukeren først \textbf{autentisere} seg ved hjelp av \textbf{Digest-metoden}.
 For å hente en fil sender applikasjonen en GET-request til den ønskede URL-en og får da en respons som inneholder den forespurte dataen, dersom autentiseringen er godkjent.
 Opplasting av filer fungerer på en lignende måte, men applikasjonen sender da en PUT-request som inneholder fildataene. Svaret applikasjonen får inneholder en HTTP-statuskode som beskriver om opplastingen var vellykket eller ikke \cite{APIDocs}.
 
@@ -232,18 +232,17 @@ Applikasjonen bruker API-et i to tilfeller:
 
 \subsection{Begrenset kommunikasjon som følge av CORS}
 \label{corsRestrict}
-På grunn av \textbf{CORS-restriksjoner (Cross Origin Resource Sharing)} i dagens nettlesere, er det ikke mulig å få tilgang til alle header-ene i HTTP-responsen fra robotkontrolleren. Dette gjør at de \textbf{nødvendige headerene for å gjennomføre en Digest-request, ikke er tilgjengelige}. En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser skal hentes fra robotkontrolleren:
+På grunn av \textbf{CORS-restriksjoner (Cross Origin Resource Sharing)} i dagens nettlesere, er det ikke mulig å få tilgang til alle headerne i HTTP-responsen fra robotkontrolleren. Dette gjør at de \textbf{nødvendige headerne for å gjennomføre en Digest-request, ikke er tilgjengelige}. En webapplikasjon utfører en cross-origin HTTP-request når den prøver å hente ressurser som har en annen opprinnelse (domene, protokoll og port) enn sin egen \cite{CORS_request}. I denne applikasjonen skjer dette hver gang ressurser skal hentes fra robotkontrolleren:
 
 \begin{enumerate}
     \item Brukeren sender en \textbf{request} til robot-serveren.
-    \item Serveren svarer med en \textbf{«401 Unauthorized»} melding, men inkluderer ikke de headerne som trengs (realm, nonce etc.) for å kunne generere ett gyldig svar.
+    \item Serveren svarer med en \textbf{«401 Unauthorized»} melding, men inkluderer ikke de headerne som trengs (realm, nonce etc.) for å kunne generere et gyldig svar.
 \end{enumerate}
 
-\noindent I prosjektet er det blitt brukt en \textbf{nettleser med CORS deaktivert} for testing og utvikling av applikasjonen. Dette gjør det mulig å få tilgang til de nødvendige ressursene fra roboten.
+\noindent I prosjektet er det blitt brukt en \textbf{nettleser med CORS deaktivert} for testing og utvikling av applikasjonen. Dette gjør det mulig å få tilgang til de nødvendige ressursene fra roboten til tross for dette problemet.
 
 \subsection{Autentisering av brukeren ved hjelp av Digest}
-I dette prosjektet har \textbf{autentiseringsmetoden Digest} blitt brukt for å validere brukere. Autentiseringsprosessen i applikasjonen starter opp hvis brukeren velger å hente en brushfil fra filsystemet til en robot. \textbf{Passord og brukernavn} som brukes til autentiseringen er \textbf{standardverdiene} til API-et og derfor forhåndslagret i kildekoden.
-%I applikasjonen er \textbf{standard passord og brukernavn} er forhåndslagret i applikasjon og brukt i autentiseringen.
+I dette prosjektet har \textbf{autentiseringsmetoden Digest} blitt brukt for å validere brukere. Autentiseringsprosessen i applikasjonen starter opp hvis brukeren velger å hente en brushfil fra filsystemet til en robot. \textbf{Passord og brukernavn} som brukes til autentiseringen er \textbf{standardverdiene} til API-et og er derfor forhåndslagret i kildekoden.
 
 Digest-autentiseringen blir \textbf{gjennomført ved hjelp av JavaScript}. Scriptet sender først en HTTP-request og får da en «401 Unauthorized»-respons som inneholder headere med nødvendige verdier. Disse verdiene blir hashet sammen med brukernavn og passord og lagt til i den neste HTTP-requesten som sendes til serveren for godkjenning. Hvis brukernavn og passord stemmer, vil det bli gitt tilgang til ressursene i filsystemet til roboten. 
 

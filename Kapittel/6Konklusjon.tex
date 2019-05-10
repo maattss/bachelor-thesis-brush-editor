@@ -4,26 +4,24 @@
 %----------------------------------------------------------------------------------------
 I starten av denne oppgaven ble det definert \textbf{fem mål} for dette prosjektet. Ble disse oppnådd? Hvis ikke, hvorfor ikke?
 
-%I dette kapittelet vil applikasjonen bli kort oppsummert ved at det blir forklart hvilke \textbf{mål} som ble/ikke ble oppnådd og hvorfor. 
-
 \begin{itemize}
     \item \textbf{Tilpasningsevnen til applikasjonen}
     
-    Målet om at applikasjonen skal tilpasse seg ulike formfaktorer ble \textbf{oppnådd}. Dette ble oppnådd ved å bruke Bootstrap på de fleste elementene i applikasjonen. Under testingen i resultatkapittelet (kapittel \ref{resultat}) ble det bevist at man kan bruke applikasjonen på mobil og nettbrett uten særlige problemer.
+    Målet om at applikasjonen skal tilpasse seg ulike formfaktorer ble \textbf{oppnådd}. Dette ble oppnådd ved å stilsette elementene i applikasjonen ved hjelp av Bootstrap-biblioteket. Under testingen i resultatkapittelet (kapittel \ref{resultat}) ble det bevist at applikasjonen fungerer like bra på mobil og nettbrett som på PC.
     
     \item \textbf{Tilleggsfunksjoner i applikasjonen}
     
-    Målet om at applikasjonen skal inneholde tilleggsfunksjoner som ikke finnes i dagens løsning er \textbf{oppnådd}. Det ble oppnådd ved å legge til disse tilleggsfunksjonene som gjør applikasjonen mer brukervennlig: endre maksverdien for de ulike kanalene, bytte robot ved hjelp av IP-adresse, endre kanalnavn og fjerne innhold i rader.
+    Målet om at applikasjonen skal inneholde tilleggsfunksjoner som ikke finnes i dagens løsning ble \textbf{oppnådd}. Ekstra funksjoner som ikke er en del av dagens løsning ble lagt til for å gjøre applikasjonen mer brukervennlig. Eksempler på noen slike er: endre maksverdien for de ulike kanalene, endre kanalnavn og enkelt kunne fjerne innhold i rader.
     
     \item \textbf{Applikasjonens brukervennlighet}
      
-    Basert på tilbakemeldingene fra brukerne konkluderes det med at det er en brukervennlig applikasjon, men det finnes rom for forbedringer. Målet om at applikasjonen skal være lett å bruke er derfor \textbf{delvis oppnådd}.
+    Basert på tilbakemeldingene fra brukerne, konkluderes det med at applikasjonen er brukervennlig, men at det finnes noen rom for forbedringer. Målet om at applikasjonen skal være lett å bruke ble derfor \textbf{delvis oppnådd}.
     
     \item \textbf{Oppkobling av lakkeringsrobot}
     
-    Målet om at applikasjonen skal kunne bli koblet opp mot lakkeringsrobotene til ABB ble \textbf{ikke oppnådd}. Dette var et viktig mål i prosjektet, men det lot seg dessverre ikke gjennomføre som følge av CORS-restriksjonen (diskutert i kapittel \ref{CORS_problem}). Det er likevel viktig å påpeke at applikasjonen kontinuerlig har blitt testet opp mot en virtuell lakkeringsrobot og dette har fungert som ønsket. Dette gir grunnlag for å tro at applikasjonen vil kunne kobles opp mot en ekte robot i fremtiden dersom problemet med CORS blir løst.
+    Målet om at applikasjonen skal kunne kobles opp mot lakkeringsrobotene til ABB ble \textbf{delvis oppnådd}. Dette var et viktig mål i prosjektet, hvor det dessverre oppstod problemer som følge av CORS-restriksjonen (diskutert i kapittel \ref{CORS_problem}). Oppkoblingen i applikasjonen fungerer fint hvis man bruker en nettleser med CORS deaktivert. Men fordi dette krever spesielle innstillinger og gjør nettleseren mindre sikker, defineres målet som delvis oppnådd.
     
     \item \textbf{Ha samme muligheter som dagens løsning}
     
-    Målet om at applikasjonen skal inneholde de samme funksjonene som dagens løsning ble \textbf{ikke oppnådd}. Her var det ikke mye om å gjøre for at applikasjonen inneholdt alle funksjonene. De viktigste funksjonene som finnes i dagens løsning, men som mangler i denne applikasjonen er muligheten til å lage nye mapper, nye filer og nye rader.
+    Målet om at applikasjonen skal inneholde de samme funksjonene som dagens løsning ble \textbf{ikke oppnådd}. De viktigste funksjonene som finnes i dagens løsning ble implementert, men det finnes fortsatt funksjonalitet som bør legges til for å nå dette målet. Dette inkluderer blant annet flere funksjoner i filvelgeren og flere redigeringsmuligheter av dataene i tabellen. 
 \end{itemize}
