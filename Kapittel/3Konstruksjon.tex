@@ -18,7 +18,7 @@ Kodestrukturen i prosjektet baserer seg på LeBlanc’s lov \textbf{«Later equa
 Filstrukturen til denne applikasjonen er basert på Angular sin offisielle stil-konvensjon \cite{angularStyleGuide}. For å ha bedre oversikt over filene i applikasjonen har fokuset vært å ha en \textbf{flat filstruktur}, i.e. færrest mulig nivå av mapper. Filene programmet er bygget opp av ligger i mappen \textbf{«app»}. Inne i denne har hver komponent sin egen mappe som inneholder fire lignende navngitte filer (se figur \ref{fig:filestruktur}). Tjenestene i applikasjonen er også samlet i en egen felles mappe, \textbf{«\_services»}.
 
 \subsection{Navngiving av variabler}
-\textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt i forbindelse med variabler i applikasjonen. For eksempel er variabelene for kanalnavn navngitt som \textbf{«channelNames»}. Dette gjør det \textbf{lett} å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
+\textbf{Lowercamelcase} er en navngivnings-konvensjon som har liten forbokstav på første ord og stor forbokstav på de neste ordene. Det er denne konvensjonen som blir brukt til variabler i applikasjonen. For eksempel er variabelene for kanalnavn navngitt som \textbf{«channelNames»}. Dette gjør det \textbf{lett} å forstå hva de ulike variablene representerer \cite{lowerCamelCase}.
 
 \subsection{Navngiving av filer}
 Filnavnene i dette prosjektet følger også \textbf{Angular sin konvensjon}: Alle navn skal skrives med \textbf{små bokstaver} og mellomrom representeres med \textbf{bindestreker}. I tillegg skal navnene inneholde \textbf{typenavn} (service, component, module etc.), skilt med punktum \cite{AngularfileNames}. Et typisk eksempel er \textbf{«brush-graph.component.ts»}. «Brush graph» er navnet, mens «component» beskriver at dette er en komponent. Flere eksempler kan sees i figur \ref{fig:filestruktur}.
@@ -142,7 +142,7 @@ Filvelgerkomponenten tar kun for seg \textbf{visningen av filer, mapper og valg}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/fileExplorer.png}
-    \caption{Velge fil fra roboten i applikasjonen}
+    \caption{Velge fil fra roboten i applikasjonen.}
     \label{fig:filChooser}
 \end{figure}
 
@@ -154,7 +154,7 @@ Istedenfor å bla i filsystemet til robotkontrolleren kan man bruke en mapping-f
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figurer/3Konstruksjon/BrushMapping.png}
-    \caption{Brushmapping-komponenten i applikasjonen}
+    \caption{Brushmapping-komponenten i applikasjonen.}
     \label{fig:brushMapping}
 \end{figure}
 
@@ -192,19 +192,16 @@ Visningstjenesten (view service) bestemmer \textbf{hvilken av komponentene som s
 \label{filvelgerTjenesteRef}
 I denne tjenesten \textbf{håndteres logikken rundt valg av fil} fra robotkontrolleren sitt filsystem. \textbf{Tjenesten styrer all kommunikasjonen mellom applikasjonen og Robot Web Service REST API-et}. Dette inkluderer det meste av logikken bak valg/innlesing av fil i både filvelger- og brushmapping-komponenten. I filvelgerkomponenten innebærer dette navigering i filsystemet samt \textbf{henting og eksportering} av filer. I filmapping-komponenten er det logikken bak mappingen fra program-, material- og option-nummer til filnavn, i tillegg til henting av filen. 
 
-Tjenesten inkluderer også muligheten for å endre på ulike paramtere som brukes i oppkoblingen mot robotkontrolleren. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
+Tjenesten inkluderer også muligheten for å endre på ulike parametere som brukes i oppkoblingen mot robotkontrolleren. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
 
-%Gjennom denne tjenesten er det også mulig å endre på ulike parametere som hører til robotkontrolleren. For eksempel er det mulig å endre IP-adressen til robotkontrolleren i innstillingene. I tillegg bidrar denne tjenesten til en ryddigere og enklere struktur i koden.
-
-
-\section{Bruken av modeller og moduler applikasjonen}
+\section{Bruken av modeller og moduler i applikasjonen}
 I applikasjonen blir det brukt diverse modeller og moduler fra Angular. I denne seksjonen blir det forklart \textbf{hvilke som er brukt} og \textbf{hvordan de brukes}.
 
 \subsection{Bruk av modeller i applikasjonen}
 Prosjektet inkluderer bruken av  Angular-modellen \textbf{«ngModel» for å binde verdiene} fra brush-objektene til HTML-malen. Dette betyr at dersom brush-objektet blir endret i kildekoden, oppdateres det automatisk i HTML-visningen og omvendt. Prinsippet omtales som \textbf{toveis-databinding} og gjør at man slipper å bruke tid på å lage funksjoner som må oppdatere objektet hver gang.
 
 \subsection{Bruk av moduler i applikasjonen}
-I dette prosjektet hat det blitt brukt noen moduler. Alle modulene er offisielle Angular-moduler, bortsett fra «ChartsModule» som er importert fra en eksterne kilde. Modulene har ulike funksjoner i applikasjonen:
+I dette prosjektet har det blitt brukt noen moduler. Alle modulene er offisielle Angular-moduler, bortsett fra «ChartsModule» som er importert fra en eksterne kilde. Modulene har ulike funksjoner i applikasjonen:
 \begin{itemize}
     \item \textbf{NgModule} er en kjernemodul fra «Angular core». Den blir omtalt som rotmodulen i applikasjonen og samler resten av modulene, tjenestene og komponentene på en plass \cite{angularModules}.
     \item \textbf{BrowserModule} er en modul fra «Angular platform-browser». Den eksporterer CommonModule, en modul som har mange innebygde tjenester. For eksempel er tjenesten «ngIf» (brukt flere ganger i applikasjonen) en del av denne modulen \cite{angular_BrowserModule}.
@@ -218,7 +215,7 @@ I dette prosjektet hat det blitt brukt noen moduler. Alle modulene er offisielle
 Kommunikasjonen med robotkontroller er en av de viktigste funksjonene til applikasjonen. Denne seksjonen vil ta for seg, og beskrive, ulike deler av denne prosessen. Dette inkluderer \textbf{autentisering av brukeren} og bruken av \textbf{Robot Web Services REST API}.
 
 \subsection{Bruk av Robot Web Service REST API}
-Robot Web Service er en \textbf{API-tjeneste} ABB inkluderer som en del av sine robotkontrollere. API-et gjør det mulig for utviklere å \textbf{lage egne applikasjoner} som kommuniserer med ABB-roboter. I denne applikasjonen er det kun fil-delen av dette API-et som blir benyttet, men API-et inneholder også mange andre ressurser som kan utnyttes \cite{RobotWebService}.
+Robot Web Service er en \textbf{API-tjeneste} ABB inkluderer som en del av sine robotkontrollere. API-et gjør det mulig for utviklere å \textbf{lage egne applikasjoner} som kommuniserer med ABB-roboter. I denne applikasjonen er det kun fil-delen av dette API-et som blir benyttet. Men API-et inneholder også mange andre ressurser som kan utnyttes \cite{RobotWebService}.
 
 Denne applikasjonen bruker API-et til å \textbf{spørre etter filer} og til å \textbf{laste opp filer} til robotkontrolleren. Dataen sendes og mottas i JSON-format. For å få tilgang til dataen må applikasjonen/brukeren først \textbf{autentisere} seg ved hjelp av \textbf{Digest-metoden}.
 For å hente en fil sender applikasjonen en GET-request til den ønskede URL-en og får da en respons som inneholder den forespurte dataen, dersom autentiseringen er godkjent.

@@ -16,7 +16,7 @@ For å forstå hvordan applikasjonen fungerer, kan det være nyttig å få en in
 \label{fig:flytskjema}
 \end{figure}
 
-Kontrollerne har hver sin filtjeneste hvor ulike \textbf{filer kan hentes eller lagres}. Noen av disse filene blir \textbf{brukt til å beskrive et program} i en lakkeringsjobb. En slik fil kalles for en \textbf{brush-fil}. Filen kan bli lest inn i en \textbf{brush-tabell} for å få et mer helhetlig bilde av dataene og en bedre forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner som omtales som \textbf{kanaler}. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb, og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Kanalene har bestemte navn som beskriver gjøremålene deres.
+Kontrollerne har hver sin filtjeneste hvor ulike \textbf{filer kan hentes eller lagres}. Noen av disse filene blir \textbf{brukt til å beskrive et program} i en lakkeringsjobb. En slik fil kalles en \textbf{brush-fil}. Filen kan bli lest inn i en \textbf{brush-tabell} for å få et mer helhetlig bilde av dataene og en bedre forståelse av programmet. Hver brush-tabell inneholder tre til fem kolonner som omtales som \textbf{kanaler}. Disse kanalene beskriver ulike egenskaper ved en lakkeringsjobb, og kan for eksempel være hvor mye lakk som skal brukes og sprøytebildet til lakken. Kanalene har bestemte navn som beskriver gjøremålene deres.
 
 Robot Studio-programmet fra ABB er et nyttig hjelpemiddel dersom man vil \textbf{teste de ulike funksjonene ved robotene, uten direkte oppkobling} mot en fysisk maskin. I programmet kan man opprette en \textbf{virtuell robot} med tilhørende kontroller slik at man kan teste ut funksjoner i applikasjonen. 
 
@@ -52,7 +52,7 @@ Model View Controller (MVC) er en arkitektur som vanligvis blir brukt for å \te
 Det finnes mange designmønster som er basert på MVC, men hvor noen av prinsippene enten er lagt til eller fjernet. \textbf{Grunnprinsippet} for MVC inneholder følgende punkter \cite{MVC_coreArc}:
 \begin{itemize}
     \item \textbf{Modellen (model)} er den sentrale komponenten i mønsteret. Det er applikasjonens dynamiske datastruktur, og er uavhengig av brukergrensesnittet. Modellen håndterer data, logikk og regler i applikasjonen.
-    \item \textbf{En visning (view)} kan være en fremvisning av informasjon. Det er mulig å ha flere visninger for samme informasjon. For eksempel kan visningen være både en tabell og en graf som viser til samme data. 
+    \item \textbf{En visning (view)} kan være en fremvisning av informasjon. Den er mulig å ha flere visninger for samme informasjon. For eksempel kan visningen være både en tabell og en graf som viser til samme data. 
     \item \textbf{Kontrolleren (controller)} tar brukerinput og konverterer det til kommandoer for enten modellen eller visningen \cite{MVC_components}. 
 \end{itemize}
 
@@ -73,8 +73,7 @@ I tillegg til å dele applikasjonen inn i tre komponenter,  bestemmer også MVC-
 
 \subsubsection{Fordeler med Model View Controller}
 \begin{itemize}
-    \item \textbf{Samarbeid under utvikling:} Flere utviklere kan samtidig arbeide på modellen, kontrolleren og visningene, eller uavhengig på ulike deler av applikasjon. Dette skaper en raskere utviklingsprossess.
-    %Utviklerne kan også arbeide på ulike deler samtidig. En kan arbeide på modellen, en annen på kontrolleren og en på visningen. Dette resulterer i en raskere utviklingsprossess.
+    \item \textbf{Samarbeid under utvikling:} Flere utviklere kan arbeide samtidig på samme modell, kontroller eller visning. De kan også splitte opp arbeidsoppgavene ved at noen arbeider på modellen, mens andre tar seg av kontrolleren og visningen. Dette gir en raskere utviklingsprosess.
     \item \textbf{Enklere å modifisere:} Fordi de ulike komponentene har egne ansvarsområder, er det lettere å gjøre endringer på applikasjonen senere.
     \item Modellen kan ha \textbf{flere visninger}
 \end{itemize}
@@ -88,7 +87,7 @@ I tillegg til å dele applikasjonen inn i tre komponenter,  bestemmer også MVC-
 \subsection{Komponentbasert designmønster}
 Komponentbasert-utvikling er en gren i applikasjonsutviklingen hvor det legges vekt på å \textbf{dele inn applikasjonen i komponenter} med ansvar for ulik funksjonalitet. Eksempler kan være et \textbf{chat-vindu, et kommentarfelt eller en venneliste} på et sosialt nettverk. Den største fordelen med å bruke et komponentbasert designmønster i en applikasjon, er \textbf{muligheten for gjenbruk}. En nettside på et sosialt nettverket kan for eksempel inneholde flere chat-vinduer og disse kan da være basert på samme komponent. \textbf{Komponentene opererer uavhengig av hverandre} og kan derfor oppdateres individuelt. Hvis det dukker opp nye data som skal vises frem i en komponent, trenger man ikke oppdatere hele nettsiden \cite{understandingCBA}.
 
-Komponentbaserte applikasjoner har blitt veldig \textbf{populært de siste årene}, hovedsakelig på grunn av at React-rammeverket i stor grad baserer seg på dette designmønsteret \cite{reactComponents}. \textbf{Angular er også komponentbasert}, men benytter seg i tillegg av MVC-designet. Et komponentbasert MVC-rammeverk er derfor en mer passende beskrivelse. En typisk Angular applikasjon er bygd opp av flere ulike MVC-baserte komponenter \cite{angularMVCComponents}.
+Komponentbaserte applikasjoner har blitt veldig \textbf{populært de siste årene}. En av grunnene til dette er at React-rammeverket i stor grad baserer seg på dette designmønsteret \cite{reactComponents}. \textbf{Angular er også komponentbasert}, men benytter seg i tillegg av MVC-designet. Et komponentbasert MVC-rammeverk er derfor en mer passende beskrivelse. En typisk Angular applikasjon er bygd opp av flere ulike MVC-baserte komponenter \cite{angularMVCComponents}.
 
 \subsection{Dependency injection-mønsteret} % Dependency injection
 \begin{wrapfigure}[9]{r}{0.35\textwidth} % [antall linjer]{float}{bredde}
@@ -119,7 +118,6 @@ Grafene i denne applikasjonen er tegnet ved hjelp av Chart.js. Dette er et «ope
 
 \section{Bruken av versjonskontroll}
 Versjonskontroll er et \textbf{system som holder orden på forandringer i filer over tid}, slik at du kan finne tilbake til spesifikke versjoner senere \cite{versjonskontroll}. Tidligere ble dette gjort lokalt ved at man kopierte nye versjoner av filer og tok vare på de gamle. Dette var en tidkrevende metode og derfor utviklet man det som i dag kalles for et \textbf{Distribuert Versjonskontrollsystem (DVCS)}. I dette systemet kan \textbf{flere klienter arbeide opp mot samme server til samme tid} (se figur \ref{fig:workflow}). Man kan tenke seg at klienten speiler oppbevaringsmappene som befinner seg på serveren. Hvis serveren går ned, kan bidragsyterene fortsette å jobbe som normalt med prosjektet lagret lokalt på sine maskiner. Når serveren kommer opp igjen, synkroniseres arbeidet. Noen av de mest kjente DVCS-ene i dag er \textbf{Git, Mercurial, Bazaar og Darcs}. 
-% Det at serveren er midlertidig nede er ikke en veldig alvorlig trussel ved bruk av DVCS, ettersom alle bidragsytere i prosjektet har det lagret lokalt på sine lokale maskiner. Derfor kan de arbeide videre som normalt og synkronisere når serveren kommer opp igjen.
 
 \begin{figure}[H]
 \centering
@@ -163,7 +161,7 @@ Digest authentication er en autentiseringsmetode hvor en hashfunksjon \textbf{(M
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figurer/2Bakgrunn/Digest.png}
-    \caption{Eksempel på en autentiseringsprosess vha. Digest \cite{DigestBilde}}
+    \caption{Eksempel på en autentiseringsprosess vha. Digest \cite{DigestBilde}.}
     \label{fig:digest}
 \end{figure}
 
@@ -179,7 +177,7 @@ OAuth er en sikkerhetsprotokoll som tar seg av autentisering av brukere ved hjel
 \noindent Disse tre partene går gjennom følgende steg for å \textbf{opprette en forbindelse} (illustrert i figur \ref{fig:OAuth}) \cite{OAuth_steps}:
 \begin{enumerate}
     \item I starten vet ikke leverandøren hvem klienten er. Derfor må klienten \textbf{registrere nettsiden} sin på leverandørens utviklerside. Etter at klienten har fått tildelt en identitet fra leverandøren, kan OAuth tas i bruk.
-    \item Hvis eieren nå vil ta i bruk en konto fra leverandøren, så vil han bli sendt til \textbf{innlogging på den utvalgte nettsiden}. Ingen brukernavn eller passord vil bli vist til klienten (NB: klienten $\neq$ eier).
+    \item Hvis eieren nå vil ta i bruk en konto fra leverandøren, så vil han bli sendt til \textbf{innlogging på den utvalgte nettsiden}. Ingen brukernavn eller passord vil bli vist til klienten.
     \item Hvis eieren godtar å dele informasjonen fra leverandøren med klienten, vil leverandøren legge ved en \textbf{autentiseringskode (token)} før eieren blir sendt tilbake.
     \item Deretter vil klienten ta kontakt med leverandøren igjen, men denne gangen \textbf{inkluderes autentiseringskoden} som er mottatt.
     \item Leverandøren vil da se at alt er i orden og sende tilbake en \textbf{tilgangspollett} til klienten. Denne polletten blir brukt for å hente brukerdata uten å bruke passord. 
